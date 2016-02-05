@@ -1,0 +1,16 @@
+[
+{
+  "modid": "netherores",
+  "name": "Nether Ores",
+  "description": "Provides Vanilla Ores - In the Nether.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/renevo/netherores",
+  "updateUrl": "https://github.com/renevo/netherores",
+  "authorList": ["RenEvo"],
+  "credits": "Burpcraft People and such",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
