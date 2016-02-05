@@ -1,12 +1,12 @@
 [
 {
-  "modid": "netherores",
-  "name": "Nether Ores",
-  "description": "Provides Vanilla Ores - In the Nether.",
+  "modid": "nethercore",
+  "name": "Nether Core",
+  "description": "Adds fun and interesting things to the Nether.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://github.com/renevo/netherores",
-  "updateUrl": "https://github.com/renevo/netherores",
+  "url": "https://github.com/renevo/nethercore",
+  "updateUrl": "https://github.com/renevo/nethercore",
   "authorList": ["RenEvo"],
   "credits": "Burpcraft People and such",
   "logoFile": "",
