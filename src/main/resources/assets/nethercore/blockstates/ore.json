@@ -1,0 +1,33 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "nethercore:cube_overlay_all",
+    "textures": {"all": "minecraft:blocks/netherrack" }
+  },
+  "variants": {
+    "type": {
+      "coal": {
+        "textures": { "overlay": "nethercore:blocks/ore_coal" }
+      },
+      "iron": {
+        "textures": { "overlay": "nethercore:blocks/ore_iron" }
+      },
+      "gold": {
+        "textures": { "overlay": "nethercore:blocks/ore_gold" }
+      },
+      "redstone": {
+        "textures": { "overlay": "nethercore:blocks/ore_redstone" }
+      },
+      "lapis": {
+        "textures": { "overlay": "nethercore:blocks/ore_lapis" }
+      },
+      "diamond": {
+        "textures": { "overlay": "nethercore:blocks/ore_diamond" }
+      },
+      "emerald": {
+        "textures": { "overlay": "nethercore:blocks/ore_emerald" }
+      }
+    }
+  }
+}

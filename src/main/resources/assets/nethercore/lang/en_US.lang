@@ -1,0 +1,9 @@
+itemGroup.NetherCore=Nether Core
+
+tile.nethercore.ore.coal.name=Nether Coal Ore
+tile.nethercore.ore.iron.name=Nether Iron Ore
+tile.nethercore.ore.gold.name=Nether Gold Ore
+tile.nethercore.ore.redstone.name=Nether Redstone Ore
+tile.nethercore.ore.lapis.name=Nether Lapis Lazuli Ore
+tile.nethercore.ore.diamond.name=Nether Diamond Ore
+tile.nethercore.ore.emerald.name=Nether Emerald Ore

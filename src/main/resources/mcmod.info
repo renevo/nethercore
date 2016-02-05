@@ -1,16 +1,18 @@
 [
-{
-  "modid": "nethercore",
-  "name": "Nether Core",
-  "description": "Adds fun and interesting things to the Nether.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://github.com/renevo/nethercore",
-  "updateUrl": "https://github.com/renevo/nethercore",
-  "authorList": ["RenEvo"],
-  "credits": "Burpcraft People and such",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "nethercore",
+    "name": "Nether Core",
+    "description": "Adds fun and interesting things to the Nether.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/renevo/nethercore",
+    "updateUrl": "",
+    "authorList": [
+      "RenEvo"
+    ],
+    "credits": "The SlimeKnights - Thanks to Mantle and Tinkers for being Open Source!",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]
