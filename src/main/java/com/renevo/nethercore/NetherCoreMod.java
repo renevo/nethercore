@@ -20,6 +20,7 @@ public class NetherCoreMod
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         NetherCoreBlocks.init();
+        NetherCoreRegistry.addOreDictionary();
 
         if (event.getSide().isClient()) {
             ClientProxy.initClient();
