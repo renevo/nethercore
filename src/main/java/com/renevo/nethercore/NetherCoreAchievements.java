@@ -1,7 +1,6 @@
 package com.renevo.nethercore;
 
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
-import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.stats.Achievement;
@@ -9,7 +8,6 @@ import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.items.ItemHandlerHelper;
 
 public final class NetherCoreAchievements {
 

@@ -25,18 +25,11 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
     public BlockNetherOre(Material material) {
         super(material, TYPE, OreTypes.class);
 
-        // TODO: configure the XP, hardness, resistance, and harvest levels
         setHardness(3.0f);
         setResistance(5.0F);
         setStepSound(soundTypeNetherOre);
-        setHarvestLevel("pickaxe", 2); // i think that 2 is diamond pick axe? need to verify
+        setHarvestLevel("pickaxe", 2); // 2 is iron required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
-    }
-
-    @Override
-    public int getExpDrop(IBlockAccess world, BlockPos pos, int fortune) {
-        Random rand = world instanceof World ? ((World)world).rand : new Random();
-        return MathHelper.getRandomIntegerInRange(rand, 4, 6); // TODO: adjust random xp amount
     }
 
     @Override

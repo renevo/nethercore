@@ -26,7 +26,7 @@ public final class NetherCoreBlocks {
     public static ItemStack netherOreDiamond;
     public static ItemStack netherOreEmerald;
 
-    public static void preInit(FMLPreInitializationEvent event) {
+    public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
 
         netherOreCoal = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());

@@ -6,6 +6,7 @@ import com.renevo.nethercore.world.NetherOreGenerator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -18,7 +19,7 @@ public class NetherCoreMod
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        NetherCoreBlocks.preInit(event);
+        NetherCoreBlocks.init();
 
         if (event.getSide().isClient()) {
             ClientProxy.initClient();
@@ -31,5 +32,10 @@ public class NetherCoreMod
     public void init(FMLInitializationEvent event)
     {
         NetherCoreAchievements.init();
+    }
+
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        NetherCoreRegistry.addSmelting();
     }
 }
