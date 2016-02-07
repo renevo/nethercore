@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = Constants.MODID, version = Constants.VERSION)
+@Mod(modid = Constants.MODID, useMetadata = true)
 public class NetherCoreMod
 {
 
@@ -30,6 +30,6 @@ public class NetherCoreMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        NetherCoreAchievements.init();
     }
 }
