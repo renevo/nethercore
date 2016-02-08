@@ -1,6 +1,8 @@
 package com.renevo.nethercore;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -14,13 +16,13 @@ public final class NetherCoreRegistry {
     public static CreativeTab tabNetherCore = new CreativeTab("NetherCore", new ItemStack(Blocks.netherrack));
 
     public static void registerSmelting() {
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreCoal.copy(), new ItemStack(Blocks.coal_ore, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreBlocks.netherOreCoal.copy(), new ItemStack(Items.coal, 2), 0.0f);
         GameRegistry.addSmelting(NetherCoreBlocks.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.0f);
         GameRegistry.addSmelting(NetherCoreBlocks.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreRedstone.copy(), new ItemStack(Blocks.redstone_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreLapis.copy(), new ItemStack(Blocks.lapis_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreDiamond.copy(), new ItemStack(Blocks.diamond_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreEmerald.copy(), new ItemStack(Blocks.emerald_ore, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreBlocks.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreBlocks.netherOreLapis.copy(), new ItemStack(Items.dye, EnumDyeColor.BLUE.getDyeDamage(), 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreBlocks.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreBlocks.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.0f);
     }
 
     public static void registerOreDictionary() {
