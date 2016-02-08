@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = Constants.MODID, useMetadata = true)
+@Mod(modid = Constants.MODID, useMetadata = true, updateJSON = "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json")
 public class NetherCoreMod
 {
 

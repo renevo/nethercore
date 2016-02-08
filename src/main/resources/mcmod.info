@@ -6,7 +6,7 @@
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "https://github.com/renevo/nethercore",
-    "updateUrl": "",
+    "updateUrl": "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json",
     "authorList": [
       "RenEvo"
     ],
