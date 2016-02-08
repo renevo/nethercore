@@ -1,6 +1,6 @@
 package com.renevo.nethercore.item;
 
-import com.renevo.nethercore.Constants;
+import com.renevo.nethercore.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
@@ -45,15 +45,16 @@ public class ItemBlockMeta extends ItemColored {
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         if(StatCollector.canTranslate(this.getUnlocalizedName(stack) + ".tooltip")) {
-            tooltip.add(EnumChatFormatting.GRAY.toString() + Constants.translateRecursive(this.getUnlocalizedName(stack) + ".tooltip"));
+            tooltip.add(EnumChatFormatting.GRAY.toString() + Util.translateRecursive(this.getUnlocalizedName(stack) + ".tooltip"));
         }
         else if(StatCollector.canTranslate(super.getUnlocalizedName(stack) + ".tooltip")) {
-            tooltip.add(EnumChatFormatting.GRAY.toString() + Constants.translateRecursive(super.getUnlocalizedName(stack) + ".tooltip"));
+            tooltip.add(EnumChatFormatting.GRAY.toString() + Util.translateRecursive(super.getUnlocalizedName(stack) + ".tooltip"));
         }
         super.addInformation(stack, playerIn, tooltip, advanced);
     }
 
     @SideOnly(Side.CLIENT)
+    @SuppressWarnings("unchecked")
     public void registerItemModels() {
         final Item item = this;
         final ResourceLocation loc = GameData.getBlockRegistry().getNameForObject(block);

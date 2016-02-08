@@ -4,14 +4,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import java.util.Locale;
+import java.util.logging.Logger;
 
-public final class Constants {
-    private Constants() {}
+public final class Util {
+    private Util() {}
 
     public static final String MODID = "nethercore";
-    public static final String RESOURCE = MODID.toLowerCase(Locale.US);
 
-    public static final String VERSION = "1.0";
+    public static final String RESOURCE = MODID.toLowerCase(Locale.US);
 
     public static String resource(String res) {
         return String.format("%s:%s", RESOURCE, res);

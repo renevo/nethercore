@@ -1,14 +1,15 @@
 package com.renevo.nethercore.blocks;
 
-import com.renevo.nethercore.Constants;
-import com.renevo.nethercore.item.ItemBlockMeta;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
+
+import slimeknights.mantle.block.EnumBlock;
+import com.renevo.nethercore.Util;
+import com.renevo.nethercore.item.ItemBlockMeta;
 
 public final class NetherCoreBlocks {
 
@@ -45,9 +46,9 @@ public final class NetherCoreBlocks {
     }
 
     private static <T extends Block> T registerBlock(T block, String name) {
-        block.setUnlocalizedName(Constants.prefix(name));
-        block.setRegistryName(Constants.getResource(name));
-        GameRegistry.registerBlock(block, Constants.resource(name));
+        block.setUnlocalizedName(Util.prefix(name));
+        block.setRegistryName(Util.getResource(name));
+        GameRegistry.registerBlock(block, Util.resource(name));
         return block;
     }
 
@@ -56,8 +57,8 @@ public final class NetherCoreBlocks {
             throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Block: %s", name));
         }
 
-        block.setUnlocalizedName(Constants.prefix(name));
-        block.setRegistryName(Constants.getResource(name));
+        block.setUnlocalizedName(Util.prefix(name));
+        block.setRegistryName(Util.getResource(name));
         GameRegistry.registerBlock(block, itemBlockClazz, name, itemCtorArgs);
         return block;
     }

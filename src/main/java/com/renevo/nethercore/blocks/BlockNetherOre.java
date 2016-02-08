@@ -4,14 +4,9 @@ import com.renevo.nethercore.NetherCoreRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-
-import java.util.Random;
+import slimeknights.mantle.block.EnumBlock;
 
 public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 

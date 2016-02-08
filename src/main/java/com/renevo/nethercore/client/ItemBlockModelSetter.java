@@ -1,7 +1,5 @@
 package com.renevo.nethercore.client;
 
-import com.renevo.nethercore.Constants;
-import com.renevo.nethercore.item.ItemBlockMeta;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockSapling;
@@ -20,6 +18,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Map;
 
+import slimeknights.mantle.client.model.BlockItemModelWrapper;
+import com.renevo.nethercore.Util;
+import com.renevo.nethercore.item.ItemBlockMeta;
+
 @SideOnly(Side.CLIENT)
 public class ItemBlockModelSetter {
 
@@ -30,7 +32,7 @@ public class ItemBlockModelSetter {
         // go through all items and if they're itemblockmodels we give them a wrapped block model if there is none set
         for(ResourceLocation identifier : Item.itemRegistry.getKeys()) {
             // only our own stuff
-            if(!identifier.getResourceDomain().equals(Constants.RESOURCE)) {
+            if(!identifier.getResourceDomain().equals(Util.RESOURCE)) {
                 continue;
             }
             // only item blocks that use this class
