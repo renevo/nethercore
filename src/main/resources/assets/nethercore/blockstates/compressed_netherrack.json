@@ -1,0 +1,36 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "minecraft:cube_all",
+    "textures": {"all": "minecraft:blocks/netherrack" }
+  },
+  "variants": {
+    "type": {
+      "single": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_single" }
+      },
+      "double": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_double" }
+      },
+      "triple": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_triple" }
+      },
+      "quadruple": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_quadruple" }
+      },
+      "quintuple": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_quintuple" }
+      },
+      "sextuple": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_sextuple" }
+      },
+      "septuple": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_septuple" }
+      },
+      "octuple": {
+        "textures": { "all": "nethercore:blocks/compressed_netherrack_octuple" }
+      }
+    }
+  }
+}

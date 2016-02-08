@@ -20,6 +20,7 @@ public class CommonProxy {
 
     public void init() {
         // recipes
+        NetherCoreRegistry.registerRecipes();
         NetherCoreRegistry.registerSmelting();
     }
 

@@ -8,5 +8,22 @@ tile.nethercore.ore.lapis.name=Nether Lapis Lazuli Ore
 tile.nethercore.ore.diamond.name=Nether Diamond Ore
 tile.nethercore.ore.emerald.name=Nether Emerald Ore
 
+tile.nethercore.compressed_netherrack.single.name=Compressed Netherrack
+tile.nethercore.compressed_netherrack.single.tooltip=1x Compressed (9)
+tile.nethercore.compressed_netherrack.double.name=Double Compressed Netherrack
+tile.nethercore.compressed_netherrack.double.tooltip=2x Compressed (81)
+tile.nethercore.compressed_netherrack.triple.name=Triple Compressed Netherrack
+tile.nethercore.compressed_netherrack.triple.tooltip=3x Compressed (729)
+tile.nethercore.compressed_netherrack.quadruple.name=Quadruple Compressed Netherrack
+tile.nethercore.compressed_netherrack.quadruple.tooltip=4x Compressed (6,561)
+tile.nethercore.compressed_netherrack.quintuple.name=Quintuple Compressed Netherrack
+tile.nethercore.compressed_netherrack.quintuple.tooltip=5x Compressed (59,049)
+tile.nethercore.compressed_netherrack.sextuple.name=Sextuple Compressed Netherrack
+tile.nethercore.compressed_netherrack.sextuple.tooltip=6x Compressed (531,441)
+tile.nethercore.compressed_netherrack.septuple.name=Septuple Compressed Netherrack
+tile.nethercore.compressed_netherrack.septuple.tooltip=7x Compressed (4,782,969)
+tile.nethercore.compressed_netherrack.octuple.name=Octopule Compressed Netherrack
+tile.nethercore.compressed_netherrack.octuple.tooltip=8x Compressed (43,046,721)
+
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.

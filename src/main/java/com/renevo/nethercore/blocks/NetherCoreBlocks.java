@@ -17,6 +17,7 @@ public final class NetherCoreBlocks {
 
     // blocks
     public static BlockNetherOre blockNetherOre;
+    public static BlockCompressedNetherrack blockCompressedNetherrack;
 
     // item stacks
     public static ItemStack netherOreCoal;
@@ -27,8 +28,18 @@ public final class NetherCoreBlocks {
     public static ItemStack netherOreDiamond;
     public static ItemStack netherOreEmerald;
 
+    public static ItemStack compressedNetherrackSingle;
+    public static ItemStack compressedNetherrackDouble;
+    public static ItemStack compressedNetherrackTriple;
+    public static ItemStack compressedNetherrackQuadruple;
+    public static ItemStack compressedNetherrackQuintuple;
+    public static ItemStack compressedNetherrackSextuple;
+    public static ItemStack compressedNetherrackSeptuple;
+    public static ItemStack compressedNetherrackOctuple;
+
     public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
+        blockCompressedNetherrack = registerEnumBlock(new BlockCompressedNetherrack(), "compressed_netherrack");
 
         netherOreCoal = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
         netherOreIron = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.IRON.getMeta());
@@ -37,6 +48,15 @@ public final class NetherCoreBlocks {
         netherOreLapis = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.LAPIS.getMeta());
         netherOreDiamond = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.DIAMOND.getMeta());
         netherOreEmerald = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.EMERALD.getMeta());
+
+        compressedNetherrackSingle = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.SINGLE.getMeta());
+        compressedNetherrackDouble = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.DOUBLE.getMeta());
+        compressedNetherrackTriple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.TRIPLE.getMeta());
+        compressedNetherrackQuadruple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.QUADRUPLE.getMeta());
+        compressedNetherrackQuintuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.QUINTUPLE.getMeta());
+        compressedNetherrackSextuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.SEXTUPLE.getMeta());
+        compressedNetherrackSeptuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.SEPTUPLE.getMeta());
+        compressedNetherrackOctuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.OCTUPLE.getMeta());
     }
 
     private static <T extends EnumBlock<?>> T registerEnumBlock(T block, String name) {
