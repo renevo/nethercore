@@ -26,5 +26,6 @@ public class CommonProxy {
 
     public void postInit() {
         // fuels, integrations
+        NetherCoreRegistry.registerIntegrations();
     }
 }

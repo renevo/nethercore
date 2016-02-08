@@ -1,13 +1,14 @@
 {
   "homepage": "https://github.com/RenEvo/nethercore/releases",
   "promos": {
-    "1.8.9-latest": "1.0.3",
+    "1.8.9-latest": "1.0.4",
     "1.8.9-recommended": "1.0.3"
   },
   "1.8.9": {
     "1.0.0": "Initial Release",
     "1.0.1": "Reworked the way ores are mined",
     "1.0.2": "Updated Ore Textures",
-    "1.0.3": "Added compressed Netherrack\nUpdated textures to no longer be overlays."
+    "1.0.3": "Added compressed Netherrack\nUpdated textures to no longer be overlays.",
+    "1.0.4": "In Progress"
   }
 }

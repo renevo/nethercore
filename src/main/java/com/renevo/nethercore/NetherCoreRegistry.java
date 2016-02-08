@@ -1,9 +1,11 @@
 package com.renevo.nethercore;
 
+import com.renevo.nethercore.tconstruct.TinkersIntegration;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -47,6 +49,11 @@ public final class NetherCoreRegistry {
         addCompressedRecipe(NetherCoreBlocks.compressedNetherrackQuintuple, NetherCoreBlocks.compressedNetherrackSextuple);
         addCompressedRecipe(NetherCoreBlocks.compressedNetherrackSextuple, NetherCoreBlocks.compressedNetherrackSeptuple);
         addCompressedRecipe(NetherCoreBlocks.compressedNetherrackSeptuple, NetherCoreBlocks.compressedNetherrackOctuple);
+    }
+
+    public static void registerIntegrations() {
+        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreIron, NetherCoreBlocks.netherOreIron, FluidRegistry.getFluidStack("iron", TinkersIntegration.VALUE_NetherOre), 1000);
+        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreGold, NetherCoreBlocks.netherOreGold, FluidRegistry.getFluidStack("gold", TinkersIntegration.VALUE_NetherOre), 1000);
     }
 
     private static void addCompressedRecipe(ItemStack input, ItemStack output) {
