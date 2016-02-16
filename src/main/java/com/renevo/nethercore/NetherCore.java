@@ -15,7 +15,7 @@ import com.renevo.nethercore.common.Config;
 
 @Mod(
         modid = Util.MODID,
-        dependencies = "required-after:Forge@[11.15.0.1700,);required-after:mantle@[1.8.8-0.7,)",
+        dependencies = "required-after:Forge@[11.15.1,);required-after:mantle@[1.8.9-0.7,)",
         acceptedMinecraftVersions = "1.8.9",
         updateJSON = "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json",
         useMetadata = true)

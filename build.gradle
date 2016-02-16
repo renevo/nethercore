@@ -55,10 +55,18 @@ minecraft {
     mappings = config.mappings
     runDir = "run"
     replace '${version}', project.version
+    useDepAts = true
+}
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }
 
 dependencies {
     deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_version}-${config.mantle_version}"
+    deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tinkers_version}"
+    deobfCompile "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
 }
 
 processResources

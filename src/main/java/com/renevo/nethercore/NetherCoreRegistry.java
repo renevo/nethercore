@@ -52,8 +52,8 @@ public final class NetherCoreRegistry {
     }
 
     public static void registerIntegrations() {
-        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreIron, NetherCoreBlocks.netherOreIron, FluidRegistry.getFluidStack("iron", TinkersIntegration.VALUE_NetherOre), 1000);
-        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreGold, NetherCoreBlocks.netherOreGold, FluidRegistry.getFluidStack("gold", TinkersIntegration.VALUE_NetherOre), 1000);
+        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreIron, FluidRegistry.getFluid("iron"), TinkersIntegration.VALUE_NetherOre);
+        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreGold, FluidRegistry.getFluid("gold"), TinkersIntegration.VALUE_NetherOre);
     }
 
     private static void addCompressedRecipe(ItemStack input, ItemStack output) {

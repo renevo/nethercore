@@ -1,10 +1,9 @@
 package com.renevo.nethercore.tconstruct;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 public final class TinkersIntegration {
 
@@ -14,8 +13,8 @@ public final class TinkersIntegration {
 
     private TinkersIntegration() {}
 
-    public static void addTinkersSmelting(ItemStack cook, ItemStack render, FluidStack output, int temperature) {
-        if (cook == null || render == null || output == null) {
+    public static void addTinkersSmelting(ItemStack cook, Fluid output, int amount) {
+        if (cook == null || output == null || amount <= 0) {
             return;
         }
 
@@ -24,18 +23,10 @@ public final class TinkersIntegration {
             return;
         }
 
-        NBTTagCompound tag = new NBTTagCompound();
-        NBTTagCompound itemToCook = new NBTTagCompound();
-        cook.writeToNBT(itemToCook);
-        tag.setTag("Item", itemToCook);
-
-        NBTTagCompound blockToRender = new NBTTagCompound();
-        render.writeToNBT(blockToRender);
-        tag.setTag("Block", blockToRender);
-
-        output.writeToNBT(tag);
-        tag.setInteger("Temperature", temperature);
-
-        FMLInterModComms.sendMessage("TConstruct", "addSmelteryMelting", tag);
+        try {
+            slimeknights.tconstruct.library.TinkerRegistry.registerMelting(cook, output, amount);
+        } catch (Exception ex) {
+            FMLLog.warning("Unable to integrate with Tinkers Registry - Did the API change?");
+        }
     }
 }
