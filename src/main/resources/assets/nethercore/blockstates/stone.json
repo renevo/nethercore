@@ -1,0 +1,64 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "cube_all",
+    "textures": {
+      "all": "nethercore:blocks/nether_stone",
+      "particle": "#all"
+    }
+  },
+  "variants": {
+    "type": {
+      "stone": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone"
+        }
+      },
+      "cobble": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_cobble"
+        }
+      },
+      "paver": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_paver"
+        }
+      },
+      "brick": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_brick"
+        }
+      },
+      "brick_cracked": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_brick_cracked"
+        }
+      },
+      "brick_fancy": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_brick_fancy"
+        }
+      },
+      "brick_square": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_brick_square"
+        }
+      },
+      "road": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_road"
+        }
+      },
+      "creeper": {
+        "model": "cube_bottom_top",
+        "textures": {
+          "side": "nethercore:blocks/nether_stone_creeper",
+          "particle": "#side",
+          "top": "nethercore:blocks/nether_stone_paver",
+          "bottom": "#top"
+        }
+      }
+    }
+  }
+}

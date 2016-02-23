@@ -25,8 +25,21 @@ tile.nethercore.compressed_netherrack.septuple.tooltip=7x Compressed (4,782,969)
 tile.nethercore.compressed_netherrack.octuple.name=Octuple Compressed Netherrack
 tile.nethercore.compressed_netherrack.octuple.tooltip=8x Compressed (43,046,721)
 
+tile.nethercore.stone.stone.name=Nether Stone
+tile.nethercore.stone.cobble.name=Nether Cobble
+tile.nethercore.stone.paver.name=Nether Paver
+tile.nethercore.stone.brick.name=Nether Stone Bricks
+tile.nethercore.stone.brick_cracked.name=Nether Stone Bricks
+tile.nethercore.stone.brick_fancy.name=Nether Stone Bricks
+tile.nethercore.stone.brick_square.name=Nether Stone Bricks
+tile.nethercore.stone.road=Nether Road
+tile.nethercore.stone.creeper=Nether Stone Temple
+
+tile.nethercore.stairs_stone.name=Nether Stone Stairs
+tile.nethercore.stairs_stone_brick.name=Nether Stone Brick Stairs
+tile.nethercore.stairs_stone_cobble.name=Nether Stone Cobble Stairs
+
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.
-
 achievement.compressednether=Compression
 achievement.compressednether.desc=Construct a compressed block out of nine netherrack

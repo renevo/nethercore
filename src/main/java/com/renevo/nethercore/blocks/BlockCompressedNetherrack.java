@@ -23,7 +23,7 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
         setHardness(2.0f);
         setResistance(5.0F);
         setStepSound(soundTypeNetherOre);
-        setHarvestLevel("pickaxe", 2); // 1 is stone required (0 wood, 1 stone, 2 iron)
+        setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 

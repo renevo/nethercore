@@ -16,6 +16,8 @@ public class CommonProxy {
 
         GameRegistry.registerWorldGenerator(new NetherOreGenerator(), 1);
         NetherCoreAchievements.init();
+
+        registerModels();
     }
 
     public void init() {
@@ -27,5 +29,9 @@ public class CommonProxy {
     public void postInit() {
         // fuels, integrations
         NetherCoreRegistry.registerIntegrations();
+    }
+
+    public void registerModels() {
+
     }
 }

@@ -18,6 +18,10 @@ public final class NetherCoreBlocks {
     // blocks
     public static BlockNetherOre blockNetherOre;
     public static BlockCompressedNetherrack blockCompressedNetherrack;
+    public static BlockNetherStone blockNetherStone;
+    public static BlockNetherStairs blockNetherStoneBrickStairs;
+    public static BlockNetherStairs blockNetherStoneCobbleStairs;
+    public static BlockNetherStairs blockNetherStoneStairs;
 
     // item stacks
     public static ItemStack netherOreCoal;
@@ -37,9 +41,27 @@ public final class NetherCoreBlocks {
     public static ItemStack compressedNetherrackSeptuple;
     public static ItemStack compressedNetherrackOctuple;
 
+    public static ItemStack stone;
+    public static ItemStack stoneCobble;
+    public static ItemStack stonePaver;
+    public static ItemStack stoneBrick;
+    public static ItemStack stoneBrickCracked;
+    public static ItemStack stoneBrickFancy;
+    public static ItemStack stoneBrickSquare;
+    public static ItemStack stoneRoad;
+    public static ItemStack stoneCreeper;
+
     public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
         blockCompressedNetherrack = registerEnumBlock(new BlockCompressedNetherrack(), "compressed_netherrack");
+        blockNetherStone = registerEnumBlock(new BlockNetherStone(), "stone");
+
+        blockNetherStoneStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
+                .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.STONE)), "stairs_stone");
+        blockNetherStoneBrickStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
+                .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.BRICK)), "stairs_stone_brick");
+        blockNetherStoneCobbleStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
+                .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.COBBLE)), "stairs_stone_cobble");
 
         netherOreCoal = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
         netherOreIron = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.IRON.getMeta());
@@ -57,6 +79,16 @@ public final class NetherCoreBlocks {
         compressedNetherrackSextuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.SEXTUPLE.getMeta());
         compressedNetherrackSeptuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.SEPTUPLE.getMeta());
         compressedNetherrackOctuple = new ItemStack(blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.OCTUPLE.getMeta());
+
+        stone = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta());
+        stoneCobble = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta());
+        stonePaver = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.PAVER.getMeta());
+        stoneBrick = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta());
+        stoneBrickCracked = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.BRICK_CRACKED.getMeta());
+        stoneBrickFancy = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.BRICK_FANCY.getMeta());
+        stoneBrickSquare = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.BRICK_SQUARE.getMeta());
+        stoneRoad = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.ROAD.getMeta());
+        stoneCreeper = new ItemStack(blockNetherStone, 1, BlockNetherStone.StoneType.CREEPER.getMeta());
     }
 
     private static <T extends EnumBlock<?>> T registerEnumBlock(T block, String name) {
