@@ -27,3 +27,6 @@ tile.nethercore.compressed_netherrack.octuple.tooltip=8x Compressed (43,046,721)
 
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.
+
+achievement.compressednether=Compression
+achievement.compressednether.desc=Construct a compressed block out of nine netherrack
