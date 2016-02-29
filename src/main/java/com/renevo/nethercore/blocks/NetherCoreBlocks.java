@@ -22,6 +22,8 @@ public final class NetherCoreBlocks {
     public static BlockNetherStairs blockNetherStoneBrickStairs;
     public static BlockNetherStairs blockNetherStoneCobbleStairs;
     public static BlockNetherStairs blockNetherStoneStairs;
+    public static BlockHalfStoneSlab blockNetherHalfSlab;
+    public static BlockDoubleStoneSlab blockNetherDoubleSlab;
 
     // item stacks
     public static ItemStack netherOreCoal;
@@ -62,6 +64,9 @@ public final class NetherCoreBlocks {
                 .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.BRICK)), "stairs_stone_brick");
         blockNetherStoneCobbleStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
                 .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.COBBLE)), "stairs_stone_cobble");
+
+        blockNetherHalfSlab = registerBlock(new BlockHalfStoneSlab(), "stone_slab");
+        blockNetherDoubleSlab = registerBlock(new BlockDoubleStoneSlab(), "double_stone_slab");
 
         netherOreCoal = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
         netherOreIron = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.IRON.getMeta());

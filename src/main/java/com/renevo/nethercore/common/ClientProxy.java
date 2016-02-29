@@ -34,11 +34,20 @@ public class ClientProxy extends CommonProxy {
 
         // individual items
         Item itemToAdd;
+
+        // stairs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneStairs);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone"), "facing=west,half=bottom,shape=straight"));
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneBrickStairs);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_brick"), "facing=west,half=bottom,shape=straight"));
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneCobbleStairs);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_cobble"), "facing=west,half=bottom,shape=straight"));
+
+        // slabs
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherHalfSlab);
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stone_slab"), "half=bottom,variant=stone"));
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 1, new ModelResourceLocation(Util.getResource("stone_slab"), "half=bottom,variant=cobblestone"));
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 2, new ModelResourceLocation(Util.getResource("stone_slab"), "half=bottom,variant=stonebrick"));
+
     }
 }

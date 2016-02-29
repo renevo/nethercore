@@ -32,8 +32,8 @@ tile.nethercore.stone.brick.name=Nether Stone Bricks
 tile.nethercore.stone.brick_cracked.name=Nether Stone Bricks
 tile.nethercore.stone.brick_fancy.name=Nether Stone Bricks
 tile.nethercore.stone.brick_square.name=Nether Stone Bricks
-tile.nethercore.stone.road=Nether Road
-tile.nethercore.stone.creeper=Nether Stone Temple
+tile.nethercore.stone.road.name=Nether Road
+tile.nethercore.stone.creeper.name=Nether Stone Temple
 
 tile.nethercore.stairs_stone.name=Nether Stone Stairs
 tile.nethercore.stairs_stone_brick.name=Nether Stone Brick Stairs

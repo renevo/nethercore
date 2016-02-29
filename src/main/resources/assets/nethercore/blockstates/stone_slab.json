@@ -1,0 +1,51 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "nethercore:blocks/nether_stone",
+      "top": "nethercore:blocks/nether_stone",
+      "side": "nethercore:blocks/nether_stone"
+    }
+  },
+  "variants": {
+    "half=bottom,variant=stone": {
+      "model": "half_slab"
+    },
+    "half=bottom,variant=cobblestone": {
+      "model": "half_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_cobble",
+        "top": "nethercore:blocks/nether_stone_cobble",
+        "side": "nethercore:blocks/nether_stone_cobble"
+      }
+    },
+    "half=bottom,variant=stonebrick": {
+      "model": "half_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_brick",
+        "top": "nethercore:blocks/nether_stone_brick",
+        "side": "nethercore:blocks/nether_stone_brick"
+      }
+    },
+    "half=top,variant=stone": {
+      "model": "upper_slab"
+    },
+    "half=top,variant=cobblestone": {
+      "model": "upper_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_cobble",
+        "top": "nethercore:blocks/nether_stone_cobble",
+        "side": "nethercore:blocks/nether_stone_cobble"
+      }
+    },
+    "half=top,variant=stonebrick": {
+      "model": "upper_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_brick",
+        "top": "nethercore:blocks/nether_stone_brick",
+        "side": "nethercore:blocks/nether_stone_brick"
+      }
+    }
+  }
+}

@@ -1,7 +1,9 @@
 package com.renevo.nethercore.blocks;
 
-/**
- * Created by dante on 2/28/2016.
- */
-public class BlockDoubleStoneSlab {
+public class BlockDoubleStoneSlab extends BlockStoneSlab {
+    public BlockDoubleStoneSlab() {
+
+    }
+
+    public boolean isDouble() { return true; }
 }

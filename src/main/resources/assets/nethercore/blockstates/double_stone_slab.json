@@ -1,0 +1,29 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "nethercore:blocks/nether_stone"
+    }
+  },
+  "variants": {
+    "seamless=true,variant=stone": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "nethercore:blocks/nether_stone"
+      }
+    },
+    "seamless=true,variant=cobblestone": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "nethercore:blocks/nether_stone_cobble"
+      }
+    },
+    "seamless=true,variant=stonebrick": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "nethercore:blocks/nether_stone_brick"
+      }
+    }
+  }
+}
