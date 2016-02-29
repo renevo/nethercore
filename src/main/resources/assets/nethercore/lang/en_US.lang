@@ -24,15 +24,15 @@ tile.nethercore.compressed_netherrack.septuple.name=Septuple Compressed Netherra
 tile.nethercore.compressed_netherrack.septuple.tooltip=7x Compressed (4,782,969)
 tile.nethercore.compressed_netherrack.octuple.name=Octuple Compressed Netherrack
 tile.nethercore.compressed_netherrack.octuple.tooltip=8x Compressed (43,046,721)
-
+u
 tile.nethercore.stone.stone.name=Nether Stone
-tile.nethercore.stone.cobble.name=Nether Cobble
+tile.nethercore.stone.cobble.name=Nether Cobblestone
 tile.nethercore.stone.paver.name=Nether Paver
 tile.nethercore.stone.brick.name=Nether Stone Bricks
-tile.nethercore.stone.brick_cracked.name=Nether Stone Bricks
-tile.nethercore.stone.brick_fancy.name=Nether Stone Bricks
-tile.nethercore.stone.brick_square.name=Nether Stone Bricks
-tile.nethercore.stone.road.name=Nether Road
+tile.nethercore.stone.brick_cracked.name=Cracked Nether Stone Bricks
+tile.nethercore.stone.brick_fancy.name=Chiseled Nether Stone Bricks
+tile.nethercore.stone.brick_square.name=Chiseled Nether Stone Bricks
+tile.nethercore.stone.road.name=Nether Stone Brick Road
 tile.nethercore.stone.creeper.name=Chiseled Nether Stone
 
 tile.nethercore.stairs_stone.name=Nether Stone Stairs
@@ -42,7 +42,7 @@ tile.nethercore.stairs_stone_cobble.name=Nether Stone Cobble Stairs
 tile.nethercore.slab_half_stone.stone.name=Nether Stone Slab
 tile.nethercore.slab_half_stone.cobblestone.name=Nether Cobblestone Slab
 tile.nethercore.slab_half_stone.stonebrick.name=Nether Stone Brick Slab
-tile.nethercore.slab_half_stone.road.name=Nether Road Slab
+tile.nethercore.slab_half_stone.road.name=Nether Stone Brick Road Slab
 
 tile.nethercore.wall_stone.stone.name=Nether Stone Wall
 tile.nethercore.wall_stone.cobblestone.name=Nether Cobblestone Wall
