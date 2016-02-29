@@ -12,8 +12,19 @@
     "half=bottom,variant=stone": {
       "model": "half_slab"
     },
+    "half=top,variant=stone": {
+      "model": "upper_slab"
+    },
     "half=bottom,variant=cobblestone": {
       "model": "half_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_cobble",
+        "top": "nethercore:blocks/nether_stone_cobble",
+        "side": "nethercore:blocks/nether_stone_cobble"
+      }
+    },
+    "half=top,variant=cobblestone": {
+      "model": "upper_slab",
       "textures": {
         "bottom": "nethercore:blocks/nether_stone_cobble",
         "top": "nethercore:blocks/nether_stone_cobble",
@@ -28,23 +39,28 @@
         "side": "nethercore:blocks/nether_stone_brick"
       }
     },
-    "half=top,variant=stone": {
-      "model": "upper_slab"
-    },
-    "half=top,variant=cobblestone": {
-      "model": "upper_slab",
-      "textures": {
-        "bottom": "nethercore:blocks/nether_stone_cobble",
-        "top": "nethercore:blocks/nether_stone_cobble",
-        "side": "nethercore:blocks/nether_stone_cobble"
-      }
-    },
     "half=top,variant=stonebrick": {
       "model": "upper_slab",
       "textures": {
         "bottom": "nethercore:blocks/nether_stone_brick",
         "top": "nethercore:blocks/nether_stone_brick",
         "side": "nethercore:blocks/nether_stone_brick"
+      }
+    },
+    "half=bottom,variant=road": {
+      "model": "half_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_road",
+        "top": "nethercore:blocks/nether_stone_road",
+        "side": "nethercore:blocks/nether_stone_road"
+      }
+    },
+    "half=top,variant=road": {
+      "model": "upper_slab",
+      "textures": {
+        "bottom": "nethercore:blocks/nether_stone_road",
+        "top": "nethercore:blocks/nether_stone_road",
+        "side": "nethercore:blocks/nether_stone_road"
       }
     }
   }

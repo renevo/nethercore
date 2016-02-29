@@ -15,6 +15,8 @@ public final class NetherCoreBlocks {
 
     private NetherCoreBlocks() {}
 
+    public static final Block.SoundType soundTypeNetherStone = new Block.SoundType("stone", 1.0F, 1.0F);
+
     // blocks
     public static BlockNetherOre blockNetherOre;
     public static BlockCompressedNetherrack blockCompressedNetherrack;
@@ -22,8 +24,8 @@ public final class NetherCoreBlocks {
     public static BlockNetherStairs blockNetherStoneBrickStairs;
     public static BlockNetherStairs blockNetherStoneCobbleStairs;
     public static BlockNetherStairs blockNetherStoneStairs;
-    public static BlockHalfStoneSlab blockNetherHalfSlab;
-    public static BlockDoubleStoneSlab blockNetherDoubleSlab;
+    public static BlockStoneSlab blockNetherHalfSlab;
+    public static BlockStoneSlab blockNetherDoubleSlab;
 
     // item stacks
     public static ItemStack netherOreCoal;
@@ -60,13 +62,13 @@ public final class NetherCoreBlocks {
 
         blockNetherStoneStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
                 .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.STONE)), "stairs_stone");
-        blockNetherStoneBrickStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
-                .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.BRICK)), "stairs_stone_brick");
         blockNetherStoneCobbleStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
                 .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.COBBLE)), "stairs_stone_cobble");
+        blockNetherStoneBrickStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
+                .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.BRICK)), "stairs_stone_brick");
 
-        blockNetherHalfSlab = registerBlock(new BlockHalfStoneSlab(), "stone_slab");
-        blockNetherDoubleSlab = registerBlock(new BlockDoubleStoneSlab(), "double_stone_slab");
+        blockNetherHalfSlab = registerEnumBlock(new BlockHalfStoneSlab(), "slab_half_stone");
+        blockNetherDoubleSlab = registerEnumBlock(new BlockDoubleStoneSlab(), "slab_double_stone");
 
         netherOreCoal = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
         netherOreIron = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.IRON.getMeta());
@@ -97,6 +99,12 @@ public final class NetherCoreBlocks {
     }
 
     private static <T extends EnumBlock<?>> T registerEnumBlock(T block, String name) {
+        registerBlock(block, ItemBlockMeta.class, name);
+        ItemBlockMeta.setMappingProperty(block, block.prop);
+        return block;
+    }
+
+    private static <T extends EnumBlockSlab<?>> T registerEnumBlock(T block, String name) {
         registerBlock(block, ItemBlockMeta.class, name);
         ItemBlockMeta.setMappingProperty(block, block.prop);
         return block;

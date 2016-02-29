@@ -21,7 +21,6 @@ import java.util.Random;
 public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 
     public static final PropertyEnum<OreTypes> TYPE = PropertyEnum.create("type", OreTypes.class);
-    public static final Block.SoundType soundTypeNetherOre = new Block.SoundType("stone", 1.0F, 1.0F);
 
     public BlockNetherOre() {
         this(Material.rock);
@@ -32,7 +31,7 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 
         setHardness(3.0f);
         setResistance(5.0F);
-        setStepSound(soundTypeNetherOre);
+        setStepSound(NetherCoreBlocks.soundTypeNetherStone);
         setHarvestLevel("pickaxe", 2); // 2 is iron required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }

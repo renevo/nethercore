@@ -39,6 +39,11 @@ tile.nethercore.stairs_stone.name=Nether Stone Stairs
 tile.nethercore.stairs_stone_brick.name=Nether Stone Brick Stairs
 tile.nethercore.stairs_stone_cobble.name=Nether Stone Cobble Stairs
 
+tile.nethercore.slab_half_stone.stone.name=Nether Stone Slab
+tile.nethercore.slab_half_stone.cobblestone.name=Nether Cobblestone Slab
+tile.nethercore.slab_half_stone.stonebrick.name=Nether Stone Brick Slab
+tile.nethercore.slab_half_stone.road.name=Nether Road Slab
+
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.
 achievement.compressednether=Compression

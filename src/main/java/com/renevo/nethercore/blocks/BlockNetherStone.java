@@ -10,7 +10,6 @@ import slimeknights.mantle.block.EnumBlock;
 public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
 
     public final static PropertyEnum<StoneType> TYPE = PropertyEnum.create("type", StoneType.class);
-    public static final Block.SoundType soundTypeNetherStone = new Block.SoundType("stone", 1.0F, 1.0F);
 
     public BlockNetherStone() {
         super(Material.rock, TYPE, StoneType.class);
@@ -18,7 +17,7 @@ public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
         this.setHardness(3F);
         this.setResistance(20F);
         this.setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
-        this.setStepSound(soundTypeNetherStone);
+        this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
     }
 
     public enum StoneType implements IStringSerializable, EnumBlock.IEnumMeta {

@@ -11,7 +11,6 @@ import slimeknights.mantle.block.EnumBlock;
 public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherrack.CompressionDepth>  {
 
     public static final PropertyEnum<CompressionDepth> TYPE = PropertyEnum.create("type", CompressionDepth.class);
-    public static final Block.SoundType soundTypeNetherOre = new Block.SoundType("stone", 1.0F, 1.0F);
 
     public BlockCompressedNetherrack() {
         this(Material.rock);
@@ -22,14 +21,9 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
 
         setHardness(2.0f);
         setResistance(5.0F);
-        setStepSound(soundTypeNetherOre);
+        setStepSound(NetherCoreBlocks.soundTypeNetherStone);
         setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
-    }
-
-    @Override
-    public EnumWorldBlockLayer getBlockLayer() {
-        return EnumWorldBlockLayer.CUTOUT_MIPPED;
     }
 
     public enum CompressionDepth implements IStringSerializable, EnumBlock.IEnumMeta {
