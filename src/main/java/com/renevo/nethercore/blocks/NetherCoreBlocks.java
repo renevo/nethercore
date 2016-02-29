@@ -26,6 +26,7 @@ public final class NetherCoreBlocks {
     public static BlockNetherStairs blockNetherStoneStairs;
     public static BlockStoneSlab blockNetherHalfSlab;
     public static BlockStoneSlab blockNetherDoubleSlab;
+    public static BlockStoneWall blockNetherStoneWall;
 
     // item stacks
     public static ItemStack netherOreCoal;
@@ -70,6 +71,8 @@ public final class NetherCoreBlocks {
         blockNetherHalfSlab = registerEnumBlock(new BlockHalfStoneSlab(), "slab_half_stone");
         blockNetherDoubleSlab = registerEnumBlock(new BlockDoubleStoneSlab(), "slab_double_stone");
 
+        blockNetherStoneWall = registerEnumBlock(new BlockStoneWall(), "wall_stone");
+
         netherOreCoal = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
         netherOreIron = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.IRON.getMeta());
         netherOreGold = new ItemStack(blockNetherOre, 1, BlockNetherOre.OreTypes.GOLD.getMeta());
@@ -105,6 +108,12 @@ public final class NetherCoreBlocks {
     }
 
     private static <T extends EnumBlockSlab<?>> T registerEnumBlock(T block, String name) {
+        registerBlock(block, ItemBlockMeta.class, name);
+        ItemBlockMeta.setMappingProperty(block, block.prop);
+        return block;
+    }
+
+    private static <T extends EnumBlockWall<?>> T registerEnumBlock(T block, String name) {
         registerBlock(block, ItemBlockMeta.class, name);
         ItemBlockMeta.setMappingProperty(block, block.prop);
         return block;

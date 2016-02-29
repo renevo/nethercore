@@ -33,7 +33,7 @@ tile.nethercore.stone.brick_cracked.name=Nether Stone Bricks
 tile.nethercore.stone.brick_fancy.name=Nether Stone Bricks
 tile.nethercore.stone.brick_square.name=Nether Stone Bricks
 tile.nethercore.stone.road.name=Nether Road
-tile.nethercore.stone.creeper.name=Nether Stone Temple
+tile.nethercore.stone.creeper.name=Chiseled Nether Stone
 
 tile.nethercore.stairs_stone.name=Nether Stone Stairs
 tile.nethercore.stairs_stone_brick.name=Nether Stone Brick Stairs
@@ -43,6 +43,10 @@ tile.nethercore.slab_half_stone.stone.name=Nether Stone Slab
 tile.nethercore.slab_half_stone.cobblestone.name=Nether Cobblestone Slab
 tile.nethercore.slab_half_stone.stonebrick.name=Nether Stone Brick Slab
 tile.nethercore.slab_half_stone.road.name=Nether Road Slab
+
+tile.nethercore.wall_stone.stone.name=Nether Stone Wall
+tile.nethercore.wall_stone.cobblestone.name=Nether Cobblestone Wall
+tile.nethercore.wall_stone.brick.name=Nether Brick Wall
 
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.

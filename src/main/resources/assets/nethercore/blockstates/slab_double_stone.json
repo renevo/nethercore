@@ -7,46 +7,26 @@
     }
   },
   "variants": {
-    "seamless=true,variant=stone": {
-      "model": "minecraft:cube_all"
+    "seamless": {
+      "true": {},
+      "false": {}
     },
-    "seamless=false,variant=stone": {
-      "model": "minecraft:cube_all"
-    },
-    "seamless=true,variant=cobblestone": {
-      "model": "minecraft:cube_all",
-      "textures": {
-        "all": "nethercore:blocks/nether_stone_cobble"
-      }
-    },
-    "seamless=false,variant=cobblestone": {
-      "model": "minecraft:cube_all",
-      "textures": {
-        "all": "nethercore:blocks/nether_stone_cobble"
-      }
-    },
-    "seamless=true,variant=stonebrick": {
-      "model": "minecraft:cube_all",
-      "textures": {
-        "all": "nethercore:blocks/nether_stone_brick"
-      }
-    },
-    "seamless=false,variant=stonebrick": {
-      "model": "minecraft:cube_all",
-      "textures": {
-        "all": "nethercore:blocks/nether_stone_brick"
-      }
-    },
-    "seamless=true,variant=road": {
-      "model": "minecraft:cube_all",
-      "textures": {
-        "all": "nethercore:blocks/nether_stone_road"
-      }
-    },
-    "seamless=false,variant=road": {
-      "model": "minecraft:cube_all",
-      "textures": {
-        "all": "nethercore:blocks/nether_stone_road"
+    "variant": {
+      "stone": {},
+      "cobblestone": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_cobble"
+        }
+      },
+      "stonebrick": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_brick"
+        }
+      },
+      "road": {
+        "textures": {
+          "all": "nethercore:blocks/nether_stone_road"
+        }
       }
     }
   }
