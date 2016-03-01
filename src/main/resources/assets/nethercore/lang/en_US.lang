@@ -48,7 +48,17 @@ tile.nethercore.wall_stone.stone.name=Nether Stone Wall
 tile.nethercore.wall_stone.cobblestone.name=Nether Cobblestone Wall
 tile.nethercore.wall_stone.brick.name=Nether Brick Wall
 
+tile.nethercore.nether_grass.name=Nether Growth
+tile.nethercore.nether_grass.tooltip=Prevents mob spawns in the Nether
+
+item.nethercore.nether_spore.name=Nether Spore
+item.nethercore.nether_spore.tooltip=When used will turn Netherrack into Nether Growth
+
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.
+
 achievement.compressednether=Compression
 achievement.compressednether.desc=Construct a compressed block out of nine netherrack
+
+achievement.netherspore=Terra Nether Craft
+achievement.netherspore.desc=Craft a nether spore to terraform the Nether

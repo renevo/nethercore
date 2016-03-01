@@ -4,8 +4,11 @@ import com.renevo.nethercore.NetherCoreRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.IBlockAccess;
 import slimeknights.mantle.block.EnumBlock;
 
 public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherrack.CompressionDepth>  {
@@ -24,6 +27,10 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
         setStepSound(NetherCoreBlocks.soundTypeNetherStone);
         setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
+    }
+
+    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+        return false;
     }
 
     public enum CompressionDepth implements IStringSerializable, EnumBlock.IEnumMeta {

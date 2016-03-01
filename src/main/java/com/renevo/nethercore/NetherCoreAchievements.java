@@ -1,6 +1,7 @@
 package com.renevo.nethercore;
 
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
+import com.renevo.nethercore.item.NetherCoreItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.stats.Achievement;
@@ -17,14 +18,18 @@ public final class NetherCoreAchievements {
 
     public static Achievement netherOreAchievement;
     public static Achievement compressionAchievement;
+    public static Achievement netherSporeAchievement;
 
     public static void init() {
 
-        netherOreAchievement = new Achievement("achievement.netherore", "netherore", -2, 10, NetherCoreBlocks.netherOreIron, AchievementList.portal);
+        netherOreAchievement = new Achievement("achievement.netherore", "netherore", -2, 10, NetherCoreItems.netherOreIron, AchievementList.portal);
         netherOreAchievement.registerStat();
 
         compressionAchievement = new Achievement("achievement.compressednether", "compressednether", -2, 12, NetherCoreBlocks.blockCompressedNetherrack, netherOreAchievement);
         compressionAchievement.registerStat();
+
+        netherSporeAchievement = new Achievement("achievement.netherspore", "netherspore", 0, 11, NetherCoreItems.netherSpore, AchievementList.blazeRod);
+        netherSporeAchievement.registerStat();
 
         MinecraftForge.EVENT_BUS.register(new NetherCoreAchievements());
 
@@ -40,8 +45,14 @@ public final class NetherCoreAchievements {
 
     @SubscribeEvent
     public void onCraftItem(PlayerEvent.ItemCraftedEvent event) {
-        if (event.crafting.getItem() == NetherCoreBlocks.compressedNetherrackSingle.getItem()) {
+        if (event.crafting.getItem() == NetherCoreItems.compressedNetherrackSingle.getItem()) {
             event.player.addStat(compressionAchievement, 1);
+            return;
+        }
+
+        if (event.crafting.getItem() == NetherCoreItems.netherSpore) {
+            event.player.addStat(netherSporeAchievement, 1);
+            return;
         }
     }
 }

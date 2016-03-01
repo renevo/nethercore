@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "minecraft:blocks/netherrack",
+      "bottom": "minecraft:blocks/netherrack",
+      "top": "nethercore:blocks/grass_top",
+      "side": "minecraft:blocks/netherrack",
+      "overlay": "nethercore:blocks/grass_side_overlay"
+    },
+    "model": "grass_normal"
+  },
+  "variants": {
+    "burning=false": [
+      { "model": "grass_normal" },
+      { "model": "grass_normal", "y": 90 },
+      { "model": "grass_normal", "y": 180 },
+      { "model": "grass_normal", "y": 270 }
+    ],
+    "burning=true":  [
+      { "model": "grass_normal" },
+      { "model": "grass_normal", "y": 90 },
+      { "model": "grass_normal", "y": 180 },
+      { "model": "grass_normal", "y": 270 }
+    ]
+  }
+}

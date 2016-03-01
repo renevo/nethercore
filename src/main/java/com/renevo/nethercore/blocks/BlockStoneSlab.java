@@ -5,7 +5,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.IBlockAccess;
 
 public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabType> {
     public static final PropertyEnum<SlabType> VARIANT = PropertyEnum.create("variant", SlabType.class);
@@ -36,6 +39,10 @@ public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabTy
         this.setResistance(20F);
         this.setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
         this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+    }
+
+    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+        return false;
     }
 
     public enum SlabType implements IStringSerializable, EnumBlockSlab.IEnumMeta {

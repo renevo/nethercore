@@ -3,9 +3,9 @@ package com.renevo.nethercore.common;
 import com.renevo.nethercore.Util;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
 import com.renevo.nethercore.client.ItemBlockModelSetter;
+import com.renevo.nethercore.item.NetherCoreItems;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -43,6 +43,11 @@ public class ClientProxy extends CommonProxy {
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneCobbleStairs);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_cobble"), "facing=west,half=bottom,shape=straight"));
 
+        // grass
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherGrass);
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_grass"), "burning=false"));
 
+        itemToAdd = NetherCoreItems.netherSpore;
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_spore"), "inventory"));
     }
 }

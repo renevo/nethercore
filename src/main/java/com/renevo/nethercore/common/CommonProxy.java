@@ -1,5 +1,6 @@
 package com.renevo.nethercore.common;
 
+import com.renevo.nethercore.item.NetherCoreItems;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.renevo.nethercore.NetherCoreAchievements;
@@ -12,6 +13,8 @@ public class CommonProxy {
     public void preInit() {
         // blocks, items, worldgen, etc...
         NetherCoreBlocks.init();
+        NetherCoreItems.init();
+
         NetherCoreRegistry.registerOreDictionary();
 
         GameRegistry.registerWorldGenerator(new NetherOreGenerator(), 1);

@@ -3,6 +3,7 @@ package com.renevo.nethercore;
 import com.renevo.nethercore.blocks.BlockNetherStone;
 import com.renevo.nethercore.blocks.BlockStoneSlab;
 import com.renevo.nethercore.blocks.BlockStoneWall;
+import com.renevo.nethercore.item.NetherCoreItems;
 import com.renevo.nethercore.tconstruct.TinkersIntegration;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -21,29 +22,29 @@ public final class NetherCoreRegistry {
     public static CreativeTab tabNetherCore = new CreativeTab("NetherCore", new ItemStack(Blocks.netherrack));
 
     public static void registerSmelting() {
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreCoal.copy(), new ItemStack(Items.coal, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreLapis.copy(), new ItemStack(Items.dye, EnumDyeColor.BLUE.getDyeDamage(), 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreBlocks.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreCoal.copy(), new ItemStack(Items.coal, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.dye, EnumDyeColor.BLUE.getDyeDamage(), 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.0f);
 
         GameRegistry.addSmelting(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()), 0.2F);
         GameRegistry.addSmelting(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK_CRACKED.getMeta()), 0.0F);
 
         // TODO: option to disable this
-        GameRegistry.addSmelting(NetherCoreBlocks.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
+        GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
     }
 
     public static void registerOreDictionary() {
-        OreDictionary.registerOre("oreNetherCoal", NetherCoreBlocks.netherOreCoal.copy());
-        OreDictionary.registerOre("oreNetherIron", NetherCoreBlocks.netherOreIron.copy());
-        OreDictionary.registerOre("oreNetherGold", NetherCoreBlocks.netherOreGold.copy());
-        OreDictionary.registerOre("oreNetherRedstone", NetherCoreBlocks.netherOreRedstone.copy());
-        OreDictionary.registerOre("oreNetherLapis", NetherCoreBlocks.netherOreLapis.copy());
-        OreDictionary.registerOre("oreNetherDiamond", NetherCoreBlocks.netherOreDiamond.copy());
-        OreDictionary.registerOre("oreNetherEmerald", NetherCoreBlocks.netherOreEmerald.copy());
+        OreDictionary.registerOre("oreNetherCoal", NetherCoreItems.netherOreCoal.copy());
+        OreDictionary.registerOre("oreNetherIron", NetherCoreItems.netherOreIron.copy());
+        OreDictionary.registerOre("oreNetherGold", NetherCoreItems.netherOreGold.copy());
+        OreDictionary.registerOre("oreNetherRedstone", NetherCoreItems.netherOreRedstone.copy());
+        OreDictionary.registerOre("oreNetherLapis", NetherCoreItems.netherOreLapis.copy());
+        OreDictionary.registerOre("oreNetherDiamond", NetherCoreItems.netherOreDiamond.copy());
+        OreDictionary.registerOre("oreNetherEmerald", NetherCoreItems.netherOreEmerald.copy());
     }
 
     public static void registerRecipes() {
@@ -55,14 +56,24 @@ public final class NetherCoreRegistry {
         GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 5, BlockNetherStone.StoneType.BRICK_FANCY.getMeta()), "## ", " # ", " ##", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()));
         GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 7, BlockNetherStone.StoneType.PAVER.getMeta()), "###", " # ", "###", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()));
 
-        addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreBlocks.compressedNetherrackSingle);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackSingle, NetherCoreBlocks.compressedNetherrackDouble);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackDouble, NetherCoreBlocks.compressedNetherrackTriple);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackTriple, NetherCoreBlocks.compressedNetherrackQuadruple);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackQuadruple, NetherCoreBlocks.compressedNetherrackQuintuple);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackQuintuple, NetherCoreBlocks.compressedNetherrackSextuple);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackSextuple, NetherCoreBlocks.compressedNetherrackSeptuple);
-        addCompressedRecipe(NetherCoreBlocks.compressedNetherrackSeptuple, NetherCoreBlocks.compressedNetherrackOctuple);
+        GameRegistry.addRecipe(new ItemStack(NetherCoreItems.netherSpore),
+                "MGM",
+                "WSW",
+                "BGB",
+                'M', Items.magma_cream,
+                'G', Items.ghast_tear,
+                'S', Items.wheat_seeds,
+                'B', Items.blaze_powder,
+                'W', Items.nether_wart);
+
+        addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackDouble, NetherCoreItems.compressedNetherrackTriple);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackTriple, NetherCoreItems.compressedNetherrackQuadruple);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackQuadruple, NetherCoreItems.compressedNetherrackQuintuple);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackQuintuple, NetherCoreItems.compressedNetherrackSextuple);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackSextuple, NetherCoreItems.compressedNetherrackSeptuple);
+        addCompressedRecipe(NetherCoreItems.compressedNetherrackSeptuple, NetherCoreItems.compressedNetherrackOctuple);
 
         addSlabRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.STONE.getMeta()));
         addSlabRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.COBBLESTONE.getMeta()));
@@ -79,8 +90,8 @@ public final class NetherCoreRegistry {
     }
 
     public static void registerIntegrations() {
-        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreIron, FluidRegistry.getFluid("iron"), TinkersIntegration.VALUE_NetherOre);
-        TinkersIntegration.addTinkersSmelting(NetherCoreBlocks.netherOreGold, FluidRegistry.getFluid("gold"), TinkersIntegration.VALUE_NetherOre);
+        TinkersIntegration.addTinkersSmelting(NetherCoreItems.netherOreIron, FluidRegistry.getFluid("iron"), TinkersIntegration.VALUE_NetherOre);
+        TinkersIntegration.addTinkersSmelting(NetherCoreItems.netherOreGold, FluidRegistry.getFluid("gold"), TinkersIntegration.VALUE_NetherOre);
     }
 
     private static void addCompressedRecipe(ItemStack input, ItemStack output) {
