@@ -100,7 +100,7 @@ public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta 
 
     @Override
     public int damageDropped(IBlockState state) {
-        return getMetaFromState(state);
+        return state.getValue(this.prop).getMeta();
     }
 
     protected E fromMeta(int meta) {
