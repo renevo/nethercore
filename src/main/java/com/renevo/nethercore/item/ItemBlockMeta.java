@@ -38,6 +38,7 @@ public class ItemBlockMeta extends ItemColored {
         return super.getUnlocalizedName(stack) + "." + name;
     }
 
+    @SuppressWarnings("unchecked")
     public static void setMappingProperty(Block block, IProperty<?> property) {
         ((ItemBlockMeta) Item.getItemFromBlock(block)).mappingProperty = property;
     }

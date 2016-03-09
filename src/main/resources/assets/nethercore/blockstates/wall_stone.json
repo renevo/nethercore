@@ -1,6 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
+    "transform": "forge:default-block",
     "model": "minecraft:wall_post",
     "textures": {
       "wall": "nethercore:blocks/nether_stone_cobble"

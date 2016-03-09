@@ -1,6 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
+    "transform": "forge:default-block",
     "model": "stairs",
     "textures": {
       "bottom": "nethercore:blocks/nether_stone_cobble",
@@ -10,6 +11,19 @@
     "uvlock": true
   },
   "variants": {
+    "inventory": [{
+      "model": "stairs",
+      "transform": {
+        "thirdperson": {
+          "rotation": [ -0.37275863, -0.113441154, 0.9197686, 0.046988916 ],
+          "translation": [ 0, 0.09375, -0.171875 ],
+          "scale": [ 0.375, 0.375, 0.375 ]
+        },
+        "gui": {
+          "rotation": [ 0, 180, 0, 0 ]
+        }
+      }
+    }],
     "facing=east,half=bottom,shape=straight": {
       "model": "stairs"
     },

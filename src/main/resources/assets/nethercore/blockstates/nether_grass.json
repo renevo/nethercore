@@ -1,6 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
+    "transform": "forge:default-block",
     "textures": {
       "particle": "minecraft:blocks/netherrack",
       "bottom": "minecraft:blocks/netherrack",
@@ -11,6 +12,7 @@
     "model": "grass_normal"
   },
   "variants": {
+    "inventory": [{}],
     "burning=false": [
       { "model": "grass_normal" },
       { "model": "grass_normal", "y": 90 },

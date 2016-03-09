@@ -37,14 +37,14 @@ public class ClientProxy extends CommonProxy {
 
         // individual items
         Item itemToAdd;
-        /*
+
         // stairs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneStairs);
-        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone"), "facing=west,half=bottom,shape=straight"));
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone"), "inventory"));
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneBrickStairs);
-        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_brick"), "facing=west,half=bottom,shape=straight"));
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_brick"), "inventory"));
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneCobbleStairs);
-        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_cobble"), "facing=west,half=bottom,shape=straight"));
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_cobble"), "inventory"));
 
         // slabs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherHalfSlab);
@@ -54,8 +54,8 @@ public class ClientProxy extends CommonProxy {
 
         // grass
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherGrass);
-        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_grass"), "burning=false"));
-        */
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_grass"), "inventory"));
+
 
         // items
         itemToAdd = NetherCoreItems.netherSpore;
