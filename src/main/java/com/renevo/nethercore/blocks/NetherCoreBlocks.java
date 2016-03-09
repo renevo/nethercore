@@ -1,7 +1,10 @@
 package com.renevo.nethercore.blocks;
 
+import com.renevo.nethercore.item.ItemStoneSlab;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
@@ -12,7 +15,8 @@ import com.renevo.nethercore.item.ItemBlockMeta;
 
 public final class NetherCoreBlocks {
 
-    private NetherCoreBlocks() {}
+    private NetherCoreBlocks() {
+    }
 
     public static final Block.SoundType soundTypeNetherStone = new Block.SoundType("stone", 1.0F, 1.0F);
 
@@ -29,7 +33,6 @@ public final class NetherCoreBlocks {
     public static BlockNetherGrass blockNetherGrass;
 
 
-
     public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
         blockCompressedNetherrack = registerEnumBlock(new BlockCompressedNetherrack(), "compressed_netherrack");
@@ -42,8 +45,10 @@ public final class NetherCoreBlocks {
         blockNetherStoneBrickStairs = registerBlock(new BlockNetherStairs(blockNetherStone.getDefaultState()
                 .withProperty(BlockNetherStone.TYPE, BlockNetherStone.StoneType.BRICK)), "stairs_stone_brick");
 
-        blockNetherHalfSlab = registerEnumBlock(new BlockHalfStoneSlab(), "slab_half_stone");
-        blockNetherDoubleSlab = registerEnumBlock(new BlockDoubleStoneSlab(), "slab_double_stone");
+        BlockHalfStoneSlab halfStoneSlab = new BlockHalfStoneSlab();
+        BlockDoubleStoneSlab doubleStoneSlab = new BlockDoubleStoneSlab();
+        blockNetherHalfSlab = registerEnumBlock(halfStoneSlab, halfStoneSlab, doubleStoneSlab, "slab_half_stone");
+        blockNetherDoubleSlab = registerEnumBlock(doubleStoneSlab, halfStoneSlab, doubleStoneSlab, "slab_double_stone");
 
         blockNetherStoneWall = registerEnumBlock(new BlockStoneWall(), "wall_stone");
 
@@ -57,9 +62,14 @@ public final class NetherCoreBlocks {
         return block;
     }
 
-    private static <T extends EnumBlockSlab<?>> T registerEnumBlock(T block, String name) {
-        registerBlock(block, ItemBlockMeta.class, name);
-        ItemBlockMeta.setMappingProperty(block, block.prop);
+    private static <T extends EnumBlockSlab<?>> T registerEnumBlock(T block, T halfBlock, T fullBlock, String name) {
+        if (block == halfBlock) {
+            registerBlock(block, ItemStoneSlab.class, name, halfBlock, fullBlock);
+        } else {
+            registerBlock(block, ItemBlockMeta.class, name);
+            ItemBlockMeta.setMappingProperty(block, block.prop);
+        }
+
         return block;
     }
 
@@ -77,7 +87,7 @@ public final class NetherCoreBlocks {
     }
 
     protected static <T extends Block> T registerBlock(T block, Class<? extends ItemBlock> itemBlockClazz, String name, Object... itemCtorArgs) {
-        if(!name.equals(name.toLowerCase(Locale.US))) {
+        if (!name.equals(name.toLowerCase(Locale.US))) {
             throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Block: %s", name));
         }
 

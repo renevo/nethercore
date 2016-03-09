@@ -1,6 +1,7 @@
 package com.renevo.nethercore.common;
 
 import com.renevo.nethercore.Util;
+import com.renevo.nethercore.blocks.BlockStoneSlab;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
 import com.renevo.nethercore.client.ItemBlockModelSetter;
 import com.renevo.nethercore.item.NetherCoreItems;
@@ -8,6 +9,8 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+
+import java.util.Locale;
 
 public class ClientProxy extends CommonProxy {
 
@@ -34,7 +37,7 @@ public class ClientProxy extends CommonProxy {
 
         // individual items
         Item itemToAdd;
-
+        /*
         // stairs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneStairs);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone"), "facing=west,half=bottom,shape=straight"));
@@ -43,10 +46,18 @@ public class ClientProxy extends CommonProxy {
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneCobbleStairs);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("stairs_stone_cobble"), "facing=west,half=bottom,shape=straight"));
 
+        // slabs
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherHalfSlab);
+        for (BlockStoneSlab.SlabType t : BlockStoneSlab.SlabType.values()) {
+            ModelLoader.setCustomModelResourceLocation(itemToAdd, t.getMeta(), new ModelResourceLocation(Util.getResource("slab_half_stone"), "half=bottom,variant=" + t.getName().toLowerCase(Locale.US)));
+        }
+
         // grass
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherGrass);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_grass"), "burning=false"));
+        */
 
+        // items
         itemToAdd = NetherCoreItems.netherSpore;
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_spore"), "inventory"));
     }

@@ -7,6 +7,8 @@ import net.minecraft.block.BlockVine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.model.IFlexibleBakedModel;
@@ -37,10 +39,10 @@ public class ItemBlockModelSetter {
             }
             // only item blocks that use this class
             Object o = Item.itemRegistry.getObject(identifier);
-            if(!(o instanceof ItemBlockMeta)) {
+            if(!(o instanceof ItemBlock)) {
                 continue;
             }
-            ItemBlockMeta item = (ItemBlockMeta) o;
+            ItemBlock item = (ItemBlock) o;
 
             ModelResourceLocation loc = new ModelResourceLocation(identifier, "inventory");
 
@@ -73,7 +75,7 @@ public class ItemBlockModelSetter {
                     IFlexibleBakedModel bakedBlockModel = (IFlexibleBakedModel) event.modelRegistry.getObject(blockLoc);
                     if(bakedBlockModel != null) {
                         bakedBlockModel = new BlockItemModelWrapper(bakedBlockModel);
-                        //event.modelRegistry.putObject(blockLoc, bakedBlockModel);
+                        event.modelRegistry.putObject(blockLoc, bakedBlockModel);
 
                         if(first) {
                             // silence the error

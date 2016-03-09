@@ -52,18 +52,4 @@ public class ItemBlockMeta extends ItemColored {
         }
         super.addInformation(stack, playerIn, tooltip, advanced);
     }
-
-    @SideOnly(Side.CLIENT)
-    @SuppressWarnings("unchecked")
-    public void registerItemModels() {
-        final Item item = this;
-        final ResourceLocation loc = GameData.getBlockRegistry().getNameForObject(block);
-
-        for(Comparable o : (Collection<Comparable>)mappingProperty.getAllowedValues()) {
-            int meta = block.getMetaFromState(block.getDefaultState().withProperty(mappingProperty, o));
-            String name = mappingProperty.getName(o);
-
-            ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(loc, mappingProperty.getName() + "=" + name));
-        }
-    }
 }
