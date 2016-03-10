@@ -2,18 +2,20 @@ package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,18 +38,39 @@ public class BlockNetherGrass extends Block {
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 
+    public boolean canSustainPlant(IBlockAccess blockAccess, BlockPos blockPos, EnumFacing facing, IPlantable iPlant) {
+        IBlockState plant = iPlant.getPlant(blockAccess, blockPos.offset(facing));
+
+        if (plant.getBlock() == Blocks.nether_wart) {
+            return true;
+        }
+
+        if (plant.getBlock() instanceof BlockBush) {
+            return true;
+        }
+
+        return super.canSustainPlant(blockAccess, blockPos, facing, iPlant);
+    }
+
     public void updateTick(World world, BlockPos blockPos, IBlockState blockState, Random random) {
         if (!world.isRemote) {
             if (world.provider.doesWaterVaporize()) {
                 int rate = blockState.getValue(BURNING) ? 12 : 4;
+                Block blockUp = world.getBlockState(blockPos.up()).getBlock();
+                if (blockUp.isOpaqueCube()) {
+                    world.setBlockState(blockPos, Blocks.netherrack.getDefaultState());
+                    return;
+                }
 
                 for (int i = 0; i < rate; ++i) {
                     BlockPos blockpos = blockPos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                     Block blockOnTop = world.getBlockState(blockpos.up()).getBlock();
                     IBlockState iblockstate = world.getBlockState(blockpos);
-                    if (iblockstate.getBlock() == Blocks.netherrack && blockOnTop.isAir(world, blockpos.up())) {
+                    if (iblockstate.getBlock() == Blocks.netherrack && !blockOnTop.isOpaqueCube()) {
                         world.setBlockState(blockpos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
-                        world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
+                        if (blockOnTop.isAir(world, blockpos.up())) {
+                            world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
+                        }
                     }
                 }
             }
@@ -61,10 +84,6 @@ public class BlockNetherGrass extends Block {
 
     public Item getItemDropped(IBlockState blockState, Random random, int meta) {
         return Blocks.netherrack.getItemDropped(Blocks.netherrack.getDefaultState(), random, meta);
-    }
-
-    public boolean canSilkHarvest(World world, BlockPos blockPos, IBlockState blockState, EntityPlayer entityPlayer) {
-        return false;
     }
 
     public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
