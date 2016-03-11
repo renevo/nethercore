@@ -24,7 +24,7 @@ tile.nethercore.compressed_netherrack.septuple.name=Septuple Compressed Netherra
 tile.nethercore.compressed_netherrack.septuple.tooltip=7x Compressed (4,782,969)
 tile.nethercore.compressed_netherrack.octuple.name=Octuple Compressed Netherrack
 tile.nethercore.compressed_netherrack.octuple.tooltip=8x Compressed (43,046,721)
-u
+
 tile.nethercore.stone.stone.name=Nether Stone
 tile.nethercore.stone.cobble.name=Nether Cobblestone
 tile.nethercore.stone.paver.name=Nether Paver
