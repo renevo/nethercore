@@ -1,6 +1,7 @@
 package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.item.ItemStoneSlab;
+import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.item.ItemBlock;
@@ -32,6 +33,9 @@ public final class NetherCoreBlocks {
     public static BlockStoneWall blockNetherStoneWall;
     public static BlockNetherGrass blockNetherGrass;
 
+    public static BlockNetherFurnace blockNetherFurnace;
+    public static BlockNetherFurnace blockNetherFurnaceLit;
+
 
     public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
@@ -54,6 +58,10 @@ public final class NetherCoreBlocks {
 
         blockNetherGrass = registerBlock(new BlockNetherGrass(), "nether_grass");
 
+        blockNetherFurnace = registerBlock(new BlockNetherFurnace(false), "nether_furnace");
+        blockNetherFurnaceLit = registerBlock(new BlockNetherFurnace(true), "nether_furnace_lit");
+
+        GameRegistry.registerTileEntity(TileEntityNetherFurnace.class, "nether_furnace");
     }
 
     private static <T extends EnumBlock<?>> T registerEnumBlock(T block, String name) {

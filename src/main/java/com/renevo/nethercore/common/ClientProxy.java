@@ -56,6 +56,9 @@ public class ClientProxy extends CommonProxy {
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherGrass);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_grass"), "inventory"));
 
+        // furnace
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherFurnace);
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_furnace"), "facing=north"));
 
         // items
         itemToAdd = NetherCoreItems.netherSpore;
