@@ -50,9 +50,13 @@ tile.nethercore.wall_stone.brick.name=Nether Brick Wall
 
 tile.nethercore.nether_grass.name=Nether Growth
 tile.nethercore.nether_grass.tooltip=Prevents mob spawns in the Nether
+tile.nethercore.nether_furnace.name=Nether Furnace
+tile.nethercore.nether_furnace_lit.name=Nether Furnace
 
 item.nethercore.nether_spore.name=Nether Spore
 item.nethercore.nether_spore.tooltip=When used will turn Netherrack into Nether Growth
+
+container.nethercore.nether_furnace=Nether Furnace
 
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.

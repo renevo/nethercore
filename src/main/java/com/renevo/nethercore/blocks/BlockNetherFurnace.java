@@ -1,5 +1,7 @@
 package com.renevo.nethercore.blocks;
 
+import com.renevo.nethercore.GuiHandler;
+import com.renevo.nethercore.NetherCore;
 import com.renevo.nethercore.NetherCoreRegistry;
 import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.block.Block;
@@ -85,20 +87,20 @@ public class BlockNetherFurnace extends BlockContainer {
             double z = (double)blockPos.getZ() + 0.5D;
             double offset = 0.52D;
             double randomized = random.nextDouble() * 0.6D - 0.3D;
-            switch(facing.ordinal()) {
-                case 1:
+            switch(facing) {
+                case WEST:
                     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - offset, y, z + randomized, 0.0D, 0.0D, 0.0D);
                     world.spawnParticle(EnumParticleTypes.FLAME, x - offset, y, z + randomized, 0.0D, 0.0D, 0.0D);
                     break;
-                case 2:
+                case EAST:
                     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + offset, y, z + randomized, 0.0D, 0.0D, 0.0D);
                     world.spawnParticle(EnumParticleTypes.FLAME, x + offset, y, z + randomized, 0.0D, 0.0D, 0.0D);
                     break;
-                case 3:
+                case NORTH:
                     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + randomized, y, z - offset, 0.0D, 0.0D, 0.0D);
                     world.spawnParticle(EnumParticleTypes.FLAME, x + randomized, y, z - offset, 0.0D, 0.0D, 0.0D);
                     break;
-                case 4:
+                case SOUTH:
                     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + randomized, y, z + offset, 0.0D, 0.0D, 0.0D);
                     world.spawnParticle(EnumParticleTypes.FLAME, x + randomized, y, z + offset, 0.0D, 0.0D, 0.0D);
             }
@@ -112,7 +114,7 @@ public class BlockNetherFurnace extends BlockContainer {
         } else {
             TileEntity tileEntity = world.getTileEntity(blockPos);
             if(tileEntity instanceof TileEntityNetherFurnace) {
-                player.displayGUIChest((TileEntityNetherFurnace)tileEntity);
+                player.openGui(NetherCore.instance, GuiHandler.GUI_NETHER_FURNACE, world, blockPos.getX(), blockPos.getY(), blockPos.getZ());
             }
 
             return true;
@@ -136,7 +138,6 @@ public class BlockNetherFurnace extends BlockContainer {
             tileEntity.validate();
             world.setTileEntity(blockPos, tileEntity);
         }
-
     }
 
     public TileEntity createNewTileEntity(World world, int unk) {

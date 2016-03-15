@@ -1,6 +1,9 @@
 package com.renevo.nethercore.common;
 
+import com.renevo.nethercore.GuiHandler;
+import com.renevo.nethercore.NetherCore;
 import com.renevo.nethercore.item.NetherCoreItems;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.renevo.nethercore.NetherCoreAchievements;
@@ -27,6 +30,8 @@ public class CommonProxy {
         // recipes
         NetherCoreRegistry.registerRecipes();
         NetherCoreRegistry.registerSmelting();
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(NetherCore.instance, new GuiHandler());
     }
 
     public void postInit() {

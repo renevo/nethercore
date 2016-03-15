@@ -10,6 +10,7 @@
     "model": "minecraft:orientable"
   },
   "variants": {
+    "inventory": [{}],
     "facing": {
       "north": {
       },

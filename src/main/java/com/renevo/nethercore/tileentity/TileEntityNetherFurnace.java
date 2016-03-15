@@ -2,11 +2,13 @@ package com.renevo.nethercore.tileentity;
 
 import com.renevo.nethercore.Util;
 import com.renevo.nethercore.blocks.BlockNetherFurnace;
+import com.renevo.nethercore.inventory.ContainerNetherFurnace;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -23,13 +25,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.EmptyHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileEntityNetherFurnace extends TileEntityLockable implements ITickable, ISidedInventory {
     private static final int[] slotsTop = new int[]{0};
-    private static final int[] slotsBottom = new int[]{2, 1};
-    private static final int[] slotsSides = new int[]{1};
-    private ItemStack[] furnaceItemStacks = new ItemStack[3];
+    private static final int[] slotsBottom = new int[]{1};
+    private ItemStack[] furnaceItemStacks = new ItemStack[2];
     private int furnaceBurnTime;
     private int currentItemBurnTime;
     private int cookTime;
@@ -37,12 +39,16 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     private String furnaceCustomName;
     IItemHandler handlerTop;
     IItemHandler handlerBottom;
-    IItemHandler handlerSide;
+    IItemHandler handlerSides;
 
     public TileEntityNetherFurnace() {
         this.handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
         this.handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
-        this.handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+        this.handlerSides = new EmptyHandler();
+
+        // faking these until we remove them
+        this.furnaceBurnTime = 0;
+        this.currentItemBurnTime = 0;
     }
 
     public int getSizeInventory() {
@@ -84,13 +90,13 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     public void setInventorySlotContents(int slotIndex, ItemStack itemStack) {
-        boolean flag = itemStack != null && itemStack.isItemEqual(this.furnaceItemStacks[slotIndex]) && ItemStack.areItemStackTagsEqual(itemStack, this.furnaceItemStacks[slotIndex]);
+        boolean canInsert = itemStack != null && itemStack.isItemEqual(this.furnaceItemStacks[slotIndex]) && ItemStack.areItemStackTagsEqual(itemStack, this.furnaceItemStacks[slotIndex]);
         this.furnaceItemStacks[slotIndex] = itemStack;
         if(itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()) {
             itemStack.stackSize = this.getInventoryStackLimit();
         }
 
-        if(slotIndex == 0 && !flag) {
+        if(slotIndex == 0 && !canInsert) {
             this.totalCookTime = this.getCookTime(itemStack);
             this.cookTime = 0;
             this.markDirty();
@@ -99,15 +105,15 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     public String getName() {
-        return this.hasCustomName()?this.furnaceCustomName: Util.prefix("container.nether_furnace");
+        return this.hasCustomName()?this.furnaceCustomName: "container." + Util.prefix("nether_furnace");
     }
 
     public boolean hasCustomName() {
         return this.furnaceCustomName != null && this.furnaceCustomName.length() > 0;
     }
 
-    public void setCustomInventoryName(String p_setCustomInventoryName_1_) {
-        this.furnaceCustomName = p_setCustomInventoryName_1_;
+    public void setCustomInventoryName(String name) {
+        this.furnaceCustomName = name;
     }
 
     public void readFromNBT(NBTTagCompound tagCompound) {
@@ -126,7 +132,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         this.furnaceBurnTime = tagCompound.getShort("BurnTime");
         this.cookTime = tagCompound.getShort("CookTime");
         this.totalCookTime = tagCompound.getShort("CookTimeTotal");
-        this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+        this.currentItemBurnTime = this.furnaceBurnTime;
         if(tagCompound.hasKey("CustomName", 8)) {
             this.furnaceCustomName = tagCompound.getString("CustomName");
         }
@@ -170,34 +176,29 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     public void update() {
-        boolean flag = this.isBurning();
-        boolean flag1 = false;
-        if(this.isBurning()) {
-            --this.furnaceBurnTime;
-        }
+        boolean burning = this.isBurning();
+        boolean updated = false;
+        int burnTime = this.furnaceBurnTime;
+        int burnSpeed = this.getBurnSpeed();
+
+        this.currentItemBurnTime = (this.furnaceItemStacks[0] != null ? 300 : 0);
+        double burnMultiplier = Math.floor(((double)burnSpeed / 5d) * 300d);
+        this.furnaceBurnTime = this.currentItemBurnTime > 0 ? (int)burnMultiplier : 0;
 
         if(!this.worldObj.isRemote) {
-            if(this.isBurning() || this.furnaceItemStacks[1] != null && this.furnaceItemStacks[0] != null) {
-                if(!this.isBurning() && this.canSmelt()) {
-                    this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
-                    if(this.isBurning()) {
-                        flag1 = true;
-                        if(this.furnaceItemStacks[1] != null) {
-                            --this.furnaceItemStacks[1].stackSize;
-                            if(this.furnaceItemStacks[1].stackSize == 0) {
-                                this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItem(this.furnaceItemStacks[1]);
-                            }
-                        }
-                    }
-                }
+            if (this.furnaceBurnTime != burnTime) {
+                updated = true;
+            }
+            if(this.isBurning() && this.furnaceItemStacks[0] != null) {
+                if (this.isBurning() && this.canSmelt()) {
 
-                if(this.isBurning() && this.canSmelt()) {
-                    ++this.cookTime;
-                    if(this.cookTime == this.totalCookTime) {
+                    this.cookTime += burnSpeed;
+
+                    if (this.cookTime >= this.totalCookTime) {
                         this.cookTime = 0;
                         this.totalCookTime = this.getCookTime(this.furnaceItemStacks[0]);
                         this.smeltItem();
-                        flag1 = true;
+                        updated = true;
                     }
                 } else {
                     this.cookTime = 0;
@@ -206,16 +207,47 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
                 this.cookTime = MathHelper.clamp_int(this.cookTime - 2, 0, this.totalCookTime);
             }
 
-            if(flag != this.isBurning()) {
-                flag1 = true;
+            if(burning != this.isBurning()) {
+                updated = true;
                 BlockNetherFurnace.setState(this.isBurning(), this.worldObj, this.pos);
             }
         }
 
-        if(flag1) {
+        if(updated) {
             this.markDirty();
         }
 
+    }
+
+    private int getBurnSpeed() {
+        int speed = 1;
+
+        if (!this.worldObj.provider.doesWaterVaporize()) {
+            return 0;
+        }
+
+        IBlockState eastBlockState = this.worldObj.getBlockState(this.pos.east());
+        IBlockState westBlockState = this.worldObj.getBlockState(this.pos.west());
+        IBlockState northBlockState = this.worldObj.getBlockState(this.pos.north());
+        IBlockState southBlockState = this.worldObj.getBlockState(this.pos.south());
+
+        if (eastBlockState.getBlock() == Blocks.lava || eastBlockState.getBlock() == Blocks.flowing_lava) {
+            speed++;
+        }
+
+        if (westBlockState.getBlock() == Blocks.lava || westBlockState.getBlock() == Blocks.flowing_lava) {
+            speed++;
+        }
+
+        if (northBlockState.getBlock() == Blocks.lava || northBlockState.getBlock() == Blocks.flowing_lava) {
+            speed++;
+        }
+
+        if (southBlockState.getBlock() == Blocks.lava || southBlockState.getBlock() == Blocks.flowing_lava) {
+            speed++;
+        }
+
+        return speed;
     }
 
     public int getCookTime(ItemStack itemStack) {
@@ -230,13 +262,13 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
             ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.furnaceItemStacks[0]);
             if(itemstack == null) {
                 return false;
-            } else if(this.furnaceItemStacks[2] == null) {
+            } else if(this.furnaceItemStacks[1] == null) {
                 return true;
-            } else if(!this.furnaceItemStacks[2].isItemEqual(itemstack)) {
+            } else if(!this.furnaceItemStacks[1].isItemEqual(itemstack)) {
                 return false;
             } else {
-                int result = this.furnaceItemStacks[2].stackSize + itemstack.stackSize;
-                return result <= this.getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize();
+                int result = this.furnaceItemStacks[1].stackSize + itemstack.stackSize;
+                return result <= this.getInventoryStackLimit() && result <= this.furnaceItemStacks[1].getMaxStackSize();
             }
         }
     }
@@ -244,32 +276,17 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     public void smeltItem() {
         if(this.canSmelt()) {
             ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.furnaceItemStacks[0]);
-            if(this.furnaceItemStacks[2] == null) {
-                this.furnaceItemStacks[2] = itemstack.copy();
-            } else if(this.furnaceItemStacks[2].getItem() == itemstack.getItem()) {
-                this.furnaceItemStacks[2].stackSize += itemstack.stackSize;
+            if(this.furnaceItemStacks[1] == null) {
+                this.furnaceItemStacks[1] = itemstack.copy();
+            } else if(this.furnaceItemStacks[1].getItem() == itemstack.getItem()) {
+                this.furnaceItemStacks[1].stackSize += itemstack.stackSize;
             }
 
-            // Not supported in nether furnace, but good to know
-            /*
-            if(this.furnaceItemStacks[0].getItem() == Item.getItemFromBlock(Blocks.sponge) && this.furnaceItemStacks[0].getMetadata() == 1 && this.furnaceItemStacks[1] != null && this.furnaceItemStacks[1].getItem() == Items.bucket) {
-                this.furnaceItemStacks[1] = new ItemStack(Items.water_bucket);
-            }
-            */
             --this.furnaceItemStacks[0].stackSize;
             if(this.furnaceItemStacks[0].stackSize <= 0) {
                 this.furnaceItemStacks[0] = null;
             }
         }
-
-    }
-
-    public static int getItemBurnTime(ItemStack itemStack) {
-        return net.minecraft.tileentity.TileEntityFurnace.getItemBurnTime(itemStack);
-    }
-
-    public static boolean isItemFuel(ItemStack itemStack) {
-        return getItemBurnTime(itemStack) > 0;
     }
 
     public boolean isUseableByPlayer(EntityPlayer player) {
@@ -283,13 +300,19 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     public boolean isItemValidForSlot(int slotIndex, ItemStack itemStack) {
-        return slotIndex != 2 && (slotIndex != 1 || isItemFuel(itemStack));
+        return slotIndex != 2;
     }
 
     public int[] getSlotsForFace(EnumFacing facing) {
-        return facing == EnumFacing.DOWN
-                ?slotsBottom
-                :(facing == EnumFacing.UP?slotsTop:slotsSides);
+        if (facing == EnumFacing.DOWN) {
+            return slotsBottom;
+        }
+
+        if (facing == EnumFacing.UP) {
+            return slotsTop;
+        }
+
+        return new int[0];
     }
 
     public boolean canInsertItem(int slotIndex, ItemStack itemStack, EnumFacing facing) {
@@ -312,7 +335,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     public Container createContainer(InventoryPlayer inventory, EntityPlayer player) {
-        return new ContainerFurnace(inventory, this);
+        return new ContainerNetherFurnace(inventory, this);
     }
 
     public int getField(int fieldId) {
@@ -364,7 +387,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
                     ? this.handlerBottom
                     : (facing == EnumFacing.UP
                         ? this.handlerTop
-                        : this.handlerSide))
+                        : this.handlerSides))
                 :super.getCapability(capability, facing);
     }
 }
