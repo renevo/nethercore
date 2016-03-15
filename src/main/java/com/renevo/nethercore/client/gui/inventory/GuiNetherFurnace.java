@@ -35,7 +35,7 @@ public class GuiNetherFurnace extends GuiContainer {
         int val;
         if(TileEntityNetherFurnace.isBurning(this.tileFurnace)) {
             val = this.getBurnLeftScaled(13);
-            this.drawTexturedModalRect(offsetLeft + 56, offsetTop + 36 + 12 - val, 176, 12 - val, 14, val + 1);
+            this.drawTexturedModalRect(offsetLeft + 23, offsetTop + 36 + 12 - val, 176, 12 - val, 14, val + 1);
         }
 
         val = this.getCookProgressScaled(24);

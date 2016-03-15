@@ -17,7 +17,7 @@ public class ContainerNetherFurnace extends Container {
 
     public ContainerNetherFurnace(InventoryPlayer playerInventory, IInventory inventory) {
         this.tileFurnace = inventory;
-        this.addSlotToContainer(new Slot(inventory, 0, 56, 17));
+        this.addSlotToContainer(new Slot(inventory, 0, 56, 35));
         this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, inventory, 1, 116, 35));
 
         int lvt_3_2_;
