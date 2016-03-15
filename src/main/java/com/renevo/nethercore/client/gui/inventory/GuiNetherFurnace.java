@@ -1,5 +1,6 @@
 package com.renevo.nethercore.client.gui.inventory;
 
+import com.renevo.nethercore.Util;
 import com.renevo.nethercore.inventory.ContainerNetherFurnace;
 import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -9,7 +10,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiNetherFurnace extends GuiContainer {
-    private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/container/furnace.png");
+    private static final ResourceLocation furnaceGuiTextures = Util.getResource("textures/gui/container/nether_furnace.png");
     private final InventoryPlayer playerInventory;
     private IInventory tileFurnace;
 
