@@ -1,10 +1,7 @@
 package com.renevo.nethercore.item;
 
 import com.renevo.nethercore.Util;
-import com.renevo.nethercore.blocks.BlockCompressedNetherrack;
-import com.renevo.nethercore.blocks.BlockNetherOre;
-import com.renevo.nethercore.blocks.BlockNetherStone;
-import com.renevo.nethercore.blocks.NetherCoreBlocks;
+import com.renevo.nethercore.blocks.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -42,7 +39,20 @@ public final class NetherCoreItems {
     public static ItemStack stoneRoad;
     public static ItemStack stoneCreeper;
 
-    // TODO: Add the other item stacks for the blocks, and stop using new ItemStack in things
+    public static ItemStack slabStone;
+    public static ItemStack slabStoneCobble;
+    public static ItemStack slabStoneBrick;
+    public static ItemStack slabStoneRoad;
+
+    public static ItemStack stairsStone;
+    public static ItemStack stairsStoneCobble;
+    public static ItemStack stairsStoneBrick;
+
+    public static ItemStack wallStone;
+    public static ItemStack wallStoneCobble;
+    public static ItemStack wallNetherBrick;
+
+    public static ItemStack netherFurnace;
 
     public static void init() {
          GameRegistry.registerItem(netherSpore = new ItemNetherSpore().setUnlocalizedName(Util.prefix("nether_spore")), "nether_spore");
@@ -74,5 +84,20 @@ public final class NetherCoreItems {
         stoneBrickSquare = new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK_SQUARE.getMeta());
         stoneRoad = new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.ROAD.getMeta());
         stoneCreeper = new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.CREEPER.getMeta());
+
+        slabStone = new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.STONE.getMeta());
+        slabStoneCobble = new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.COBBLESTONE.getMeta());
+        slabStoneBrick = new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.STONEBRICK.getMeta());
+        slabStoneRoad = new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.ROAD.getMeta());
+
+        stairsStone = new ItemStack(NetherCoreBlocks.blockNetherStoneStairs);
+        stairsStoneCobble = new ItemStack(NetherCoreBlocks.blockNetherStoneCobbleStairs);
+        stairsStoneBrick = new ItemStack(NetherCoreBlocks.blockNetherStoneBrickStairs);
+
+        wallStone = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.STONE.getMeta());
+        wallStoneCobble = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.COBBLESTONE.getMeta());
+        wallNetherBrick = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.BRICK.getMeta());
+
+        netherFurnace = new ItemStack(NetherCoreBlocks.blockNetherFurnace);
     }
 }

@@ -19,6 +19,8 @@ public final class NetherCoreAchievements {
     public static Achievement netherOreAchievement;
     public static Achievement compressionAchievement;
     public static Achievement netherSporeAchievement;
+    public static Achievement netherStoneAchievement;
+    public static Achievement netherFurnaceAchievement;
 
     public static void init() {
 
@@ -30,6 +32,12 @@ public final class NetherCoreAchievements {
 
         netherSporeAchievement = new Achievement("achievement.netherspore", "netherspore", 0, 11, NetherCoreItems.netherSpore, AchievementList.blazeRod);
         netherSporeAchievement.registerStat();
+
+        netherStoneAchievement = new Achievement("achievement.netherstone", "netherstone", -4, 10, NetherCoreItems.stoneCobble, AchievementList.portal);
+        netherStoneAchievement.registerStat();
+
+        netherFurnaceAchievement = new Achievement("achievement.netherfurnace", "netherfurnace", -6, 10, NetherCoreBlocks.blockNetherFurnace, netherStoneAchievement);
+        netherFurnaceAchievement.registerStat();
 
         MinecraftForge.EVENT_BUS.register(new NetherCoreAchievements());
 
@@ -52,6 +60,16 @@ public final class NetherCoreAchievements {
 
         if (event.crafting.getItem() == NetherCoreItems.netherSpore) {
             event.player.addStat(netherSporeAchievement, 1);
+            return;
+        }
+
+        if (event.crafting.getItem() == NetherCoreItems.stoneCobble.getItem()) {
+            event.player.addStat(netherStoneAchievement, 1);
+            return;
+        }
+
+        if (event.crafting.getItem() == NetherCoreItems.netherFurnace.getItem()) {
+            event.player.addStat(netherFurnaceAchievement, 1);
             return;
         }
     }

@@ -60,9 +60,11 @@ container.nethercore.nether_furnace=Nether Furnace
 
 achievement.netherore=Burning Ores
 achievement.netherore.desc=Dig up some ores in the Nether.
-
 achievement.compressednether=Compression
 achievement.compressednether.desc=Construct a compressed block out of nine netherrack
-
 achievement.netherspore=Terra Nether Craft
 achievement.netherspore.desc=Craft a nether spore to terraform the Nether
+achievement.netherStoneAchievement=Red Cobble
+achievement.netherStoneAchievement.desc=Craft Nether Cobble from four Netherrack
+achievement.netherFurnaceAchievement=Hotter Topic
+achievement.netherFurnaceAchievement.desc=Construct a Nether Furnace out of eight Nether Cobblestone and a Magma Cream

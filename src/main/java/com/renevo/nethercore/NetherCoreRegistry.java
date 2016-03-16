@@ -1,8 +1,5 @@
 package com.renevo.nethercore;
 
-import com.renevo.nethercore.blocks.BlockNetherStone;
-import com.renevo.nethercore.blocks.BlockStoneSlab;
-import com.renevo.nethercore.blocks.BlockStoneWall;
 import com.renevo.nethercore.item.NetherCoreItems;
 import com.renevo.nethercore.tconstruct.TinkersIntegration;
 import net.minecraft.init.Blocks;
@@ -23,15 +20,15 @@ public final class NetherCoreRegistry {
 
     public static void registerSmelting() {
         GameRegistry.addSmelting(NetherCoreItems.netherOreCoal.copy(), new ItemStack(Items.coal, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.dye, EnumDyeColor.BLUE.getDyeDamage(), 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.dye, EnumDyeColor.BLUE.getDyeDamage(), 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.2f);
 
-        GameRegistry.addSmelting(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()), 0.2F);
-        GameRegistry.addSmelting(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK_CRACKED.getMeta()), 0.0F);
+        GameRegistry.addSmelting(NetherCoreItems.stoneCobble, NetherCoreItems.stone, 0.2F);
+        GameRegistry.addSmelting(NetherCoreItems.stoneBrick, NetherCoreItems.stoneBrickCracked, 0.0F);
 
         // TODO: option to disable this
         GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
@@ -48,13 +45,13 @@ public final class NetherCoreRegistry {
     }
 
     public static void registerRecipes() {
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), "##", "##", '#', Blocks.netherrack);
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 4, BlockNetherStone.StoneType.BRICK.getMeta()), "##", "##", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()));
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 4, BlockNetherStone.StoneType.ROAD.getMeta()), "##", "##", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()));
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.CREEPER.getMeta()), "#", "G", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.PAVER.getMeta()), 'G', Items.gunpowder);
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 8, BlockNetherStone.StoneType.BRICK_SQUARE.getMeta()), "###", "# #", "###", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()));
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 5, BlockNetherStone.StoneType.BRICK_FANCY.getMeta()), "## ", " # ", " ##", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()));
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 7, BlockNetherStone.StoneType.PAVER.getMeta()), "###", " # ", "###", '#', new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()));
+        GameRegistry.addRecipe(NetherCoreItems.stoneCobble, "##", "##", '#', Blocks.netherrack);
+        GameRegistry.addRecipe(NetherCoreItems.stoneBrick, "##", "##", '#', NetherCoreItems.stone);
+        GameRegistry.addRecipe(NetherCoreItems.stoneRoad, "##", "##", '#', NetherCoreItems.stoneBrick);
+        GameRegistry.addRecipe(NetherCoreItems.stoneCreeper, "#", "G", '#', NetherCoreItems.stonePaver, 'G', Items.gunpowder);
+        GameRegistry.addRecipe(NetherCoreItems.stoneBrickSquare, "###", "# #", "###", '#', NetherCoreItems.stoneBrick);
+        GameRegistry.addRecipe(NetherCoreItems.stoneBrickFancy, "## ", " # ", " ##", '#', NetherCoreItems.stoneBrick);
+        GameRegistry.addRecipe(NetherCoreItems.stonePaver, "###", " # ", "###", '#', NetherCoreItems.stoneBrick);
 
         GameRegistry.addRecipe(new ItemStack(NetherCoreItems.netherSpore),
                 "MGM",
@@ -66,6 +63,13 @@ public final class NetherCoreRegistry {
                 'B', Items.blaze_powder,
                 'W', Items.nether_wart);
 
+        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherFurnace),
+                "CCC",
+                "CMC",
+                "CCC",
+                'C', NetherCoreItems.stoneCobble,
+                'M', Items.magma_cream);
+
         addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
         addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);
         addCompressedRecipe(NetherCoreItems.compressedNetherrackDouble, NetherCoreItems.compressedNetherrackTriple);
@@ -75,18 +79,18 @@ public final class NetherCoreRegistry {
         addCompressedRecipe(NetherCoreItems.compressedNetherrackSextuple, NetherCoreItems.compressedNetherrackSeptuple);
         addCompressedRecipe(NetherCoreItems.compressedNetherrackSeptuple, NetherCoreItems.compressedNetherrackOctuple);
 
-        addSlabRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.STONE.getMeta()));
-        addSlabRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.COBBLESTONE.getMeta()));
-        addSlabRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.STONEBRICK.getMeta()));
-        addSlabRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.ROAD.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherHalfSlab, 1, BlockStoneSlab.SlabType.ROAD.getMeta()));
+        addSlabRecipe(NetherCoreItems.stone, NetherCoreItems.slabStone);
+        addSlabRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.slabStoneCobble);
+        addSlabRecipe(NetherCoreItems.stoneBrick, NetherCoreItems.slabStoneBrick);
+        addSlabRecipe(NetherCoreItems.stoneRoad, NetherCoreItems.slabStoneRoad);
 
-        addStairRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStoneStairs));
-        addStairRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStoneCobbleStairs));
-        addStairRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.BRICK.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStoneBrickStairs));
+        addStairRecipe(NetherCoreItems.stone, NetherCoreItems.stairsStone);
+        addStairRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.stairsStoneCobble);
+        addStairRecipe(NetherCoreItems.stoneBrick, NetherCoreItems.stairsStoneBrick);
 
-        addWallRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.STONE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.STONE.getMeta()), false);
-        addWallRecipe(new ItemStack(NetherCoreBlocks.blockNetherStone, 1, BlockNetherStone.StoneType.COBBLE.getMeta()), new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.COBBLESTONE.getMeta()), false);
-        addWallRecipe(new ItemStack(Blocks.nether_brick), new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.BRICK.getMeta()), true);
+        addWallRecipe(NetherCoreItems.stone, NetherCoreItems.wallStone, false);
+        addWallRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.wallStoneCobble, false);
+        addWallRecipe(new ItemStack(Blocks.nether_brick), NetherCoreItems.wallNetherBrick, true);
     }
 
     public static void registerIntegrations() {
