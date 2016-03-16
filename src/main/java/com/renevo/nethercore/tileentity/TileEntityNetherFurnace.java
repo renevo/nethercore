@@ -247,8 +247,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     public int getCookTime(ItemStack itemStack) {
-        // TODO: based on the current surrounding blocks and world state
-        return 200;
+        return 200 * 4; // 800 base, with 5x you can get 1.25 the speed of a standard furnace
     }
 
     private boolean canSmelt() {
