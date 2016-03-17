@@ -36,6 +36,7 @@ public final class NetherCoreBlocks {
     public static BlockNetherFurnace blockNetherFurnace;
     public static BlockNetherFurnace blockNetherFurnaceLit;
 
+    public static BlockLightRod blockLightRod;
 
     public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
@@ -60,6 +61,8 @@ public final class NetherCoreBlocks {
 
         blockNetherFurnace = registerBlock(new BlockNetherFurnace(false), "nether_furnace");
         blockNetherFurnaceLit = registerBlock(new BlockNetherFurnace(true), "nether_furnace_lit");
+
+        blockLightRod = registerBlock(new BlockLightRod(), "nether_rod");
 
         GameRegistry.registerTileEntity(TileEntityNetherFurnace.class, "nether_furnace");
     }

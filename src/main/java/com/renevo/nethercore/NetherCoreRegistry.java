@@ -45,13 +45,44 @@ public final class NetherCoreRegistry {
     }
 
     public static void registerRecipes() {
-        GameRegistry.addRecipe(NetherCoreItems.stoneCobble, "##", "##", '#', Blocks.netherrack);
-        GameRegistry.addRecipe(NetherCoreItems.stoneBrick, "##", "##", '#', NetherCoreItems.stone);
-        GameRegistry.addRecipe(NetherCoreItems.stoneRoad, "##", "##", '#', NetherCoreItems.stoneBrick);
-        GameRegistry.addRecipe(NetherCoreItems.stoneCreeper, "#", "G", '#', NetherCoreItems.stonePaver, 'G', Items.gunpowder);
-        GameRegistry.addRecipe(NetherCoreItems.stoneBrickSquare, "###", "# #", "###", '#', NetherCoreItems.stoneBrick);
-        GameRegistry.addRecipe(NetherCoreItems.stoneBrickFancy, "## ", " # ", " ##", '#', NetherCoreItems.stoneBrick);
-        GameRegistry.addRecipe(NetherCoreItems.stonePaver, "###", " # ", "###", '#', NetherCoreItems.stoneBrick);
+        GameRegistry.addRecipe(NetherCoreItems.stoneCobble,
+                "##",
+                "##",
+                '#', Blocks.netherrack);
+
+        GameRegistry.addRecipe(NetherCoreItems.stoneBrick,
+                "##",
+                "##",
+                '#', NetherCoreItems.stone);
+
+        GameRegistry.addRecipe(NetherCoreItems.stoneRoad,
+                "##",
+                "##",
+                '#', NetherCoreItems.stoneBrick);
+
+        GameRegistry.addRecipe(NetherCoreItems.stoneCreeper,
+                "#",
+                "G",
+                '#', NetherCoreItems.stonePaver,
+                'G', Items.gunpowder);
+
+        GameRegistry.addRecipe(NetherCoreItems.stoneBrickSquare,
+                "###",
+                "# #",
+                "###",
+                '#', NetherCoreItems.stoneBrick);
+
+        GameRegistry.addRecipe(NetherCoreItems.stoneBrickFancy,
+                "## ",
+                " # ",
+                " ##",
+                '#', NetherCoreItems.stoneBrick);
+
+        GameRegistry.addRecipe(NetherCoreItems.stonePaver,
+                "###",
+                " # ",
+                "###",
+                '#', NetherCoreItems.stoneBrick);
 
         GameRegistry.addRecipe(new ItemStack(NetherCoreItems.netherSpore),
                 "MGM",
@@ -69,6 +100,14 @@ public final class NetherCoreRegistry {
                 "CCC",
                 'C', NetherCoreItems.stoneCobble,
                 'M', Items.magma_cream);
+
+        ItemStack netherRods = NetherCoreItems.netherRod.copy();
+        netherRods.stackSize = 4;
+        GameRegistry.addRecipe(netherRods,
+                "R",
+                "B",
+                'R', Items.blaze_rod,
+                'B', Blocks.nether_brick);
 
         addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
         addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);

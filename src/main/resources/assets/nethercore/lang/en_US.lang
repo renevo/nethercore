@@ -53,6 +53,8 @@ tile.nethercore.nether_grass.tooltip=Prevents mob spawns in the Nether
 tile.nethercore.nether_furnace.name=Nether Furnace
 tile.nethercore.nether_furnace_lit.name=Nether Furnace
 
+tile.nethercore.nether_rod.name=Nether Rod
+
 item.nethercore.nether_spore.name=Nether Spore
 item.nethercore.nether_spore.tooltip=When used will turn Netherrack into Nether Growth
 

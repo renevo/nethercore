@@ -1,0 +1,37 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "nethercore:rod",
+    "transform": "forge:default-block",
+    "textures": {
+      "rod": "nethercore:blocks/nether_rod"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "facing": {
+      "up": {},
+      "down": {
+        "x": 180
+      },
+      "east": {
+        "y": 90,
+        "x": 90
+      },
+      "west": {
+        "y": 270,
+        "x": 90
+      },
+      "north": {
+        "y": 0,
+        "x": 90
+      },
+      "south": {
+        "y": 180,
+        "x": 90
+      }
+    }
+  }
+}
