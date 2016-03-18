@@ -30,6 +30,8 @@ public final class NetherCoreRegistry {
         GameRegistry.addSmelting(NetherCoreItems.stoneCobble, NetherCoreItems.stone, 0.2F);
         GameRegistry.addSmelting(NetherCoreItems.stoneBrick, NetherCoreItems.stoneBrickCracked, 0.0F);
 
+        GameRegistry.addSmelting(Blocks.soul_sand, NetherCoreItems.soulGlass, 0.0F);
+
         // TODO: option to disable this
         GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
     }

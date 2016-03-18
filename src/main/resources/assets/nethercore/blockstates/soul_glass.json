@@ -4,7 +4,7 @@
     "transform": "forge:default-block",
     "model": "minecraft:cube_all",
     "textures": {
-      "all": "minecraft:blocks/glass_black"
+      "all": "nethercore:blocks/soul_glass"
     }
   },
   "variants": {
