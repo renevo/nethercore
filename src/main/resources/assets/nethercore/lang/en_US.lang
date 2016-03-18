@@ -54,6 +54,7 @@ tile.nethercore.nether_furnace.name=Nether Furnace
 tile.nethercore.nether_furnace_lit.name=Nether Furnace
 
 tile.nethercore.nether_rod.name=Nether Rod
+tile.nethercore.soul_glass.name=Soul Glass
 
 item.nethercore.nether_spore.name=Nether Spore
 item.nethercore.nether_spore.tooltip=When used will turn Netherrack into Nether Growth

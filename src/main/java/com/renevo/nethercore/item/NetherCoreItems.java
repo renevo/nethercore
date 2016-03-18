@@ -55,6 +55,7 @@ public final class NetherCoreItems {
     public static ItemStack netherFurnace;
 
     public static ItemStack netherRod;
+    public static ItemStack soulGlass;
 
     public static void init() {
          GameRegistry.registerItem(netherSpore = new ItemNetherSpore().setUnlocalizedName(Util.prefix("nether_spore")), "nether_spore");
@@ -103,5 +104,6 @@ public final class NetherCoreItems {
         netherFurnace = new ItemStack(NetherCoreBlocks.blockNetherFurnace);
 
         netherRod = new ItemStack(NetherCoreBlocks.blockLightRod);
+        soulGlass = new ItemStack(NetherCoreBlocks.blockSoulGlass);
     }
 }
