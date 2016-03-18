@@ -14,7 +14,6 @@ import com.renevo.nethercore.world.NetherOreGenerator;
 public class CommonProxy {
 
     public void preInit() {
-        // blocks, items, worldgen, etc...
         NetherCoreBlocks.init();
         NetherCoreItems.init();
 
@@ -27,7 +26,6 @@ public class CommonProxy {
     }
 
     public void init() {
-        // recipes
         NetherCoreRegistry.registerRecipes();
         NetherCoreRegistry.registerSmelting();
 
@@ -35,7 +33,7 @@ public class CommonProxy {
     }
 
     public void postInit() {
-        // fuels, integrations
+        NetherCoreRegistry.registerFuels();
         NetherCoreRegistry.registerIntegrations();
     }
 

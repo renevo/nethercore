@@ -27,6 +27,9 @@
       },
       "emerald": {
         "textures": { "all": "nethercore:blocks/ore_emerald" }
+      },
+      "nethercoal": {
+        "textures": { "all": "nethercore:blocks/ore_nethercoal"}
       }
     }
   }

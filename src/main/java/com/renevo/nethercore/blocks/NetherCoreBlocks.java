@@ -1,9 +1,12 @@
 package com.renevo.nethercore.blocks;
 
+import com.renevo.nethercore.NetherCoreRegistry;
 import com.renevo.nethercore.item.ItemStoneSlab;
 import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -39,6 +42,8 @@ public final class NetherCoreBlocks {
     public static BlockLightRod blockLightRod;
     public static BlockOpaqueGlass blockSoulGlass;
 
+    public static Block blockNetherCoal;
+
 
     public static void init() {
         blockNetherOre = registerEnumBlock(new BlockNetherOre(), "ore");
@@ -66,6 +71,8 @@ public final class NetherCoreBlocks {
 
         blockLightRod = registerBlock(new BlockLightRod(), "nether_rod");
         blockSoulGlass = registerBlock(new BlockOpaqueGlass(), "soul_glass");
+
+        blockNetherCoal = registerBlock(new Block(Material.rock, MapColor.redColor).setHardness(5.0F).setResistance(10.0F).setStepSound(soundTypeNetherStone).setCreativeTab(NetherCoreRegistry.tabNetherCore), "nether_coal_block");
 
         GameRegistry.registerTileEntity(TileEntityNetherFurnace.class, "nether_furnace");
     }

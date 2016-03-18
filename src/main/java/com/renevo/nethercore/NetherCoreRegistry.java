@@ -30,6 +30,7 @@ public final class NetherCoreRegistry {
         GameRegistry.addSmelting(NetherCoreItems.stoneCobble, NetherCoreItems.stone, 0.2F);
         GameRegistry.addSmelting(NetherCoreItems.stoneBrick, NetherCoreItems.stoneBrickCracked, 0.0F);
 
+        // collides with Soul Shards - The old way, need to adjust if present
         GameRegistry.addSmelting(Blocks.soul_sand, NetherCoreItems.soulGlass, 0.0F);
 
         // TODO: option to disable this
@@ -44,6 +45,11 @@ public final class NetherCoreRegistry {
         OreDictionary.registerOre("oreNetherLapis", NetherCoreItems.netherOreLapis.copy());
         OreDictionary.registerOre("oreNetherDiamond", NetherCoreItems.netherOreDiamond.copy());
         OreDictionary.registerOre("oreNetherEmerald", NetherCoreItems.netherOreEmerald.copy());
+        OreDictionary.registerOre("oreNetherNetherCoal", NetherCoreItems.netherOreNetherCoal.copy());
+    }
+
+    public static void registerFuels() {
+        GameRegistry.registerFuelHandler(new FuelHandler());
     }
 
     public static void registerRecipes() {
@@ -111,6 +117,7 @@ public final class NetherCoreRegistry {
                 'R', Items.blaze_rod,
                 'B', Blocks.nether_brick);
 
+        addCompressedRecipe(new ItemStack(NetherCoreItems.netherCoal), NetherCoreItems.netherCoalBlock);
         addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
         addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);
         addCompressedRecipe(NetherCoreItems.compressedNetherrackDouble, NetherCoreItems.compressedNetherrackTriple);

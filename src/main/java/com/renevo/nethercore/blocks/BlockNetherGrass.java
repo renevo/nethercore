@@ -38,20 +38,6 @@ public class BlockNetherGrass extends Block {
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 
-    public boolean canSustainPlant(IBlockAccess blockAccess, BlockPos blockPos, EnumFacing facing, IPlantable iPlant) {
-        IBlockState plant = iPlant.getPlant(blockAccess, blockPos.offset(facing));
-
-        if (plant.getBlock() == Blocks.nether_wart) {
-            return true;
-        }
-
-        if (plant.getBlock() instanceof BlockBush) {
-            return true;
-        }
-
-        return super.canSustainPlant(blockAccess, blockPos, facing, iPlant);
-    }
-
     public void updateTick(World world, BlockPos blockPos, IBlockState blockState, Random random) {
         if (!world.isRemote) {
             if (world.provider.doesWaterVaporize()) {
@@ -65,9 +51,21 @@ public class BlockNetherGrass extends Block {
                 for (int i = 0; i < rate; ++i) {
                     BlockPos blockpos = blockPos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                     Block blockOnTop = world.getBlockState(blockpos.up()).getBlock();
+                    if (blockOnTop.isOpaqueCube()) {
+                        continue; // just don't process
+                    }
+
                     IBlockState iblockstate = world.getBlockState(blockpos);
-                    if (iblockstate.getBlock() == Blocks.netherrack && !blockOnTop.isOpaqueCube()) {
+
+                    if (iblockstate.getBlock() == Blocks.netherrack) {
                         world.setBlockState(blockpos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
+                        if (blockOnTop.isAir(world, blockpos.up())) {
+                            world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
+                        }
+                    }
+
+                    if (iblockstate.getBlock() == NetherCoreBlocks.blockNetherOre && iblockstate.getBlock().getMetaFromState(iblockstate) == BlockNetherOre.OreTypes.COAL.getMeta()) {
+                        world.setBlockState(blockpos, NetherCoreBlocks.blockNetherOre.getDefaultState().withProperty(BlockNetherOre.TYPE, BlockNetherOre.OreTypes.NETHERCOAL));
                         if (blockOnTop.isAir(world, blockpos.up())) {
                             world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
                         }

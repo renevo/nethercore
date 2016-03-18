@@ -1,17 +1,16 @@
 package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
+import com.renevo.nethercore.item.NetherCoreItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.*;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import slimeknights.mantle.block.EnumBlock;
@@ -37,6 +36,11 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
     }
 
     @Override
+    public boolean isFireSource(World world, BlockPos blockPos, EnumFacing facing) {
+        return facing == EnumFacing.UP;
+    }
+
+    @Override
     public int getExpDrop(IBlockAccess world, BlockPos blockPos, int fortune) {
         OreTypes meta = OreTypes.values()[this.getMetaFromState(world.getBlockState(blockPos))];
         int xp = 0;
@@ -54,6 +58,8 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
                 return MathHelper.getRandomIntegerInRange(rand, 3, 7);
             case EMERALD:
                 return MathHelper.getRandomIntegerInRange(rand, 3, 7);
+            case NETHERCOAL: // bit of a bump from vanilla
+                return MathHelper.getRandomIntegerInRange(rand, 1, 3);
         }
 
         return xp;
@@ -73,6 +79,8 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
                 return Items.diamond;
             case EMERALD:
                 return Items.emerald;
+            case NETHERCOAL:
+                return NetherCoreItems.netherCoal;
         }
 
         return Item.getItemFromBlock(this);
@@ -84,15 +92,20 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 
         Item dropped = this.getItemDropped(blockState, random, 0);
         if (dropped == Items.dye) {
-            dropCount = 4 + random.nextInt(5) /* nether bonus */ + quantityDroppedWithBonus(4 + random.nextInt(5), bonus, random);
+            dropCount = 4 + random.nextInt(5) + quantityDroppedWithBonus(4 + random.nextInt(5), bonus, random);
         }
 
         if (dropped == Items.diamond || dropped == Items.emerald || dropped == Items.coal) {
-            dropCount = 1 /* nether bonus */ + quantityDroppedWithBonus(1, bonus, random);
+            dropCount = 1 + quantityDroppedWithBonus(1, bonus, random);
         }
 
         if (dropped == Items.redstone) {
-            dropCount = 4 + random.nextInt(2) /* nether bonus */ + quantityDroppedWithBonus(4 + random.nextInt(2), bonus, random);
+            dropCount = 4 + random.nextInt(2) + quantityDroppedWithBonus(4 + random.nextInt(2), bonus, random);
+        }
+
+        // no bonus
+        if (dropped == NetherCoreItems.netherCoal) {
+            dropCount = quantityDroppedWithBonus(1, bonus, random);
         }
 
         return dropCount;
@@ -118,11 +131,6 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         return this.getMetaFromState(world.getBlockState(blockPos));
     }
 
-    @Override
-    public EnumWorldBlockLayer getBlockLayer() {
-        return EnumWorldBlockLayer.CUTOUT_MIPPED;
-    }
-
     public int quantityDroppedWithBonus(int baseRate, int bonus, Random random) {
         if (bonus > 0) {
             int i = random.nextInt(bonus + 2) - 1;
@@ -136,6 +144,12 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         }
     }
 
+    @Override
+    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+        OreTypes meta = OreTypes.values()[this.getMetaFromState(blockAccess.getBlockState(blockPos))];
+        return meta != OreTypes.NETHERCOAL;
+    }
+
     public enum OreTypes implements IStringSerializable, EnumBlock.IEnumMeta {
         COAL,
         IRON,
@@ -143,7 +157,8 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         REDSTONE,
         LAPIS,
         DIAMOND,
-        EMERALD;
+        EMERALD,
+        NETHERCOAL;
 
         public final int meta;
 

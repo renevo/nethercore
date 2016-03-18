@@ -6,9 +6,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import slimeknights.mantle.block.EnumBlock;
 
 public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherrack.CompressionDepth>  {
@@ -29,8 +31,14 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 
+    @Override
     public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
         return false;
+    }
+
+    @Override
+    public boolean isFireSource(World world, BlockPos blockPos, EnumFacing facing) {
+        return facing == EnumFacing.UP;
     }
 
     public enum CompressionDepth implements IStringSerializable, EnumBlock.IEnumMeta {

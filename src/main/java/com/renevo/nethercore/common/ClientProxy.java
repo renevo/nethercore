@@ -66,8 +66,14 @@ public class ClientProxy extends CommonProxy {
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockSoulGlass);
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("soul_glass"), "inventory"));
 
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherCoal);
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_coal_block"), "inventory"));
+
         // items
         itemToAdd = NetherCoreItems.netherSpore;
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_spore"), "inventory"));
+
+        itemToAdd = NetherCoreItems.netherCoal;
+        ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_coal"), "inventory"));
     }
 }

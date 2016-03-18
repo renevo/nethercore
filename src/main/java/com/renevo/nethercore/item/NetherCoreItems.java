@@ -7,9 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public final class NetherCoreItems {
-    private NetherCoreItems() {}
+    private NetherCoreItems() {
+    }
 
     public static Item netherSpore;
+    public static Item netherCoal;
 
     // item block stacks
     public static ItemStack netherOreCoal;
@@ -19,6 +21,7 @@ public final class NetherCoreItems {
     public static ItemStack netherOreLapis;
     public static ItemStack netherOreDiamond;
     public static ItemStack netherOreEmerald;
+    public static ItemStack netherOreNetherCoal;
 
     public static ItemStack compressedNetherrackSingle;
     public static ItemStack compressedNetherrackDouble;
@@ -57,8 +60,11 @@ public final class NetherCoreItems {
     public static ItemStack netherRod;
     public static ItemStack soulGlass;
 
+    public static ItemStack netherCoalBlock;
+
     public static void init() {
-         GameRegistry.registerItem(netherSpore = new ItemNetherSpore().setUnlocalizedName(Util.prefix("nether_spore")), "nether_spore");
+        GameRegistry.registerItem(netherSpore = new ItemNetherSpore().setUnlocalizedName(Util.prefix("nether_spore")), "nether_spore");
+        GameRegistry.registerItem(netherCoal = new ItemNetherCoal().setUnlocalizedName(Util.prefix("nether_coal")), "nether_coal");
 
         // item blocks
         netherOreCoal = new ItemStack(NetherCoreBlocks.blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
@@ -68,6 +74,7 @@ public final class NetherCoreItems {
         netherOreLapis = new ItemStack(NetherCoreBlocks.blockNetherOre, 1, BlockNetherOre.OreTypes.LAPIS.getMeta());
         netherOreDiamond = new ItemStack(NetherCoreBlocks.blockNetherOre, 1, BlockNetherOre.OreTypes.DIAMOND.getMeta());
         netherOreEmerald = new ItemStack(NetherCoreBlocks.blockNetherOre, 1, BlockNetherOre.OreTypes.EMERALD.getMeta());
+        netherOreNetherCoal = new ItemStack(NetherCoreBlocks.blockNetherOre, 1, BlockNetherOre.OreTypes.NETHERCOAL.getMeta());
 
         compressedNetherrackSingle = new ItemStack(NetherCoreBlocks.blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.SINGLE.getMeta());
         compressedNetherrackDouble = new ItemStack(NetherCoreBlocks.blockCompressedNetherrack, 1, BlockCompressedNetherrack.CompressionDepth.DOUBLE.getMeta());
@@ -105,5 +112,7 @@ public final class NetherCoreItems {
 
         netherRod = new ItemStack(NetherCoreBlocks.blockLightRod);
         soulGlass = new ItemStack(NetherCoreBlocks.blockSoulGlass);
+
+        netherCoalBlock = new ItemStack(NetherCoreBlocks.blockNetherCoal);
     }
 }

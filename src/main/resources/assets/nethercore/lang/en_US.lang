@@ -1,12 +1,13 @@
 itemGroup.NetherCore=Nether Core
 
-tile.nethercore.ore.coal.name=Nether Coal Ore
-tile.nethercore.ore.iron.name=Nether Iron Ore
-tile.nethercore.ore.gold.name=Nether Gold Ore
-tile.nethercore.ore.redstone.name=Nether Redstone Ore
-tile.nethercore.ore.lapis.name=Nether Lapis Lazuli Ore
-tile.nethercore.ore.diamond.name=Nether Diamond Ore
-tile.nethercore.ore.emerald.name=Nether Emerald Ore
+tile.nethercore.ore.coal.name=Coal Ore
+tile.nethercore.ore.iron.name=Iron Ore
+tile.nethercore.ore.gold.name=Gold Ore
+tile.nethercore.ore.redstone.name=Redstone Ore
+tile.nethercore.ore.lapis.name=Lapis Lazuli Ore
+tile.nethercore.ore.diamond.name=Diamond Ore
+tile.nethercore.ore.emerald.name=Emerald Ore
+tile.nethercore.ore.nethercoal.name=Nether Coal Ore
 
 tile.nethercore.compressed_netherrack.single.name=Compressed Netherrack
 tile.nethercore.compressed_netherrack.single.tooltip=1x Compressed (9)
@@ -55,9 +56,11 @@ tile.nethercore.nether_furnace_lit.name=Nether Furnace
 
 tile.nethercore.nether_rod.name=Nether Rod
 tile.nethercore.soul_glass.name=Soul Glass
+tile.nethercore.nether_coal_block.name=Block of Nether Coal
 
 item.nethercore.nether_spore.name=Nether Spore
 item.nethercore.nether_spore.tooltip=When used will turn Netherrack into Nether Growth
+item.nethercore.nether_coal.name=Nether Coal
 
 container.nethercore.nether_furnace=Nether Furnace
 
