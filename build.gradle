@@ -21,6 +21,10 @@ buildscript {
 
 repositories {
     maven {
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven {
         name 'CB Maven FS'
         url "http://chickenbones.net/maven/"
     }
@@ -67,6 +71,7 @@ dependencies {
     deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_version}-${config.mantle_version}"
     deobfCompile "slimeknights:TConstruct:${config.minecraft_version}-${config.tinkers_version}"
     deobfCompile "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
+    deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
 
 processResources
