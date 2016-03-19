@@ -1,5 +1,6 @@
 package com.renevo.nethercore;
 
+import com.renevo.nethercore.common.Config;
 import com.renevo.nethercore.item.NetherCoreItems;
 import com.renevo.nethercore.tconstruct.TinkersIntegration;
 import net.minecraft.init.Blocks;
@@ -14,7 +15,8 @@ import slimeknights.mantle.client.CreativeTab;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
 
 public final class NetherCoreRegistry {
-    private NetherCoreRegistry() {}
+    private NetherCoreRegistry() {
+    }
 
     public static CreativeTab tabNetherCore = new CreativeTab("NetherCore", new ItemStack(Blocks.netherrack));
 
@@ -31,10 +33,13 @@ public final class NetherCoreRegistry {
         GameRegistry.addSmelting(NetherCoreItems.stoneBrick, NetherCoreItems.stoneBrickCracked, 0.0F);
 
         // collides with Soul Shards - The old way, need to adjust if present
-        GameRegistry.addSmelting(Blocks.soul_sand, NetherCoreItems.soulGlass, 0.0F);
+        if (Config.enableSoulGlassRecipe) {
+            GameRegistry.addSmelting(Blocks.soul_sand, NetherCoreItems.soulGlass, 0.0F);
+        }
 
-        // TODO: option to disable this
-        GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
+        if (Config.enableSmeltedNetherStar) {
+            GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
+        }
     }
 
     public static void registerOreDictionary() {
@@ -92,22 +97,26 @@ public final class NetherCoreRegistry {
                 "###",
                 '#', NetherCoreItems.stoneBrick);
 
-        GameRegistry.addRecipe(new ItemStack(NetherCoreItems.netherSpore),
-                "MGM",
-                "WSW",
-                "BGB",
-                'M', Items.magma_cream,
-                'G', Items.ghast_tear,
-                'S', Items.wheat_seeds,
-                'B', Items.blaze_powder,
-                'W', Items.nether_wart);
+        if (Config.enableNetherSporeRecipe) {
+            GameRegistry.addRecipe(new ItemStack(NetherCoreItems.netherSpore),
+                    "MGM",
+                    "WSW",
+                    "BGB",
+                    'M', Items.magma_cream,
+                    'G', Items.ghast_tear,
+                    'S', Items.wheat_seeds,
+                    'B', Items.blaze_powder,
+                    'W', Items.nether_wart);
+        }
 
-        GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherFurnace),
-                "CCC",
-                "CMC",
-                "CCC",
-                'C', NetherCoreItems.stoneCobble,
-                'M', Items.magma_cream);
+        if (Config.enableNetherFurnaceRecipe) {
+            GameRegistry.addRecipe(new ItemStack(NetherCoreBlocks.blockNetherFurnace),
+                    "CCC",
+                    "CMC",
+                    "CCC",
+                    'C', NetherCoreItems.stoneCobble,
+                    'M', Items.magma_cream);
+        }
 
         ItemStack netherRods = NetherCoreItems.netherRod.copy();
         netherRods.stackSize = 4;
@@ -118,14 +127,17 @@ public final class NetherCoreRegistry {
                 'B', Blocks.nether_brick);
 
         addCompressedRecipe(new ItemStack(NetherCoreItems.netherCoal), NetherCoreItems.netherCoalBlock);
-        addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackDouble, NetherCoreItems.compressedNetherrackTriple);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackTriple, NetherCoreItems.compressedNetherrackQuadruple);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackQuadruple, NetherCoreItems.compressedNetherrackQuintuple);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackQuintuple, NetherCoreItems.compressedNetherrackSextuple);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackSextuple, NetherCoreItems.compressedNetherrackSeptuple);
-        addCompressedRecipe(NetherCoreItems.compressedNetherrackSeptuple, NetherCoreItems.compressedNetherrackOctuple);
+
+        if (Config.enableCompressedNetherrackRecipes) {
+            addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackDouble, NetherCoreItems.compressedNetherrackTriple);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackTriple, NetherCoreItems.compressedNetherrackQuadruple);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackQuadruple, NetherCoreItems.compressedNetherrackQuintuple);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackQuintuple, NetherCoreItems.compressedNetherrackSextuple);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackSextuple, NetherCoreItems.compressedNetherrackSeptuple);
+            addCompressedRecipe(NetherCoreItems.compressedNetherrackSeptuple, NetherCoreItems.compressedNetherrackOctuple);
+        }
 
         addSlabRecipe(NetherCoreItems.stone, NetherCoreItems.slabStone);
         addSlabRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.slabStoneCobble);

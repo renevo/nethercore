@@ -19,8 +19,13 @@ public class CommonProxy {
 
         NetherCoreRegistry.registerOreDictionary();
 
-        GameRegistry.registerWorldGenerator(new NetherOreGenerator(), 1);
-        NetherCoreAchievements.init();
+        if (Config.enableWorldOreGeneration) {
+            GameRegistry.registerWorldGenerator(new NetherOreGenerator(), 1);
+        }
+
+        if (Config.enableAchievements) {
+            NetherCoreAchievements.init();
+        }
 
         registerModels();
     }

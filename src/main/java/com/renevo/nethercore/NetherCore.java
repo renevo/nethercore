@@ -18,11 +18,11 @@ import com.renevo.nethercore.common.Config;
         dependencies = "required-after:Forge@[11.15.1,);required-after:mantle@[1.8.9-0.7,)",
         acceptedMinecraftVersions = "1.8.9",
         updateJSON = "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json",
-        useMetadata = true)
+        useMetadata = true,
+        guiFactory="com.renevo.nethercore.client.gui.config.ModGuiFactory")
 public class NetherCore
 {
     public Logger log;
-    public Random random = new Random();
 
     @Mod.Instance(Util.MODID)
     public static NetherCore instance;

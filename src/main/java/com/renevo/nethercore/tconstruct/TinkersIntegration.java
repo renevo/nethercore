@@ -1,5 +1,6 @@
 package com.renevo.nethercore.tconstruct;
 
+import com.renevo.nethercore.common.Config;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.FMLLog;
@@ -18,8 +19,7 @@ public final class TinkersIntegration {
             return;
         }
 
-        // TODO: Check configuration
-        if (!Loader.isModLoaded("tconstruct")) {
+        if (!Loader.isModLoaded("tconstruct") || !Config.enableTinkersIntegration) {
             return;
         }
 
