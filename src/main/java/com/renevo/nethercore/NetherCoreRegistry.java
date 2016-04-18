@@ -25,7 +25,7 @@ public final class NetherCoreRegistry {
         GameRegistry.addSmelting(NetherCoreItems.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.2f);
         GameRegistry.addSmelting(NetherCoreItems.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.2f);
         GameRegistry.addSmelting(NetherCoreItems.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.2f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.dye, EnumDyeColor.BLUE.getDyeDamage(), 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.dye, 2, EnumDyeColor.BLUE.getDyeDamage()), 0.2f);
         GameRegistry.addSmelting(NetherCoreItems.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.2f);
         GameRegistry.addSmelting(NetherCoreItems.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.2f);
 
