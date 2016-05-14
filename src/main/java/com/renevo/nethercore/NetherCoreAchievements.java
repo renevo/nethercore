@@ -2,6 +2,7 @@ package com.renevo.nethercore;
 
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
 import com.renevo.nethercore.item.NetherCoreItems;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.stats.Achievement;
@@ -22,25 +23,30 @@ public final class NetherCoreAchievements {
     public static Achievement netherStoneAchievement;
     public static Achievement netherFurnaceAchievement;
 
+    // xBCrafted achievement
+    public static Achievement xbAchievement;
+
     public static void init() {
 
-        netherOreAchievement = new Achievement("achievement.netherore", "netherore", -2, 10, NetherCoreItems.netherOreIron, AchievementList.portal);
-        netherOreAchievement.registerStat();
-
-        compressionAchievement = new Achievement("achievement.compressednether", "compressednether", -2, 12, NetherCoreBlocks.blockCompressedNetherrack, netherOreAchievement);
-        compressionAchievement.registerStat();
-
-        netherSporeAchievement = new Achievement("achievement.netherspore", "netherspore", 0, 11, NetherCoreItems.netherSpore, AchievementList.blazeRod);
+        netherSporeAchievement = new Achievement("achievement.netherspore", "netherspore", 0, 12, NetherCoreItems.netherSpore, AchievementList.blazeRod);
         netherSporeAchievement.registerStat();
 
-        netherStoneAchievement = new Achievement("achievement.netherstone", "netherstone", -4, 10, NetherCoreItems.stoneCobble, AchievementList.portal);
+        netherStoneAchievement = new Achievement("achievement.netherstone", "netherstone", -2, 10, NetherCoreItems.stoneCobble, AchievementList.portal);
         netherStoneAchievement.registerStat();
 
-        netherFurnaceAchievement = new Achievement("achievement.netherfurnace", "netherfurnace", -6, 10, NetherCoreBlocks.blockNetherFurnace, netherStoneAchievement);
+        netherFurnaceAchievement = new Achievement("achievement.netherfurnace", "netherfurnace", -4, 10, NetherCoreBlocks.blockNetherFurnace, netherStoneAchievement);
         netherFurnaceAchievement.registerStat();
 
-        MinecraftForge.EVENT_BUS.register(new NetherCoreAchievements());
+        netherOreAchievement = new Achievement("achievement.netherore", "netherore", -2, 12, NetherCoreItems.netherOreIron, AchievementList.portal);
+        netherOreAchievement.registerStat();
 
+        compressionAchievement = new Achievement("achievement.compressednether", "compressednether", -4, 12, NetherCoreBlocks.blockCompressedNetherrack, netherOreAchievement);
+        compressionAchievement.registerStat();
+
+        xbAchievement = new Achievement("achievement.xbcrafted", "xbcrafted", -6, 12, Items.nether_star, compressionAchievement);
+        xbAchievement.registerStat().setSpecial();
+
+        MinecraftForge.EVENT_BUS.register(new NetherCoreAchievements());
     }
 
     @SubscribeEvent
@@ -70,6 +76,14 @@ public final class NetherCoreAchievements {
 
         if (event.crafting.getItem() == NetherCoreItems.netherFurnace.getItem()) {
             event.player.addStat(netherFurnaceAchievement, 1);
+            return;
+        }
+    }
+
+    @SubscribeEvent
+    public void onSmeltItem(PlayerEvent.ItemSmeltedEvent event) {
+        if (event.smelting.getItem() == Items.nether_star) {
+            event.player.addStat(xbAchievement, 1);
             return;
         }
     }
