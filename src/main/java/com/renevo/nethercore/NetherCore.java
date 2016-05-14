@@ -6,8 +6,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-import java.util.Random;
 import org.apache.logging.log4j.Logger;
 
 import com.renevo.nethercore.common.CommonProxy;
@@ -15,7 +13,7 @@ import com.renevo.nethercore.common.Config;
 
 @Mod(
         modid = Util.MODID,
-        dependencies = "required-after:Forge@[11.15.1,);required-after:mantle@[1.8.9-0.7,)",
+        dependencies = "required-after:Forge@[11.15.1,);required-after:mantle@[1.8.9-0.9,)",
         acceptedMinecraftVersions = "1.8.9",
         updateJSON = "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json",
         useMetadata = true,
