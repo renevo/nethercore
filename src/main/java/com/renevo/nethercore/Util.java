@@ -1,10 +1,9 @@
 package com.renevo.nethercore;
 
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 
 import java.util.Locale;
-import java.util.logging.Logger;
 
 public final class Util {
     private Util() {}
@@ -30,6 +29,6 @@ public final class Util {
     }
 
     public static String translateRecursive(String key, Object... params) {
-        return StatCollector.translateToLocal(StatCollector.translateToLocalFormatted(key, params));
+        return I18n.translateToLocal(I18n.translateToLocalFormatted(key, params));
     }
 }

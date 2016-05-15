@@ -4,7 +4,7 @@ import com.renevo.nethercore.client.gui.inventory.GuiNetherFurnace;
 import com.renevo.nethercore.inventory.ContainerNetherFurnace;
 import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 

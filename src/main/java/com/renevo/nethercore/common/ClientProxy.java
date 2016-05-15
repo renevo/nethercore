@@ -3,15 +3,14 @@ package com.renevo.nethercore.common;
 import com.renevo.nethercore.Util;
 import com.renevo.nethercore.blocks.BlockStoneSlab;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
-import com.renevo.nethercore.client.ItemBlockModelSetter;
 import com.renevo.nethercore.item.NetherCoreItems;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Locale;
 
+@SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy {
 
     @Override
@@ -33,8 +32,6 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerModels() {
-        MinecraftForge.EVENT_BUS.register(new ItemBlockModelSetter());
-
         // individual items
         Item itemToAdd;
 

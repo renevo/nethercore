@@ -4,25 +4,26 @@ import com.renevo.nethercore.NetherCoreRegistry;
 import com.renevo.nethercore.item.ItemStoneSlab;
 import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSlab;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemSlab;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Locale;
 
+import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 import slimeknights.mantle.block.EnumBlock;
 import com.renevo.nethercore.Util;
 import com.renevo.nethercore.item.ItemBlockMeta;
 
+// TODO: Switch to new registry stuff for register items/blocks
 public final class NetherCoreBlocks {
 
     private NetherCoreBlocks() {
     }
 
-    public static final Block.SoundType soundTypeNetherStone = new Block.SoundType("stone", 1.0F, 1.0F);
+    public static final SoundType soundTypeNetherStone = SoundType.STONE;
 
     // blocks
     public static BlockNetherOre blockNetherOre;
@@ -72,22 +73,22 @@ public final class NetherCoreBlocks {
         blockLightRod = registerBlock(new BlockLightRod(), "nether_rod");
         blockSoulGlass = registerBlock(new BlockOpaqueGlass(), "soul_glass");
 
-        blockNetherCoal = registerBlock(new Block(Material.rock, MapColor.redColor).setHardness(5.0F).setResistance(10.0F).setStepSound(soundTypeNetherStone).setCreativeTab(NetherCoreRegistry.tabNetherCore), "nether_coal_block");
+        blockNetherCoal = registerBlock(new Block(Material.rock, MapColor.redColor).setHardness(5.0F).setResistance(10.0F).setCreativeTab(NetherCoreRegistry.tabNetherCore), "nether_coal_block");
 
         GameRegistry.registerTileEntity(TileEntityNetherFurnace.class, "nether_furnace");
     }
 
     private static <T extends EnumBlock<?>> T registerEnumBlock(T block, String name) {
-        registerBlock(block, ItemBlockMeta.class, name);
+        registerBlock(block, new ItemBlockMeta(block), name);
         ItemBlockMeta.setMappingProperty(block, block.prop);
         return block;
     }
 
     private static <T extends EnumBlockSlab<?>> T registerEnumBlock(T block, T halfBlock, T fullBlock, String name) {
         if (block == halfBlock) {
-            registerBlock(block, ItemStoneSlab.class, name, halfBlock, fullBlock);
+            registerBlock(block, new ItemStoneSlab(block, halfBlock, fullBlock), name);
         } else {
-            registerBlock(block, ItemBlockMeta.class, name);
+            registerBlock(block, new ItemBlockMeta(fullBlock), name);
             ItemBlockMeta.setMappingProperty(block, block.prop);
         }
 
@@ -95,26 +96,34 @@ public final class NetherCoreBlocks {
     }
 
     private static <T extends EnumBlockWall<?>> T registerEnumBlock(T block, String name) {
-        registerBlock(block, ItemBlockMeta.class, name);
+        registerBlock(block, new ItemBlockMeta(block), name);
         ItemBlockMeta.setMappingProperty(block, block.prop);
         return block;
     }
 
     private static <T extends Block> T registerBlock(T block, String name) {
-        block.setUnlocalizedName(Util.prefix(name));
-        block.setRegistryName(Util.getResource(name));
-        GameRegistry.registerBlock(block, Util.resource(name));
+        registerBlock(block, new ItemBlock(block), name);
         return block;
     }
 
-    protected static <T extends Block> T registerBlock(T block, Class<? extends ItemBlock> itemBlockClazz, String name, Object... itemCtorArgs) {
+    protected static <T extends Block> T registerBlock(T block, ItemBlock itemBlock, String name) {
         if (!name.equals(name.toLowerCase(Locale.US))) {
             throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Block: %s", name));
         }
 
-        block.setUnlocalizedName(Util.prefix(name));
-        block.setRegistryName(Util.getResource(name));
-        GameRegistry.registerBlock(block, itemBlockClazz, name, itemCtorArgs);
+        String prefixedName = Util.prefix(name);
+
+        block.setUnlocalizedName(prefixedName);
+        itemBlock.setUnlocalizedName(prefixedName);
+
+        register(block, name);
+        register(itemBlock, name);
         return block;
+    }
+
+    protected static <T extends IForgeRegistryEntry<?>> T register(T thing, String name) {
+        thing.setRegistryName(Util.getResource(name));
+        GameRegistry.register(thing);
+        return thing;
     }
 }

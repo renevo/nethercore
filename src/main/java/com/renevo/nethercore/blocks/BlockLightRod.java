@@ -2,26 +2,25 @@ package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-public class BlockLightRod extends Block {
-    public static final PropertyDirection FACING = PropertyDirection.create("facing");
+public class BlockLightRod extends BlockDirectional {
 
     protected static final AxisAlignedBB BB_AXIS_Y = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
     protected static final AxisAlignedBB BB_AXIS_Z = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
@@ -37,6 +36,7 @@ public class BlockLightRod extends Block {
         this.setLightLevel(1.0F);
     }
 
+    @SuppressWarnings("unused")
     public BlockLightRod(MapColor color) {
         super(Material.circuits);
         mapColor = color;
@@ -46,35 +46,41 @@ public class BlockLightRod extends Block {
         this.setLightLevel(1.0F);
     }
 
-    public MapColor getMapColor(IBlockState p_getMapColor_1_) {
+    @Override
+    public MapColor getMapColor(IBlockState blockState) {
         return this.mapColor;
     }
 
     @Override
-    public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, BlockPos blockPos) {
-        AxisAlignedBB thisBB = this.getBoundingBox(blockAccess.getBlockState(blockPos));
-        this.setBlockBounds((float) thisBB.minX, (float) thisBB.minY, (float) thisBB.minZ, (float) thisBB.maxX, (float) thisBB.maxY, (float) thisBB.maxZ);
+    public IBlockState withRotation(IBlockState blockState, Rotation rotation) {
+        return blockState.withProperty(FACING, rotation.rotate(blockState.getValue(FACING)));
     }
 
     @Override
-    public void setBlockBoundsForItemRender() {
-        AxisAlignedBB thisBB = BB_AXIS_X;
-        this.setBlockBounds((float) thisBB.minX, (float) thisBB.minY, (float) thisBB.minZ, (float) thisBB.maxX, (float) thisBB.maxY, (float) thisBB.maxZ);
+    public IBlockState withMirror(IBlockState blockState, Mirror mirror) {
+        return blockState.withProperty(FACING, mirror.mirror(blockState.getValue(FACING)));
     }
 
     @Override
-    public void addCollisionBoxesToList(World world, BlockPos blockPos, IBlockState blockState, AxisAlignedBB alignedBB, List<AxisAlignedBB> alignedBBs, Entity entity) {
-        this.setBlockBoundsBasedOnState(world, blockPos);
-        super.addCollisionBoxesToList(world, blockPos, blockState, alignedBB, alignedBBs, entity);
+    public AxisAlignedBB getBoundingBox(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
+        switch (blockState.getValue(FACING).getAxis()) {
+            case X:
+            default:
+                return BB_AXIS_X;
+            case Z:
+                return BB_AXIS_Z;
+            case Y:
+                return BB_AXIS_Y;
+        }
     }
 
     @Override
-    public boolean isOpaqueCube() {
+    public boolean isOpaqueCube(IBlockState blockState) {
         return false;
     }
 
     @Override
-    public boolean isFullCube() {
+    public boolean isFullCube(IBlockState blockState) {
         return false;
     }
 
@@ -120,24 +126,17 @@ public class BlockLightRod extends Block {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public EnumWorldBlockLayer getBlockLayer() {
-        return EnumWorldBlockLayer.CUTOUT;
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.CUTOUT;
     }
 
     @Override
-    protected BlockState createBlockState() {
-        return new BlockState(this, FACING);
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING);
     }
 
-    public AxisAlignedBB getBoundingBox(IBlockState state) {
-        switch (state.getValue(FACING).getAxis()) {
-            case X:
-            default:
-                return BB_AXIS_X;
-            case Z:
-                return BB_AXIS_Z;
-            case Y:
-                return BB_AXIS_Y;
-        }
+    @Override
+    public EnumPushReaction getMobilityFlag(IBlockState blockState) {
+        return EnumPushReaction.NORMAL;
     }
 }
