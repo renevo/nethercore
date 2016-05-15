@@ -12,6 +12,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import slimeknights.mantle.block.EnumBlock;
 
+import java.util.Locale;
+
 public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherrack.CompressionDepth>  {
 
     public static final PropertyEnum<CompressionDepth> TYPE = PropertyEnum.create("type", CompressionDepth.class);
@@ -58,7 +60,7 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override

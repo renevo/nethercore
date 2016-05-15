@@ -15,7 +15,8 @@ public class BlockNetherStairs extends BlockStairs {
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 
-    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+    @Override
+    public boolean canCreatureSpawn(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
         return false;
     }
 }

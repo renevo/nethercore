@@ -16,6 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import slimeknights.mantle.block.EnumBlock;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
@@ -164,7 +165,7 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override

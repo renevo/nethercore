@@ -10,6 +10,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import slimeknights.mantle.block.EnumBlock;
 
+import java.util.Locale;
+
 public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
 
     public final static PropertyEnum<StoneType> TYPE = PropertyEnum.create("type", StoneType.class);
@@ -46,7 +48,7 @@ public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override

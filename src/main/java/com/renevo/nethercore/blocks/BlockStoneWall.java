@@ -6,6 +6,8 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.IStringSerializable;
 
+import java.util.Locale;
+
 public class BlockStoneWall extends EnumBlockWall<BlockStoneWall.WallType> {
     public static final PropertyEnum<WallType> VARIANT = PropertyEnum.create("variant", WallType.class);
 
@@ -38,7 +40,7 @@ public class BlockStoneWall extends EnumBlockWall<BlockStoneWall.WallType> {
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override
