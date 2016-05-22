@@ -7,14 +7,12 @@
       "bottom": "nethercore:blocks/nether_stone_cobble",
       "top": "nethercore:blocks/nether_stone_cobble",
       "side": "nethercore:blocks/nether_stone_cobble"
-    },
-    "uvlock": true
+    }
   },
   "variants": {
     "inventory": [{
       "model": "stairs",
-      "y": 0,
-      "uvlock": true
+      "y": 0
     }],
     "facing=east,half=bottom,shape=straight":  { "model": "stairs" },
     "facing=west,half=bottom,shape=straight":  { "model": "stairs", "y": 180, "uvlock": true },
