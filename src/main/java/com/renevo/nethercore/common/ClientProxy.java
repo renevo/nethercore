@@ -1,8 +1,8 @@
 package com.renevo.nethercore.common;
 
 import com.renevo.nethercore.Util;
-import com.renevo.nethercore.blocks.BlockCompressedNetherrack;
 import com.renevo.nethercore.blocks.BlockStoneSlab;
+import com.renevo.nethercore.blocks.BlockStoneWall;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
 import com.renevo.nethercore.item.NetherCoreItems;
 import net.minecraft.block.Block;
@@ -42,7 +42,6 @@ public class ClientProxy extends CommonProxy {
         registerItemBlockMeta(NetherCoreBlocks.blockCompressedNetherrack);
         registerItemBlockMeta(NetherCoreBlocks.blockNetherOre);
         registerItemBlockMeta(NetherCoreBlocks.blockNetherStone);
-        registerItemBlockMeta(NetherCoreBlocks.blockNetherStoneWall);
 
         // stairs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneStairs);
@@ -56,6 +55,13 @@ public class ClientProxy extends CommonProxy {
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherHalfSlab);
         for (BlockStoneSlab.SlabType t : BlockStoneSlab.SlabType.values()) {
             ModelLoader.setCustomModelResourceLocation(itemToAdd, t.getMeta(), new ModelResourceLocation(Util.getResource("slab_half_stone"), "half=bottom,variant=" + t.getName().toLowerCase(Locale.US)));
+        }
+
+        // walls
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneWall);
+        for (BlockStoneWall.WallType wall : BlockStoneWall.WallType.values()) {
+            String variantName = "inventory_" + wall.getName();
+            ModelLoader.setCustomModelResourceLocation(itemToAdd, wall.getMeta(), new ModelResourceLocation(itemToAdd.getRegistryName(), variantName));
         }
 
         // grass

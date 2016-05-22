@@ -63,7 +63,7 @@ public final class NetherCoreBlocks {
         blockNetherHalfSlab = registerEnumBlock(halfStoneSlab, halfStoneSlab, doubleStoneSlab, "slab_half_stone");
         blockNetherDoubleSlab = registerEnumBlock(doubleStoneSlab, halfStoneSlab, doubleStoneSlab, "slab_double_stone");
 
-        blockNetherStoneWall = registerEnumBlock(new BlockStoneWall(), "wall_stone");
+        blockNetherStoneWall = registerEnumBlock(new BlockStoneWall(blockNetherStone), "wall_stone");
 
         blockNetherGrass = registerBlock(new BlockNetherGrass(), "nether_grass");
 

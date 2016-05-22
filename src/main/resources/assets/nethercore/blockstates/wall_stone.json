@@ -1,21 +1,69 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "transform": "forge:default-block",
-    "model": "minecraft:wall_post",
+    "model": "nethercore:dummy",
     "textures": {
-      "wall": "nethercore:blocks/nether_stone_cobble"
-    }
+      "texture": "nethercore:blocks/nether_stone"
+    },
+    "uvlock": true,
+    "transform": "forge:default-block"
   },
   "variants": {
-    "inventory": [{}],
-    "normal": [{}],
-    "east": {"true": {}, "false": {}},
-    "north": {"true": {}, "false": {}},
-    "south": {"true": {}, "false": {}},
-    "up": {"true": {}, "false": {}},
-    "west": {"true": {}, "false": {}},
-    "variant": {
+    "inventory_stone": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "nethercore:blocks/nether_stone"
+      }
+    }],
+    "inventory_cobblestone": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "nethercore:blocks/nether_stone_cobble"
+      }
+    }],
+    "inventory_brick": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "minecraft:blocks/nether_brick"
+      }
+    }],
+    "north": {
+      "true": {
+        "submodel": "minecraft:wall_side"
+      },
+      "false": {}
+    },
+    "south": {
+      "true": {
+        "submodel": "minecraft:wall_side",
+        "y": 180
+      },
+      "false": {}
+    },
+    "west": {
+      "true": {
+        "submodel": "minecraft:wall_side",
+        "y": 270
+      },
+      "false": {}
+    },
+    "east": {
+      "true": {
+        "submodel": "minecraft:wall_side",
+        "y": 90
+      },
+      "false": {}
+    },
+    "up": {
+      "true": {
+        "submodel": "minecraft:wall_post"
+      },
+      "false": {}
+    },
+    "stone_variant": {
       "stone": {
         "textures": {
           "wall": "nethercore:blocks/nether_stone"
@@ -31,28 +79,10 @@
           "wall": "minecraft:blocks/nether_brick"
         }
       }
+    },
+    "variant": {
+      "cobblestone": {},
+      "mossy_cobblestone": {}
     }
-  },
-  "multipart": [
-    {
-      "when": { "up": "true" },
-      "apply": { "model": "minecraft:wall_post" }
-    },
-    {
-      "when": { "north": "true" },
-      "apply": { "model": "minecraft:wall_side", "uvlock": true }
-    },
-    {
-      "when": { "east": "true" },
-      "apply": { "model": "minecraft:wall_side", "y": 90, "uvlock": true }
-    },
-    {
-      "when": { "south": "true" },
-      "apply": { "model": "minecraft:wall_side", "y": 180, "uvlock": true }
-    },
-    {
-      "when": { "west": "true" },
-      "apply": { "model": "minecraft:wall_side", "y": 270, "uvlock": true }
-    }
-  ]
+  }
 }

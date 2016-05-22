@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+// TODO: switch to mantle version
 public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta & IStringSerializable> extends BlockSlab {
     private final E[] values;
     public static final PropertyBool SEAMLESS = PropertyBool.create("seamless");
