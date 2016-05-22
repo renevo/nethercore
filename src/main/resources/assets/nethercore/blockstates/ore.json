@@ -3,9 +3,13 @@
   "defaults": {
     "transform": "forge:default-block",
     "model": "minecraft:cube_all",
-    "textures": {"all": "minecraft:blocks/netherrack" }
+    "textures": {
+      "all": "minecraft:blocks/netherrack"
+    }
   },
   "variants": {
+    "inventory": [{}],
+    "normal": [{}],
     "type": {
       "coal": {
         "textures": { "all": "nethercore:blocks/ore_coal" }

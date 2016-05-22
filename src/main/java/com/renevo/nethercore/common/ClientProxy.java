@@ -1,12 +1,15 @@
 package com.renevo.nethercore.common;
 
 import com.renevo.nethercore.Util;
+import com.renevo.nethercore.blocks.BlockCompressedNetherrack;
 import com.renevo.nethercore.blocks.BlockStoneSlab;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
 import com.renevo.nethercore.item.NetherCoreItems;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import slimeknights.mantle.item.ItemBlockMeta;
 
 import java.util.Locale;
 
@@ -34,6 +37,12 @@ public class ClientProxy extends CommonProxy {
     public void registerModels() {
         // individual items
         Item itemToAdd;
+
+        // enum blocks
+        registerItemBlockMeta(NetherCoreBlocks.blockCompressedNetherrack);
+        registerItemBlockMeta(NetherCoreBlocks.blockNetherOre);
+        registerItemBlockMeta(NetherCoreBlocks.blockNetherStone);
+        registerItemBlockMeta(NetherCoreBlocks.blockNetherStoneWall);
 
         // stairs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneStairs);
@@ -72,5 +81,13 @@ public class ClientProxy extends CommonProxy {
 
         itemToAdd = NetherCoreItems.netherCoal;
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_coal"), "inventory"));
+    }
+
+    private void registerItemBlockMeta(Block block) {
+        if (block == null) {
+            return;
+        }
+
+        ((ItemBlockMeta)Item.getItemFromBlock(block)).registerItemModels();
     }
 }

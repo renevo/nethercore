@@ -8,6 +8,8 @@
     }
   },
   "variants": {
+    "inventory": [{}],
+    "normal": [{}],
     "east": {"true": {}, "false": {}},
     "north": {"true": {}, "false": {}},
     "south": {"true": {}, "false": {}},
@@ -38,19 +40,19 @@
     },
     {
       "when": { "north": "true" },
-      "apply": { "model": "minecraft:block/wall_side", "uvlock": true }
+      "apply": { "model": "minecraft:wall_side", "uvlock": true }
     },
     {
       "when": { "east": "true" },
-      "apply": { "model": "minecraft:block/wall_side", "y": 90, "uvlock": true }
+      "apply": { "model": "minecraft:wall_side", "y": 90, "uvlock": true }
     },
     {
       "when": { "south": "true" },
-      "apply": { "model": "minecraft:block/wall_side", "y": 180, "uvlock": true }
+      "apply": { "model": "minecraft:wall_side", "y": 180, "uvlock": true }
     },
     {
       "when": { "west": "true" },
-      "apply": { "model": "minecraft:block/wall_side", "y": 270, "uvlock": true }
+      "apply": { "model": "minecraft:wall_side", "y": 270, "uvlock": true }
     }
   ]
 }

@@ -3,9 +3,13 @@
   "defaults": {
     "transform": "forge:default-block",
     "model": "minecraft:cube_all",
-    "textures": {"all": "minecraft:blocks/netherrack" }
+    "textures": {
+      "all": "minecraft:blocks/netherrack"
+    }
   },
   "variants": {
+    "normal": [{}],
+    "inventory": [{}],
     "type": {
       "single": {
         "textures": { "all": "nethercore:blocks/compressed_netherrack_single" }

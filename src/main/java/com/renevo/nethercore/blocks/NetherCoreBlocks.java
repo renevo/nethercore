@@ -15,7 +15,7 @@ import java.util.Locale;
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 import slimeknights.mantle.block.EnumBlock;
 import com.renevo.nethercore.Util;
-import com.renevo.nethercore.item.ItemBlockMeta;
+import slimeknights.mantle.item.ItemBlockMeta;
 
 // TODO: Switch to new registry stuff for register items/blocks
 public final class NetherCoreBlocks {
