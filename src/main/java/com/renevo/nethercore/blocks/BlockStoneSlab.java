@@ -16,7 +16,7 @@ public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabTy
     public static final PropertyEnum<SlabType> VARIANT = PropertyEnum.create("variant", SlabType.class);
 
     public BlockStoneSlab() {
-        this(Material.rock);
+        this(Material.ROCK);
     }
 
     @Override
@@ -40,7 +40,7 @@ public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabTy
         this.setHardness(3F);
         this.setResistance(20F);
         this.setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
-        this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+        this.setSoundType(NetherCoreBlocks.soundTypeNetherStone);
     }
 
     @Override

@@ -16,11 +16,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockOpaqueGlass extends BlockBreakable {
 
     public BlockOpaqueGlass() {
-        super(Material.glass, false);
+        super(Material.GLASS, false);
 
         this.setHardness(0.3F);
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
-        this.setStepSound(SoundType.GLASS);
+        this.setSoundType(SoundType.GLASS);
         this.setLightOpacity(255); // block all light
     }
 
@@ -29,9 +29,10 @@ public class BlockOpaqueGlass extends BlockBreakable {
         return false;
     }
 
+    // TODO: Find out how this is replaced in the future...
     @Override
     public MapColor getMapColor(IBlockState p_getMapColor_1_) {
-        return MapColor.grayColor;
+        return MapColor.GRAY;
     }
 
     @SideOnly(Side.CLIENT)

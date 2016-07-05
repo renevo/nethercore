@@ -28,22 +28,22 @@ public final class NetherCoreAchievements {
 
     public static void init() {
 
-        netherSporeAchievement = new Achievement("achievement.netherspore", "netherspore", 0, 12, NetherCoreItems.netherSpore, AchievementList.blazeRod);
+        netherSporeAchievement = new Achievement("achievement.netherspore", "netherspore", 0, 12, NetherCoreItems.netherSpore, AchievementList.BLAZE_ROD);
         netherSporeAchievement.registerStat();
 
-        netherStoneAchievement = new Achievement("achievement.netherstone", "netherstone", -2, 10, NetherCoreItems.stoneCobble, AchievementList.portal);
+        netherStoneAchievement = new Achievement("achievement.netherstone", "netherstone", -2, 10, NetherCoreItems.stoneCobble, AchievementList.PORTAL);
         netherStoneAchievement.registerStat();
 
         netherFurnaceAchievement = new Achievement("achievement.netherfurnace", "netherfurnace", -4, 10, NetherCoreBlocks.blockNetherFurnace, netherStoneAchievement);
         netherFurnaceAchievement.registerStat();
 
-        netherOreAchievement = new Achievement("achievement.netherore", "netherore", -2, 12, NetherCoreItems.netherOreIron, AchievementList.portal);
+        netherOreAchievement = new Achievement("achievement.netherore", "netherore", -2, 12, NetherCoreItems.netherOreIron, AchievementList.PORTAL);
         netherOreAchievement.registerStat();
 
         compressionAchievement = new Achievement("achievement.compressednether", "compressednether", -4, 12, NetherCoreBlocks.blockCompressedNetherrack, netherOreAchievement);
         compressionAchievement.registerStat();
 
-        xbAchievement = new Achievement("achievement.xbcrafted", "xbcrafted", -6, 12, Items.nether_star, compressionAchievement);
+        xbAchievement = new Achievement("achievement.xbcrafted", "xbcrafted", -6, 12, Items.NETHER_STAR, compressionAchievement);
         xbAchievement.registerStat().setSpecial();
 
         MinecraftForge.EVENT_BUS.register(new NetherCoreAchievements());
@@ -82,7 +82,7 @@ public final class NetherCoreAchievements {
 
     @SubscribeEvent
     public void onSmeltItem(PlayerEvent.ItemSmeltedEvent event) {
-        if (event.smelting.getItem() == Items.nether_star) {
+        if (event.smelting.getItem() == Items.NETHER_STAR) {
             event.player.addStat(xbAchievement, 1);
             return;
         }

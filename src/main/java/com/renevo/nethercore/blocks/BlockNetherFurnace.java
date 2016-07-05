@@ -33,16 +33,16 @@ public class BlockNetherFurnace extends BlockContainer {
     private static boolean keepInventory;
 
     protected BlockNetherFurnace(boolean isBurning) {
-        super(Material.rock);
+        super(Material.ROCK);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setHardness(3.5F);
-        this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+        this.setSoundType(NetherCoreBlocks.soundTypeNetherStone);
         this.isBurning = isBurning;
 
         if (!this.isBurning) {
             this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
         } else {
-            this.setCreativeTab(null);
+            //this.setCreativeTab(null);
         }
 
         if (this.isBurning) {

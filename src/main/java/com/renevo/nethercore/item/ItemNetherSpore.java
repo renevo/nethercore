@@ -24,9 +24,9 @@ public class ItemNetherSpore extends ItemMeta {
             return EnumActionResult.PASS;
         } else if(!entityPlayer.canPlayerEdit(blockPos.offset(enumFacing), enumFacing, itemStack)) {
             return EnumActionResult.PASS;
-        } else if(world.getBlockState(blockPos).getBlock() == Blocks.netherrack && world.provider.doesWaterVaporize() && world.isAirBlock(blockPos.up())) {
+        } else if(world.getBlockState(blockPos).getBlock() == Blocks.NETHERRACK && world.provider.doesWaterVaporize() && world.isAirBlock(blockPos.up())) {
             world.setBlockState(blockPos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
-            world.setBlockState(blockPos.up(), Blocks.fire.getDefaultState());
+            world.setBlockState(blockPos.up(), Blocks.FIRE.getDefaultState());
 
             --itemStack.stackSize;
             return EnumActionResult.SUCCESS;

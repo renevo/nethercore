@@ -26,10 +26,10 @@ public class BlockLightRod extends BlockDirectional {
     protected static final AxisAlignedBB BB_AXIS_Z = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
     protected static final AxisAlignedBB BB_AXIS_X = new AxisAlignedBB(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
 
-    private MapColor mapColor = MapColor.sandColor;
+    private MapColor mapColor = MapColor.SAND;
 
     public BlockLightRod() {
-        super(Material.circuits);
+        super(Material.CIRCUITS);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
         this.setHardness(0.3F);
@@ -38,7 +38,7 @@ public class BlockLightRod extends BlockDirectional {
 
     @SuppressWarnings("unused")
     public BlockLightRod(MapColor color) {
-        super(Material.circuits);
+        super(Material.CIRCUITS);
         mapColor = color;
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
@@ -106,10 +106,6 @@ public class BlockLightRod extends BlockDirectional {
 
     @Override
     public void onBlockAdded(World world, BlockPos blockPos, IBlockState state) {
-    }
-
-    @Override
-    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
     }
 
     @Override

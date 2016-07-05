@@ -24,7 +24,7 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
     public static final PropertyEnum<OreTypes> TYPE = PropertyEnum.create("type", OreTypes.class);
 
     public BlockNetherOre() {
-        this(Material.rock);
+        this(Material.ROCK);
     }
 
     public BlockNetherOre(Material material) {
@@ -32,7 +32,7 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 
         setHardness(3.0f);
         setResistance(5.0F);
-        setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+        setSoundType(NetherCoreBlocks.soundTypeNetherStone);
         setHarvestLevel("pickaxe", 2); // 2 is iron required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
@@ -72,15 +72,15 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         OreTypes meta = OreTypes.values()[this.getMetaFromState(blockState)];
         switch (meta) {
             case COAL:
-                return Items.coal;
+                return Items.COAL;
             case REDSTONE:
-                return Items.redstone;
+                return Items.REDSTONE;
             case LAPIS:
-                return Items.dye;
+                return Items.DYE;
             case DIAMOND:
-                return Items.diamond;
+                return Items.DIAMOND;
             case EMERALD:
-                return Items.emerald;
+                return Items.EMERALD;
             case NETHERCOAL:
                 return NetherCoreItems.netherCoal;
         }
@@ -93,15 +93,15 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         int dropCount= 1;
 
         Item dropped = this.getItemDropped(blockState, random, 0);
-        if (dropped == Items.dye) {
+        if (dropped == Items.DYE) {
             dropCount = 4 + random.nextInt(5) + quantityDroppedWithBonus(4 + random.nextInt(5), bonus, random);
         }
 
-        if (dropped == Items.diamond || dropped == Items.emerald || dropped == Items.coal) {
+        if (dropped == Items.DIAMOND || dropped == Items.EMERALD || dropped == Items.COAL) {
             dropCount = 1 + quantityDroppedWithBonus(1, bonus, random);
         }
 
-        if (dropped == Items.redstone) {
+        if (dropped == Items.REDSTONE) {
             dropCount = 4 + random.nextInt(2) + quantityDroppedWithBonus(4 + random.nextInt(2), bonus, random);
         }
 

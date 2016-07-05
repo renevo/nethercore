@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 import java.util.Locale;
 
+// TODO: Switch to upper case naming conventions at some point
 public final class NetherCoreItems {
     private NetherCoreItems() {
     }

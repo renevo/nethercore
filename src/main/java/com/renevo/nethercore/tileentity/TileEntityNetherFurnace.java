@@ -146,8 +146,9 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound tagCompound) {
-        super.writeToNBT(tagCompound);
+    public NBTTagCompound writeToNBT(NBTTagCompound tagCompound) {
+        NBTTagCompound result = super.writeToNBT(tagCompound);
+
         tagCompound.setShort("BurnTime", (short) this.furnaceBurnTime);
         tagCompound.setShort("CookTime", (short) this.cookTime);
         tagCompound.setShort("CookTimeTotal", (short) this.totalCookTime);
@@ -167,6 +168,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
             tagCompound.setString("CustomName", this.furnaceCustomName);
         }
 
+        return result;
     }
 
     @Override
@@ -238,19 +240,19 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         IBlockState southBlockState = this.worldObj.getBlockState(this.pos.south());
 
         // TODO: These should be based on fluids as well when possible
-        if (eastBlockState.getBlock() == Blocks.lava || eastBlockState.getBlock() == Blocks.flowing_lava) {
+        if (eastBlockState.getBlock() == Blocks.LAVA || eastBlockState.getBlock() == Blocks.FLOWING_LAVA) {
             speed++;
         }
 
-        if (westBlockState.getBlock() == Blocks.lava || westBlockState.getBlock() == Blocks.flowing_lava) {
+        if (westBlockState.getBlock() == Blocks.LAVA || westBlockState.getBlock() == Blocks.FLOWING_LAVA) {
             speed++;
         }
 
-        if (northBlockState.getBlock() == Blocks.lava || northBlockState.getBlock() == Blocks.flowing_lava) {
+        if (northBlockState.getBlock() == Blocks.LAVA || northBlockState.getBlock() == Blocks.FLOWING_LAVA) {
             speed++;
         }
 
-        if (southBlockState.getBlock() == Blocks.lava || southBlockState.getBlock() == Blocks.flowing_lava) {
+        if (southBlockState.getBlock() == Blocks.LAVA || southBlockState.getBlock() == Blocks.FLOWING_LAVA) {
             speed++;
         }
 
