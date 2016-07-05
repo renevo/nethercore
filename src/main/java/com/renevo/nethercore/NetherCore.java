@@ -13,8 +13,8 @@ import com.renevo.nethercore.common.Config;
 
 @Mod(
         modid = Util.MODID,
-        dependencies = "required-after:Forge@[12.17,);required-after:mantle@[1.9.4-0.10,)",
-        acceptedMinecraftVersions = "1.9.4",
+        dependencies = "required-after:Forge@[12.18,);required-after:mantle@[1.10,)",
+        acceptedMinecraftVersions = "1.10.2",
         updateJSON = "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json",
         useMetadata = true,
         guiFactory="com.renevo.nethercore.client.gui.config.ModGuiFactory")

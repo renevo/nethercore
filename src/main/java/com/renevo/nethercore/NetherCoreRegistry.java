@@ -170,6 +170,7 @@ public final class NetherCoreRegistry {
         addWallRecipe(NetherCoreItems.stone, NetherCoreItems.wallStone, false);
         addWallRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.wallStoneCobble, false);
         addWallRecipe(new ItemStack(Blocks.NETHER_BRICK), NetherCoreItems.wallNetherBrick, true);
+        addWallRecipe(new ItemStack(Blocks.field_189879_dh /*Red Nether Brick */), NetherCoreItems.wallRedNetherBrick, false);
     }
 
     public static void registerIntegrations() {

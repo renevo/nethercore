@@ -23,7 +23,8 @@ public class BlockStoneWall extends EnumBlockWall<BlockStoneWall.WallType> {
     public enum WallType implements IStringSerializable, EnumBlockWall.IEnumMeta {
         STONE,
         COBBLESTONE,
-        BRICK;
+        BRICK,
+        REDBRICK;
 
         public final int meta;
 
