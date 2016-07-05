@@ -48,6 +48,7 @@ tile.nethercore.slab_half_stone.road.name=Nether Stone Brick Road Slab
 tile.nethercore.wall_stone.stone.name=Nether Stone Wall
 tile.nethercore.wall_stone.cobblestone.name=Nether Cobblestone Wall
 tile.nethercore.wall_stone.brick.name=Nether Brick Wall
+tile.nethercore.wall_stone.redbrick.name=Red Nether Brick Wall
 
 tile.nethercore.nether_grass.name=Nether Growth
 tile.nethercore.nether_grass.tooltip=Prevents mob spawns in the Nether

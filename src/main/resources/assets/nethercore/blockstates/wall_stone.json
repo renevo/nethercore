@@ -30,6 +30,13 @@
         "wall": "minecraft:blocks/nether_brick"
       }
     }],
+    "inventory_redbrick": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "minecraft:blocks/red_nether_brick"
+      }
+    }],
     "north": {
       "true": {
         "submodel": "minecraft:wall_side"
@@ -77,6 +84,11 @@
       "brick": {
         "textures": {
           "wall": "minecraft:blocks/nether_brick"
+        }
+      },
+      "redbrick": {
+        "textures": {
+          "wall": "minecraft:blocks/red_nether_brick"
         }
       }
     },
