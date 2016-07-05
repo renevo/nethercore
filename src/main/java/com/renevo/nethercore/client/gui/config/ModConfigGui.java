@@ -14,8 +14,6 @@ public class ModConfigGui extends GuiConfig {
     }
 
     private static List<IConfigElement> getConfigElements() {
-        List<IConfigElement> list = new ArrayList<IConfigElement>();
-
-        return list;
+        return new ArrayList<IConfigElement>();
     }
 }

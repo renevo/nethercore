@@ -17,7 +17,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -49,14 +49,17 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         this.currentItemBurnTime = 0;
     }
 
+    @Override
     public int getSizeInventory() {
         return this.furnaceItemStacks.length;
     }
 
+    @Override
     public ItemStack getStackInSlot(int slotIndex) {
         return this.furnaceItemStacks[slotIndex];
     }
 
+    @Override
     public ItemStack decrStackSize(int slotIndex, int amount) {
         if (this.furnaceItemStacks[slotIndex] != null) {
             ItemStack itemstack;
@@ -77,6 +80,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         }
     }
 
+    @Override
     public ItemStack removeStackFromSlot(int slotIndex) {
         if (this.furnaceItemStacks[slotIndex] != null) {
             ItemStack itemstack = this.furnaceItemStacks[slotIndex];
@@ -87,6 +91,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         }
     }
 
+    @Override
     public void setInventorySlotContents(int slotIndex, ItemStack itemStack) {
         boolean canInsert = itemStack != null && itemStack.isItemEqual(this.furnaceItemStacks[slotIndex]) && ItemStack.areItemStackTagsEqual(itemStack, this.furnaceItemStacks[slotIndex]);
         this.furnaceItemStacks[slotIndex] = itemStack;
@@ -102,10 +107,12 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
 
     }
 
+    @Override
     public String getName() {
         return this.hasCustomName() ? this.furnaceCustomName : "container." + Util.prefix("nether_furnace");
     }
 
+    @Override
     public boolean hasCustomName() {
         return this.furnaceCustomName != null && this.furnaceCustomName.length() > 0;
     }
@@ -114,6 +121,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         this.furnaceCustomName = name;
     }
 
+    @Override
     public void readFromNBT(NBTTagCompound tagCompound) {
         super.readFromNBT(tagCompound);
         NBTTagList nbttaglist = tagCompound.getTagList("Items", 10);
@@ -137,6 +145,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
 
     }
 
+    @Override
     public void writeToNBT(NBTTagCompound tagCompound) {
         super.writeToNBT(tagCompound);
         tagCompound.setShort("BurnTime", (short) this.furnaceBurnTime);
@@ -160,6 +169,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
 
     }
 
+    @Override
     public int getInventoryStackLimit() {
         return 64;
     }
@@ -173,6 +183,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         return inventory.getField(0) > 0;
     }
 
+    @Override
     public void update() {
         boolean burning = this.isBurning();
         boolean updated = false;
@@ -284,20 +295,25 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         }
     }
 
+    @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
         return this.worldObj.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
+    @Override
     public void openInventory(EntityPlayer player) {
     }
 
+    @Override
     public void closeInventory(EntityPlayer player) {
     }
 
+    @Override
     public boolean isItemValidForSlot(int slotIndex, ItemStack itemStack) {
         return slotIndex != 2;
     }
 
+    @Override
     public int[] getSlotsForFace(EnumFacing facing) {
         if (facing == EnumFacing.DOWN) {
             return slotsBottom;
@@ -310,23 +326,28 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         return new int[0];
     }
 
+    @Override
     public boolean canInsertItem(int slotIndex, ItemStack itemStack, EnumFacing facing) {
         return this.isItemValidForSlot(slotIndex, itemStack);
     }
 
+    @Override
     public boolean canExtractItem(int slotIndex, ItemStack itemStack, EnumFacing facing) {
         return true;
     }
 
+    @Override
     public String getGuiID() {
         // not sure what this does
         return Util.resource("nether_furnace");
     }
 
+    @Override
     public Container createContainer(InventoryPlayer inventory, EntityPlayer player) {
         return new ContainerNetherFurnace(inventory, this);
     }
 
+    @Override
     public int getField(int fieldId) {
         switch (fieldId) {
             case 0:
@@ -342,6 +363,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         }
     }
 
+    @Override
     public void setField(int fieldId, int fieldValue) {
         switch (fieldId) {
             case 0:
@@ -359,10 +381,12 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
 
     }
 
+    @Override
     public int getFieldCount() {
         return 4;
     }
 
+    @Override
     public void clear() {
         for (int i = 0; i < this.furnaceItemStacks.length; ++i) {
             this.furnaceItemStacks[i] = null;
@@ -371,6 +395,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     @SuppressWarnings("unchecked")
+    @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (facing == null || capability != CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return super.getCapability(capability, facing);

@@ -6,9 +6,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
+import java.util.Locale;
 
 public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabType> {
     public static final PropertyEnum<SlabType> VARIANT = PropertyEnum.create("variant", SlabType.class);
@@ -41,7 +43,8 @@ public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabTy
         this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
     }
 
-    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+    @Override
+    public boolean canCreatureSpawn(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
         return false;
     }
 
@@ -59,7 +62,7 @@ public abstract class BlockStoneSlab extends EnumBlockSlab<BlockStoneSlab.SlabTy
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override

@@ -1,19 +1,69 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "transform": "forge:default-block",
-    "model": "minecraft:wall_post",
+    "model": "nethercore:dummy",
     "textures": {
-      "wall": "nethercore:blocks/nether_stone_cobble"
-    }
+      "texture": "nethercore:blocks/nether_stone"
+    },
+    "uvlock": true,
+    "transform": "forge:default-block"
   },
   "variants": {
-    "east": {"true": {}, "false": {}},
-    "north": {"true": {}, "false": {}},
-    "south": {"true": {}, "false": {}},
-    "up": {"true": {}, "false": {}},
-    "west": {"true": {}, "false": {}},
-    "variant": {
+    "inventory_stone": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "nethercore:blocks/nether_stone"
+      }
+    }],
+    "inventory_cobblestone": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "nethercore:blocks/nether_stone_cobble"
+      }
+    }],
+    "inventory_brick": [{
+      "model": "minecraft:wall_inventory",
+      "y": 180,
+      "textures": {
+        "wall": "minecraft:blocks/nether_brick"
+      }
+    }],
+    "north": {
+      "true": {
+        "submodel": "minecraft:wall_side"
+      },
+      "false": {}
+    },
+    "south": {
+      "true": {
+        "submodel": "minecraft:wall_side",
+        "y": 180
+      },
+      "false": {}
+    },
+    "west": {
+      "true": {
+        "submodel": "minecraft:wall_side",
+        "y": 270
+      },
+      "false": {}
+    },
+    "east": {
+      "true": {
+        "submodel": "minecraft:wall_side",
+        "y": 90
+      },
+      "false": {}
+    },
+    "up": {
+      "true": {
+        "submodel": "minecraft:wall_post"
+      },
+      "false": {}
+    },
+    "stone_variant": {
       "stone": {
         "textures": {
           "wall": "nethercore:blocks/nether_stone"
@@ -30,103 +80,9 @@
         }
       }
     },
-    "east=false,north=false,south=false,up=false,variant=cobblestone,west=false": {"model": "minecraft:wall_post" },
-    "east=false,north=true,south=false,up=false,variant=cobblestone,west=false":  {"model": "minecraft:wall_n" },
-    "east=true,north=false,south=false,up=false,variant=cobblestone,west=false":  {"model": "minecraft:wall_n", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=false,variant=cobblestone,west=false":  {"model": "minecraft:wall_n", "y": 180, "uvlock": true },
-    "east=false,north=false,south=false,up=false,variant=cobblestone,west=true":  {"model": "minecraft:wall_n", "y": 270, "uvlock": true },
-    "east=true,north=true,south=false,up=false,variant=cobblestone,west=false":   {"model": "minecraft:wall_ne" },
-    "east=true,north=false,south=true,up=false,variant=cobblestone,west=false":   {"model": "minecraft:wall_ne", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=false,variant=cobblestone,west=true":   {"model": "minecraft:wall_ne", "y": 180, "uvlock": true },
-    "east=false,north=true,south=false,up=false,variant=cobblestone,west=true":   {"model": "minecraft:wall_ne", "y": 270, "uvlock": true },
-    "east=false,north=true,south=true,up=false,variant=cobblestone,west=false":   {"model": "minecraft:wall_ns" },
-    "east=true,north=false,south=false,up=false,variant=cobblestone,west=true":   {"model": "minecraft:wall_ns", "y": 90, "uvlock": true },
-    "east=true,north=true,south=true,up=false,variant=cobblestone,west=false":    {"model": "minecraft:wall_nse" },
-    "east=true,north=false,south=true,up=false,variant=cobblestone,west=true":    {"model": "minecraft:wall_nse", "y": 90, "uvlock": true },
-    "east=false,north=true,south=true,up=false,variant=cobblestone,west=true":    {"model": "minecraft:wall_nse", "y": 180, "uvlock": true },
-    "east=true,north=true,south=false,up=false,variant=cobblestone,west=true":    {"model": "minecraft:wall_nse", "y": 270, "uvlock": true },
-    "east=true,north=true,south=true,up=false,variant=cobblestone,west=true":     {"model": "minecraft:wall_nsew" },
-    "east=false,north=false,south=false,up=true,variant=cobblestone,west=false":  {"model": "minecraft:wall_post" },
-    "east=false,north=true,south=false,up=true,variant=cobblestone,west=false":   {"model": "minecraft:wall_n" },
-    "east=true,north=false,south=false,up=true,variant=cobblestone,west=false":   {"model": "minecraft:wall_n", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=true,variant=cobblestone,west=false":   {"model": "minecraft:wall_n", "y": 180, "uvlock": true },
-    "east=false,north=false,south=false,up=true,variant=cobblestone,west=true":   {"model": "minecraft:wall_n", "y": 270, "uvlock": true },
-    "east=true,north=true,south=false,up=true,variant=cobblestone,west=false":    {"model": "minecraft:wall_ne" },
-    "east=true,north=false,south=true,up=true,variant=cobblestone,west=false":    {"model": "minecraft:wall_ne", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=true,variant=cobblestone,west=true":    {"model": "minecraft:wall_ne", "y": 180, "uvlock": true },
-    "east=false,north=true,south=false,up=true,variant=cobblestone,west=true":    {"model": "minecraft:wall_ne", "y": 270, "uvlock": true },
-    "east=false,north=true,south=true,up=true,variant=cobblestone,west=false":    {"model": "minecraft:wall_ns_above" },
-    "east=true,north=false,south=false,up=true,variant=cobblestone,west=true":    {"model": "minecraft:wall_ns_above", "y": 90, "uvlock": true },
-    "east=true,north=true,south=true,up=true,variant=cobblestone,west=false":     {"model": "minecraft:wall_nse" },
-    "east=true,north=false,south=true,up=true,variant=cobblestone,west=true":     {"model": "minecraft:wall_nse", "y": 90, "uvlock": true },
-    "east=false,north=true,south=true,up=true,variant=cobblestone,west=true":     {"model": "minecraft:wall_nse", "y": 180, "uvlock": true },
-    "east=true,north=true,south=false,up=true,variant=cobblestone,west=true":     {"model": "minecraft:wall_nse", "y": 270, "uvlock": true },
-    "east=true,north=true,south=true,up=true,variant=cobblestone,west=true":      {"model": "minecraft:wall_nsew" },
-
-    "east=false,north=false,south=false,up=false,variant=stone,west=false": {"model": "minecraft:wall_post" },
-    "east=false,north=true,south=false,up=false,variant=stone,west=false":  {"model": "minecraft:wall_n" },
-    "east=true,north=false,south=false,up=false,variant=stone,west=false":  {"model": "minecraft:wall_n", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=false,variant=stone,west=false":  {"model": "minecraft:wall_n", "y": 180, "uvlock": true },
-    "east=false,north=false,south=false,up=false,variant=stone,west=true":  {"model": "minecraft:wall_n", "y": 270, "uvlock": true },
-    "east=true,north=true,south=false,up=false,variant=stone,west=false":   {"model": "minecraft:wall_ne" },
-    "east=true,north=false,south=true,up=false,variant=stone,west=false":   {"model": "minecraft:wall_ne", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=false,variant=stone,west=true":   {"model": "minecraft:wall_ne", "y": 180, "uvlock": true },
-    "east=false,north=true,south=false,up=false,variant=stone,west=true":   {"model": "minecraft:wall_ne", "y": 270, "uvlock": true },
-    "east=false,north=true,south=true,up=false,variant=stone,west=false":   {"model": "minecraft:wall_ns" },
-    "east=true,north=false,south=false,up=false,variant=stone,west=true":   {"model": "minecraft:wall_ns", "y": 90, "uvlock": true },
-    "east=true,north=true,south=true,up=false,variant=stone,west=false":    {"model": "minecraft:wall_nse" },
-    "east=true,north=false,south=true,up=false,variant=stone,west=true":    {"model": "minecraft:wall_nse", "y": 90, "uvlock": true },
-    "east=false,north=true,south=true,up=false,variant=stone,west=true":    {"model": "minecraft:wall_nse", "y": 180, "uvlock": true },
-    "east=true,north=true,south=false,up=false,variant=stone,west=true":    {"model": "minecraft:wall_nse", "y": 270, "uvlock": true },
-    "east=true,north=true,south=true,up=false,variant=stone,west=true":     {"model": "minecraft:wall_nsew" },
-    "east=false,north=false,south=false,up=true,variant=stone,west=false":  {"model": "minecraft:wall_post" },
-    "east=false,north=true,south=false,up=true,variant=stone,west=false":   {"model": "minecraft:wall_n" },
-    "east=true,north=false,south=false,up=true,variant=stone,west=false":   {"model": "minecraft:wall_n", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=true,variant=stone,west=false":   {"model": "minecraft:wall_n", "y": 180, "uvlock": true },
-    "east=false,north=false,south=false,up=true,variant=stone,west=true":   {"model": "minecraft:wall_n", "y": 270, "uvlock": true },
-    "east=true,north=true,south=false,up=true,variant=stone,west=false":    {"model": "minecraft:wall_ne" },
-    "east=true,north=false,south=true,up=true,variant=stone,west=false":    {"model": "minecraft:wall_ne", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=true,variant=stone,west=true":    {"model": "minecraft:wall_ne", "y": 180, "uvlock": true },
-    "east=false,north=true,south=false,up=true,variant=stone,west=true":    {"model": "minecraft:wall_ne", "y": 270, "uvlock": true },
-    "east=false,north=true,south=true,up=true,variant=stone,west=false":    {"model": "minecraft:wall_ns_above" },
-    "east=true,north=false,south=false,up=true,variant=stone,west=true":    {"model": "minecraft:wall_ns_above", "y": 90, "uvlock": true },
-    "east=true,north=true,south=true,up=true,variant=stone,west=false":     {"model": "minecraft:wall_nse" },
-    "east=true,north=false,south=true,up=true,variant=stone,west=true":     {"model": "minecraft:wall_nse", "y": 90, "uvlock": true },
-    "east=false,north=true,south=true,up=true,variant=stone,west=true":     {"model": "minecraft:wall_nse", "y": 180, "uvlock": true },
-    "east=true,north=true,south=false,up=true,variant=stone,west=true":     {"model": "minecraft:wall_nse", "y": 270, "uvlock": true },
-    "east=true,north=true,south=true,up=true,variant=stone,west=true":      {"model": "minecraft:wall_nsew" },
-
-    "east=false,north=false,south=false,up=false,variant=brick,west=false": {"model": "minecraft:wall_post" },
-    "east=false,north=true,south=false,up=false,variant=brick,west=false":  {"model": "minecraft:wall_n" },
-    "east=true,north=false,south=false,up=false,variant=brick,west=false":  {"model": "minecraft:wall_n", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=false,variant=brick,west=false":  {"model": "minecraft:wall_n", "y": 180, "uvlock": true },
-    "east=false,north=false,south=false,up=false,variant=brick,west=true":  {"model": "minecraft:wall_n", "y": 270, "uvlock": true },
-    "east=true,north=true,south=false,up=false,variant=brick,west=false":   {"model": "minecraft:wall_ne" },
-    "east=true,north=false,south=true,up=false,variant=brick,west=false":   {"model": "minecraft:wall_ne", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=false,variant=brick,west=true":   {"model": "minecraft:wall_ne", "y": 180, "uvlock": true },
-    "east=false,north=true,south=false,up=false,variant=brick,west=true":   {"model": "minecraft:wall_ne", "y": 270, "uvlock": true },
-    "east=false,north=true,south=true,up=false,variant=brick,west=false":   {"model": "minecraft:wall_ns" },
-    "east=true,north=false,south=false,up=false,variant=brick,west=true":   {"model": "minecraft:wall_ns", "y": 90, "uvlock": true },
-    "east=true,north=true,south=true,up=false,variant=brick,west=false":    {"model": "minecraft:wall_nse" },
-    "east=true,north=false,south=true,up=false,variant=brick,west=true":    {"model": "minecraft:wall_nse", "y": 90, "uvlock": true },
-    "east=false,north=true,south=true,up=false,variant=brick,west=true":    {"model": "minecraft:wall_nse", "y": 180, "uvlock": true },
-    "east=true,north=true,south=false,up=false,variant=brick,west=true":    {"model": "minecraft:wall_nse", "y": 270, "uvlock": true },
-    "east=true,north=true,south=true,up=false,variant=brick,west=true":     {"model": "minecraft:wall_nsew" },
-    "east=false,north=false,south=false,up=true,variant=brick,west=false":  {"model": "minecraft:wall_post" },
-    "east=false,north=true,south=false,up=true,variant=brick,west=false":   {"model": "minecraft:wall_n" },
-    "east=true,north=false,south=false,up=true,variant=brick,west=false":   {"model": "minecraft:wall_n", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=true,variant=brick,west=false":   {"model": "minecraft:wall_n", "y": 180, "uvlock": true },
-    "east=false,north=false,south=false,up=true,variant=brick,west=true":   {"model": "minecraft:wall_n", "y": 270, "uvlock": true },
-    "east=true,north=true,south=false,up=true,variant=brick,west=false":    {"model": "minecraft:wall_ne" },
-    "east=true,north=false,south=true,up=true,variant=brick,west=false":    {"model": "minecraft:wall_ne", "y": 90, "uvlock": true },
-    "east=false,north=false,south=true,up=true,variant=brick,west=true":    {"model": "minecraft:wall_ne", "y": 180, "uvlock": true },
-    "east=false,north=true,south=false,up=true,variant=brick,west=true":    {"model": "minecraft:wall_ne", "y": 270, "uvlock": true },
-    "east=false,north=true,south=true,up=true,variant=brick,west=false":    {"model": "minecraft:wall_ns_above" },
-    "east=true,north=false,south=false,up=true,variant=brick,west=true":    {"model": "minecraft:wall_ns_above", "y": 90, "uvlock": true },
-    "east=true,north=true,south=true,up=true,variant=brick,west=false":     {"model": "minecraft:wall_nse" },
-    "east=true,north=false,south=true,up=true,variant=brick,west=true":     {"model": "minecraft:wall_nse", "y": 90, "uvlock": true },
-    "east=false,north=true,south=true,up=true,variant=brick,west=true":     {"model": "minecraft:wall_nse", "y": 180, "uvlock": true },
-    "east=true,north=true,south=false,up=true,variant=brick,west=true":     {"model": "minecraft:wall_nse", "y": 270, "uvlock": true },
-    "east=true,north=true,south=true,up=true,variant=brick,west=true":      {"model": "minecraft:wall_nsew" }
+    "variant": {
+      "cobblestone": {},
+      "mossy_cobblestone": {}
+    }
   }
 }

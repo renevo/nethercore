@@ -2,16 +2,18 @@ package com.renevo.nethercore.common;
 
 import com.renevo.nethercore.Util;
 import com.renevo.nethercore.blocks.BlockStoneSlab;
+import com.renevo.nethercore.blocks.BlockStoneWall;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
-import com.renevo.nethercore.client.ItemBlockModelSetter;
 import com.renevo.nethercore.item.NetherCoreItems;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
+import slimeknights.mantle.item.ItemBlockMeta;
 
 import java.util.Locale;
 
+@SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy {
 
     @Override
@@ -33,10 +35,13 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerModels() {
-        MinecraftForge.EVENT_BUS.register(new ItemBlockModelSetter());
-
         // individual items
         Item itemToAdd;
+
+        // enum blocks
+        registerItemBlockMeta(NetherCoreBlocks.blockCompressedNetherrack);
+        registerItemBlockMeta(NetherCoreBlocks.blockNetherOre);
+        registerItemBlockMeta(NetherCoreBlocks.blockNetherStone);
 
         // stairs
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneStairs);
@@ -50,6 +55,13 @@ public class ClientProxy extends CommonProxy {
         itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherHalfSlab);
         for (BlockStoneSlab.SlabType t : BlockStoneSlab.SlabType.values()) {
             ModelLoader.setCustomModelResourceLocation(itemToAdd, t.getMeta(), new ModelResourceLocation(Util.getResource("slab_half_stone"), "half=bottom,variant=" + t.getName().toLowerCase(Locale.US)));
+        }
+
+        // walls
+        itemToAdd = Item.getItemFromBlock(NetherCoreBlocks.blockNetherStoneWall);
+        for (BlockStoneWall.WallType wall : BlockStoneWall.WallType.values()) {
+            String variantName = "inventory_" + wall.getName();
+            ModelLoader.setCustomModelResourceLocation(itemToAdd, wall.getMeta(), new ModelResourceLocation(itemToAdd.getRegistryName(), variantName));
         }
 
         // grass
@@ -75,5 +87,13 @@ public class ClientProxy extends CommonProxy {
 
         itemToAdd = NetherCoreItems.netherCoal;
         ModelLoader.setCustomModelResourceLocation(itemToAdd, 0, new ModelResourceLocation(Util.getResource("nether_coal"), "inventory"));
+    }
+
+    private void registerItemBlockMeta(Block block) {
+        if (block == null) {
+            return;
+        }
+
+        ((ItemBlockMeta)Item.getItemFromBlock(block)).registerItemModels();
     }
 }

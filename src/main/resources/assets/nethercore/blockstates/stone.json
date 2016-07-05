@@ -9,6 +9,8 @@
     }
   },
   "variants": {
+    "inventory": [{}],
+    "normal": [{}],
     "type": {
       "stone": {
         "textures": {

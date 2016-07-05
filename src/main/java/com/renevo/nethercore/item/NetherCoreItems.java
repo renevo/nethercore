@@ -5,6 +5,9 @@ import com.renevo.nethercore.blocks.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
+
+import java.util.Locale;
 
 public final class NetherCoreItems {
     private NetherCoreItems() {
@@ -63,8 +66,8 @@ public final class NetherCoreItems {
     public static ItemStack netherCoalBlock;
 
     public static void init() {
-        GameRegistry.registerItem(netherSpore = new ItemNetherSpore().setUnlocalizedName(Util.prefix("nether_spore")), "nether_spore");
-        GameRegistry.registerItem(netherCoal = new ItemNetherCoal().setUnlocalizedName(Util.prefix("nether_coal")), "nether_coal");
+        registerItem(netherSpore = new ItemNetherSpore().setUnlocalizedName(Util.prefix("nether_spore")), "nether_spore");
+        registerItem(netherCoal = new ItemNetherCoal().setUnlocalizedName(Util.prefix("nether_coal")), "nether_coal");
 
         // item blocks
         netherOreCoal = new ItemStack(NetherCoreBlocks.blockNetherOre, 1, BlockNetherOre.OreTypes.COAL.getMeta());
@@ -114,5 +117,23 @@ public final class NetherCoreItems {
         soulGlass = new ItemStack(NetherCoreBlocks.blockSoulGlass);
 
         netherCoalBlock = new ItemStack(NetherCoreBlocks.blockNetherCoal);
+    }
+
+
+    protected static <T extends Item> T registerItem(T item, String name) {
+        if (!name.equals(name.toLowerCase(Locale.US))) {
+            throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Item: %s", name));
+        }
+
+        String prefixedName = Util.prefix(name);
+        item.setUnlocalizedName(prefixedName);
+        register(item, name);
+        return item;
+    }
+
+    protected static <T extends IForgeRegistryEntry<?>> T register(T thing, String name) {
+        thing.setRegistryName(Util.getResource(name));
+        GameRegistry.register(thing);
+        return thing;
     }
 }

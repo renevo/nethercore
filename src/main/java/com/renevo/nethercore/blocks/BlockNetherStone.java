@@ -1,14 +1,16 @@
 package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import slimeknights.mantle.block.EnumBlock;
+
+import java.util.Locale;
 
 public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
 
@@ -23,7 +25,8 @@ public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
         this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
     }
 
-    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+    @Override
+    public boolean canCreatureSpawn(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
         return false;
     }
 
@@ -45,7 +48,7 @@ public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override

@@ -2,20 +2,17 @@ package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -30,7 +27,7 @@ public class BlockNetherGrass extends Block {
         this.setTickRandomly(true);
 
         this.setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
-        this.setHardness(Blocks.netherrack.getBlockHardness(null, null));
+        this.setHardness(Blocks.netherrack.getBlockHardness(null, null, null));
         this.setResistance(Blocks.netherrack.getExplosionResistance(null));
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(BURNING, false));
@@ -38,11 +35,12 @@ public class BlockNetherGrass extends Block {
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 
+    @Override
     public void updateTick(World world, BlockPos blockPos, IBlockState blockState, Random random) {
         if (!world.isRemote) {
             if (world.provider.doesWaterVaporize()) {
                 int rate = blockState.getValue(BURNING) ? 12 : 4;
-                Block blockUp = world.getBlockState(blockPos.up()).getBlock();
+                IBlockState blockUp = world.getBlockState(blockPos.up());
                 if (blockUp.isOpaqueCube()) {
                     world.setBlockState(blockPos, Blocks.netherrack.getDefaultState());
                     return;
@@ -50,7 +48,7 @@ public class BlockNetherGrass extends Block {
 
                 for (int i = 0; i < rate; ++i) {
                     BlockPos blockpos = blockPos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                    Block blockOnTop = world.getBlockState(blockpos.up()).getBlock();
+                    IBlockState blockOnTop = world.getBlockState(blockpos.up());
                     if (blockOnTop.isOpaqueCube()) {
                         continue; // just don't process
                     }
@@ -59,14 +57,14 @@ public class BlockNetherGrass extends Block {
 
                     if (iblockstate.getBlock() == Blocks.netherrack) {
                         world.setBlockState(blockpos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
-                        if (blockOnTop.isAir(world, blockpos.up())) {
+                        if (blockOnTop.getMaterial() == Material.air) {
                             world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
                         }
                     }
 
                     if (iblockstate.getBlock() == NetherCoreBlocks.blockNetherOre && iblockstate.getBlock().getMetaFromState(iblockstate) == BlockNetherOre.OreTypes.COAL.getMeta()) {
                         world.setBlockState(blockpos, NetherCoreBlocks.blockNetherOre.getDefaultState().withProperty(BlockNetherOre.TYPE, BlockNetherOre.OreTypes.NETHERCOAL));
-                        if (blockOnTop.isAir(world, blockpos.up())) {
+                        if (blockOnTop.getMaterial() == Material.air) {
                             world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
                         }
                     }
@@ -75,29 +73,34 @@ public class BlockNetherGrass extends Block {
         }
     }
 
+    @Override
     public IBlockState getActualState(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
         Block block = blockAccess.getBlockState(blockPos.up()).getBlock();
         return blockState.withProperty(BURNING, block == Blocks.fire || block == Blocks.lava || block == Blocks.flowing_lava);
     }
 
+    @Override
     public Item getItemDropped(IBlockState blockState, Random random, int meta) {
         return Blocks.netherrack.getItemDropped(Blocks.netherrack.getDefaultState(), random, meta);
     }
 
-    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+    @Override
+    public boolean canCreatureSpawn(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
         return false;
     }
 
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer() {
-        return EnumWorldBlockLayer.CUTOUT_MIPPED;
+    @Override
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
-
+    @Override
     public int getMetaFromState(IBlockState blockState) {
         return 0;
     }
 
-    protected BlockState createBlockState() {
-        return new BlockState(this, BURNING);
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, BURNING);
     }
 }

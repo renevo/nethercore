@@ -9,16 +9,6 @@ import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 @JEIPlugin
 public class NetherCorePlugin implements IModPlugin {
     @Override
-    public void onJeiHelpersAvailable(IJeiHelpers jeiHelpers) { }
-
-    @Override
-    public void onItemRegistryAvailable(IItemRegistry itemRegistry) { }
-
-    @Override
-    @Deprecated
-    public void onRecipeRegistryAvailable(IRecipeRegistry recipeRegistry) { }
-
-    @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntime) { }
 
     @Override

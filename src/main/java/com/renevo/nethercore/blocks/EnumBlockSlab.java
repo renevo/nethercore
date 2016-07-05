@@ -6,14 +6,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -21,6 +19,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+// TODO: switch to mantle version
 public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta & IStringSerializable> extends BlockSlab {
     private final E[] values;
     public static final PropertyBool SEAMLESS = PropertyBool.create("seamless");
@@ -39,12 +38,8 @@ public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta 
     public abstract Block halfSlab();
     public abstract Block fullSlab();
 
+    @Override
     public Item getItemDropped(IBlockState blockState, Random random, int fortune) {
-        return Item.getItemFromBlock(this.halfSlab());
-    }
-
-    @SideOnly(Side.CLIENT)
-    public Item getItem(World world, BlockPos blockPos) {
         return Item.getItemFromBlock(this.halfSlab());
     }
 
@@ -65,10 +60,10 @@ public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta 
     }
 
     @Override
-    protected BlockState createBlockState() {
+    protected BlockStateContainer createBlockState() {
         return this.isDouble()
-                ? new BlockState(this, SEAMLESS, prop == null ? tmp : prop)
-                : new BlockState(this, HALF, prop == null ? tmp : prop);
+                ? new BlockStateContainer(this, SEAMLESS, prop == null ? tmp : prop)
+                : new BlockStateContainer(this, HALF, prop == null ? tmp : prop);
     }
 
     @Override
@@ -117,13 +112,15 @@ public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta 
     }
 
     @Override
-    public Object getVariant(ItemStack itemStack) {
+    @SuppressWarnings("unchecked")
+    public Comparable<?> getTypeForItem(ItemStack itemStack) {
         int meta = itemStack.getMetadata() & 7;
         Object[] values = this.prop.getAllowedValues().toArray();
         if (meta < 0 || meta >= values.length)
             meta = 0;
 
-        return values[meta];
+        // TODO: Get rid of this unchecked
+        return (E)values[meta];
     }
 
     @Override

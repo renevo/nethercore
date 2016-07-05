@@ -51,9 +51,9 @@ public final class NetherCoreAchievements {
 
     @SubscribeEvent
     public void onPlayerPickupEntity(EntityItemPickupEvent pickupEvent) {
-        Item baseItem = pickupEvent.item.getEntityItem().getItem();
+        Item baseItem = pickupEvent.getItem().getEntityItem().getItem();
         if (baseItem instanceof ItemBlock && ((ItemBlock)baseItem).getBlock() == NetherCoreBlocks.blockNetherOre) {
-            pickupEvent.entityPlayer.addStat(netherOreAchievement, 1);
+            pickupEvent.getEntityPlayer().addStat(netherOreAchievement, 1);
         }
     }
 

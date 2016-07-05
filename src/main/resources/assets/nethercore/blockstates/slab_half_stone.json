@@ -10,6 +10,8 @@
     }
   },
   "variants": {
+    "inventory": [{}],
+    "normal": [{}],
     "half": {
       "bottom": {
         "model": "half_slab"

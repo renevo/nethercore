@@ -2,7 +2,6 @@ package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
 import com.renevo.nethercore.item.NetherCoreItems;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
@@ -11,10 +10,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import slimeknights.mantle.block.EnumBlock;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
@@ -41,8 +43,8 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
     }
 
     @Override
-    public int getExpDrop(IBlockAccess world, BlockPos blockPos, int fortune) {
-        OreTypes meta = OreTypes.values()[this.getMetaFromState(world.getBlockState(blockPos))];
+    public int getExpDrop(IBlockState blockState, IBlockAccess world, BlockPos blockPos, int fortune) {
+        OreTypes meta = OreTypes.values()[this.getMetaFromState(blockState)];
         int xp = 0;
         Random rand = world instanceof World ? ((World) world).rand : new Random();
 
@@ -126,11 +128,6 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         return 0;
     }
 
-    @Override
-    public int getDamageValue(World world, BlockPos blockPos) {
-        return this.getMetaFromState(world.getBlockState(blockPos));
-    }
-
     public int quantityDroppedWithBonus(int baseRate, int bonus, Random random) {
         if (bonus > 0) {
             int i = random.nextInt(bonus + 2) - 1;
@@ -145,7 +142,7 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
     }
 
     @Override
-    public boolean canCreatureSpawn(IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
+    public boolean canCreatureSpawn(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos, EntityLiving.SpawnPlacementType spawnPlacementType) {
         OreTypes meta = OreTypes.values()[this.getMetaFromState(blockAccess.getBlockState(blockPos))];
         return meta != OreTypes.NETHERCOAL;
     }
@@ -168,7 +165,7 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
 
         @Override
         public String getName() {
-            return this.toString();
+            return this.toString().toLowerCase(Locale.US);
         }
 
         @Override
