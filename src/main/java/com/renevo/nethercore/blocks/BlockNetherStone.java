@@ -17,12 +17,12 @@ public class BlockNetherStone extends EnumBlock<BlockNetherStone.StoneType> {
     public final static PropertyEnum<StoneType> TYPE = PropertyEnum.create("type", StoneType.class);
 
     public BlockNetherStone() {
-        super(Material.rock, TYPE, StoneType.class);
+        super(Material.ROCK, TYPE, StoneType.class);
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
         this.setHardness(3F);
         this.setResistance(20F);
         this.setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
-        this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+        this.setSoundType(NetherCoreBlocks.soundTypeNetherStone);
     }
 
     @Override

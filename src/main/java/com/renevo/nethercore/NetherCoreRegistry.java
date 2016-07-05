@@ -18,27 +18,28 @@ public final class NetherCoreRegistry {
     private NetherCoreRegistry() {
     }
 
-    public static CreativeTab tabNetherCore = new CreativeTab("NetherCore", new ItemStack(Blocks.netherrack));
+    public static CreativeTab tabNetherCore = new CreativeTab("NetherCore", new ItemStack(Blocks.NETHERRACK));
 
     public static void registerSmelting() {
-        GameRegistry.addSmelting(NetherCoreItems.netherOreCoal.copy(), new ItemStack(Items.coal, 2), 0.0f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreIron.copy(), new ItemStack(Blocks.iron_ore, 2), 0.2f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreGold.copy(), new ItemStack(Blocks.gold_ore, 2), 0.2f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreRedstone.copy(), new ItemStack(Items.redstone, 2), 0.2f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.dye, 2, EnumDyeColor.BLUE.getDyeDamage()), 0.2f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreDiamond.copy(), new ItemStack(Items.diamond, 2), 0.2f);
-        GameRegistry.addSmelting(NetherCoreItems.netherOreEmerald.copy(), new ItemStack(Items.emerald, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreCoal.copy(), new ItemStack(Items.COAL, 2), 0.0f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreIron.copy(), new ItemStack(Blocks.IRON_ORE, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreGold.copy(), new ItemStack(Blocks.GOLD_ORE, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreRedstone.copy(), new ItemStack(Items.REDSTONE, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreLapis.copy(), new ItemStack(Items.DYE, 2, EnumDyeColor.BLUE.getDyeDamage()), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreDiamond.copy(), new ItemStack(Items.DIAMOND, 2), 0.2f);
+        GameRegistry.addSmelting(NetherCoreItems.netherOreEmerald.copy(), new ItemStack(Items.EMERALD, 2), 0.2f);
 
         GameRegistry.addSmelting(NetherCoreItems.stoneCobble, NetherCoreItems.stone, 0.2F);
         GameRegistry.addSmelting(NetherCoreItems.stoneBrick, NetherCoreItems.stoneBrickCracked, 0.0F);
 
         // collides with Soul Shards - The old way, need to adjust if present
+        // TODO: Alternate recipe - not sure
         if (Config.enableSoulGlassRecipe) {
-            GameRegistry.addSmelting(Blocks.soul_sand, NetherCoreItems.soulGlass, 0.0F);
+            GameRegistry.addSmelting(Blocks.SOUL_SAND, NetherCoreItems.soulGlass, 0.0F);
         }
 
         if (Config.enableSmeltedNetherStar) {
-            GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.nether_star, 1), 10.0f);
+            GameRegistry.addSmelting(NetherCoreItems.compressedNetherrackOctuple, new ItemStack(Items.NETHER_STAR, 1), 10.0f);
         }
     }
 
@@ -51,6 +52,8 @@ public final class NetherCoreRegistry {
         OreDictionary.registerOre("oreNetherDiamond", NetherCoreItems.netherOreDiamond.copy());
         OreDictionary.registerOre("oreNetherEmerald", NetherCoreItems.netherOreEmerald.copy());
         OreDictionary.registerOre("oreNetherNetherCoal", NetherCoreItems.netherOreNetherCoal.copy());
+
+        OreDictionary.registerOre("cobblestone", NetherCoreItems.stoneCobble.copy());
     }
 
     public static void registerFuels() {
@@ -58,40 +61,56 @@ public final class NetherCoreRegistry {
     }
 
     public static void registerRecipes() {
-        GameRegistry.addRecipe(NetherCoreItems.stoneCobble,
-                "##",
-                "##",
-                '#', Blocks.netherrack);
+        ItemStack result;
 
-        GameRegistry.addRecipe(NetherCoreItems.stoneBrick,
+        result = NetherCoreItems.stoneCobble.copy();
+        result.stackSize = 1;
+        GameRegistry.addRecipe(result,
+                "##",
+                "##",
+                '#', Blocks.NETHERRACK);
+
+        result = NetherCoreItems.stoneBrick.copy();
+        result.stackSize = 4;
+        GameRegistry.addRecipe(result,
                 "##",
                 "##",
                 '#', NetherCoreItems.stone);
 
-        GameRegistry.addRecipe(NetherCoreItems.stoneRoad,
+        result = NetherCoreItems.stoneRoad.copy();
+        result.stackSize = 4;
+        GameRegistry.addRecipe(result,
                 "##",
                 "##",
                 '#', NetherCoreItems.stoneBrick);
 
-        GameRegistry.addRecipe(NetherCoreItems.stoneCreeper,
+        result = NetherCoreItems.stoneCreeper.copy();
+        result.stackSize = 1;
+        GameRegistry.addRecipe(result,
                 "#",
                 "G",
                 '#', NetherCoreItems.stonePaver,
-                'G', Items.gunpowder);
+                'G', Items.GUNPOWDER);
 
-        GameRegistry.addRecipe(NetherCoreItems.stoneBrickSquare,
+        result = NetherCoreItems.stoneBrickSquare.copy();
+        result.stackSize = 8;
+        GameRegistry.addRecipe(result,
                 "###",
                 "# #",
                 "###",
                 '#', NetherCoreItems.stoneBrick);
 
-        GameRegistry.addRecipe(NetherCoreItems.stoneBrickFancy,
+        result = NetherCoreItems.stoneBrickFancy.copy();
+        result.stackSize = 5;
+        GameRegistry.addRecipe(result,
                 "## ",
                 " # ",
                 " ##",
                 '#', NetherCoreItems.stoneBrick);
 
-        GameRegistry.addRecipe(NetherCoreItems.stonePaver,
+        result = NetherCoreItems.stonePaver.copy();
+        result.stackSize = 7;
+        GameRegistry.addRecipe(result,
                 "###",
                 " # ",
                 "###",
@@ -102,11 +121,11 @@ public final class NetherCoreRegistry {
                     "MGM",
                     "WSW",
                     "BGB",
-                    'M', Items.magma_cream,
-                    'G', Items.ghast_tear,
-                    'S', Items.wheat_seeds,
-                    'B', Items.blaze_powder,
-                    'W', Items.nether_wart);
+                    'M', Items.MAGMA_CREAM,
+                    'G', Items.GHAST_TEAR,
+                    'S', Items.WHEAT_SEEDS,
+                    'B', Items.BLAZE_POWDER,
+                    'W', Items.NETHER_WART);
         }
 
         if (Config.enableNetherFurnaceRecipe) {
@@ -115,21 +134,21 @@ public final class NetherCoreRegistry {
                     "CMC",
                     "CCC",
                     'C', NetherCoreItems.stoneCobble,
-                    'M', Items.magma_cream);
+                    'M', Items.MAGMA_CREAM);
         }
 
-        ItemStack netherRods = NetherCoreItems.netherRod.copy();
-        netherRods.stackSize = 4;
-        GameRegistry.addRecipe(netherRods,
+        result = NetherCoreItems.netherRod.copy();
+        result.stackSize = 4;
+        GameRegistry.addRecipe(result,
                 "R",
                 "B",
-                'R', Items.blaze_rod,
-                'B', Blocks.nether_brick);
+                'R', Items.BLAZE_ROD,
+                'B', Blocks.NETHER_BRICK);
 
         addCompressedRecipe(new ItemStack(NetherCoreItems.netherCoal), NetherCoreItems.netherCoalBlock);
 
         if (Config.enableCompressedNetherrackRecipes) {
-            addCompressedRecipe(new ItemStack(Blocks.netherrack), NetherCoreItems.compressedNetherrackSingle);
+            addCompressedRecipe(new ItemStack(Blocks.NETHERRACK), NetherCoreItems.compressedNetherrackSingle);
             addCompressedRecipe(NetherCoreItems.compressedNetherrackSingle, NetherCoreItems.compressedNetherrackDouble);
             addCompressedRecipe(NetherCoreItems.compressedNetherrackDouble, NetherCoreItems.compressedNetherrackTriple);
             addCompressedRecipe(NetherCoreItems.compressedNetherrackTriple, NetherCoreItems.compressedNetherrackQuadruple);
@@ -150,7 +169,7 @@ public final class NetherCoreRegistry {
 
         addWallRecipe(NetherCoreItems.stone, NetherCoreItems.wallStone, false);
         addWallRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.wallStoneCobble, false);
-        addWallRecipe(new ItemStack(Blocks.nether_brick), NetherCoreItems.wallNetherBrick, true);
+        addWallRecipe(new ItemStack(Blocks.NETHER_BRICK), NetherCoreItems.wallNetherBrick, true);
     }
 
     public static void registerIntegrations() {

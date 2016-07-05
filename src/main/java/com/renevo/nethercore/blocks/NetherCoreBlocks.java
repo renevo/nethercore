@@ -73,7 +73,7 @@ public final class NetherCoreBlocks {
         blockLightRod = registerBlock(new BlockLightRod(), "nether_rod");
         blockSoulGlass = registerBlock(new BlockOpaqueGlass(), "soul_glass");
 
-        blockNetherCoal = registerBlock(new Block(Material.rock, MapColor.redColor).setHardness(5.0F).setResistance(10.0F).setCreativeTab(NetherCoreRegistry.tabNetherCore), "nether_coal_block");
+        blockNetherCoal = registerBlock(new Block(Material.ROCK, MapColor.RED).setHardness(5.0F).setResistance(10.0F).setCreativeTab(NetherCoreRegistry.tabNetherCore), "nether_coal_block");
 
         GameRegistry.registerTileEntity(TileEntityNetherFurnace.class, "nether_furnace");
     }

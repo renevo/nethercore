@@ -17,13 +17,13 @@ public class NetherOreGenerator implements IWorldGenerator {
 
     // TODO: configure all these things...
 
-    private static final WorldGenMinable netherCoalGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(0), 16, BlockMatcher.forBlock(Blocks.netherrack));
-    private static final WorldGenMinable netherIronGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(1), 8, BlockMatcher.forBlock(Blocks.netherrack));
-    private static final WorldGenMinable netherGoldGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(2), 8, BlockMatcher.forBlock(Blocks.netherrack));
-    private static final WorldGenMinable netherRedstoneGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(3), 7, BlockMatcher.forBlock(Blocks.netherrack));
-    private static final WorldGenMinable netherLapisGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(4), 6, BlockMatcher.forBlock(Blocks.netherrack));
-    private static final WorldGenMinable netherDiamondGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(5), 7, BlockMatcher.forBlock(Blocks.netherrack));
-    private static final WorldGenMinable netherEmeraldGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(6), 4, BlockMatcher.forBlock(Blocks.netherrack));
+    private static final WorldGenMinable netherCoalGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(0), 16, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private static final WorldGenMinable netherIronGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(1), 8, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private static final WorldGenMinable netherGoldGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(2), 8, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private static final WorldGenMinable netherRedstoneGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(3), 7, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private static final WorldGenMinable netherLapisGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(4), 6, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private static final WorldGenMinable netherDiamondGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(5), 7, BlockMatcher.forBlock(Blocks.NETHERRACK));
+    private static final WorldGenMinable netherEmeraldGenerator = new WorldGenMinable(NetherCoreBlocks.blockNetherOre.getStateFromMeta(6), 4, BlockMatcher.forBlock(Blocks.NETHERRACK));
 
     @Override
     public void generate(Random random, int i, int i1, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

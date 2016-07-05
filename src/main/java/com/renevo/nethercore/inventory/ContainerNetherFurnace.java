@@ -33,24 +33,25 @@ public class ContainerNetherFurnace extends Container {
 
     }
 
+    @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
-        for (ICrafting crafting : this.crafters) {
+        for (IContainerListener listener : this.listeners) {
             if (this.furnaceBurnTime != this.tileFurnace.getField(0)) {
-                crafting.sendProgressBarUpdate(this, 0, this.tileFurnace.getField(0));
+                listener.sendProgressBarUpdate(this, 0, this.tileFurnace.getField(0));
             }
 
             if (this.currentItemBurnTime != this.tileFurnace.getField(1)) {
-                crafting.sendProgressBarUpdate(this, 1, this.tileFurnace.getField(1));
+                listener.sendProgressBarUpdate(this, 1, this.tileFurnace.getField(1));
             }
 
             if (this.cookTime != this.tileFurnace.getField(2)) {
-                crafting.sendProgressBarUpdate(this, 2, this.tileFurnace.getField(2));
+                listener.sendProgressBarUpdate(this, 2, this.tileFurnace.getField(2));
             }
 
             if (this.totalCookTime != this.tileFurnace.getField(3)) {
-                crafting.sendProgressBarUpdate(this, 3, this.tileFurnace.getField(3));
+                listener.sendProgressBarUpdate(this, 3, this.tileFurnace.getField(3));
             }
         }
 

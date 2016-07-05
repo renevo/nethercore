@@ -19,7 +19,7 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
     public static final PropertyEnum<CompressionDepth> TYPE = PropertyEnum.create("type", CompressionDepth.class);
 
     public BlockCompressedNetherrack() {
-        this(Material.rock);
+        this(Material.ROCK);
     }
 
     public BlockCompressedNetherrack(Material material) {
@@ -27,7 +27,7 @@ public class BlockCompressedNetherrack extends EnumBlock<BlockCompressedNetherra
 
         setHardness(2.0f);
         setResistance(5.0F);
-        setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+        setSoundType(NetherCoreBlocks.soundTypeNetherStone);
         setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
         setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }

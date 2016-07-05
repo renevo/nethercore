@@ -22,16 +22,16 @@ public class BlockNetherGrass extends Block {
     public static final PropertyBool BURNING = PropertyBool.create("burning");
 
     public BlockNetherGrass() {
-        super(Material.rock);
+        super(Material.ROCK);
 
         this.setTickRandomly(true);
 
         this.setHarvestLevel("pickaxe", 1); // 1 is stone required (0 wood, 1 stone, 2 iron)
-        this.setHardness(Blocks.netherrack.getBlockHardness(null, null, null));
-        this.setResistance(Blocks.netherrack.getExplosionResistance(null));
+        this.setHardness(Blocks.NETHERRACK.getBlockHardness(null, null, null));
+        this.setResistance(Blocks.NETHERRACK.getExplosionResistance(null));
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(BURNING, false));
-        this.setStepSound(NetherCoreBlocks.soundTypeNetherStone);
+        this.setSoundType(NetherCoreBlocks.soundTypeNetherStone);
         this.setCreativeTab(NetherCoreRegistry.tabNetherCore);
     }
 
@@ -42,7 +42,7 @@ public class BlockNetherGrass extends Block {
                 int rate = blockState.getValue(BURNING) ? 12 : 4;
                 IBlockState blockUp = world.getBlockState(blockPos.up());
                 if (blockUp.isOpaqueCube()) {
-                    world.setBlockState(blockPos, Blocks.netherrack.getDefaultState());
+                    world.setBlockState(blockPos, Blocks.NETHERRACK.getDefaultState());
                     return;
                 }
 
@@ -55,17 +55,17 @@ public class BlockNetherGrass extends Block {
 
                     IBlockState iblockstate = world.getBlockState(blockpos);
 
-                    if (iblockstate.getBlock() == Blocks.netherrack) {
+                    if (iblockstate.getBlock() == Blocks.NETHERRACK) {
                         world.setBlockState(blockpos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
-                        if (blockOnTop.getMaterial() == Material.air) {
-                            world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
+                        if (blockOnTop.getMaterial() == Material.AIR) {
+                            world.setBlockState(blockpos.up(), Blocks.FIRE.getDefaultState());
                         }
                     }
 
                     if (iblockstate.getBlock() == NetherCoreBlocks.blockNetherOre && iblockstate.getBlock().getMetaFromState(iblockstate) == BlockNetherOre.OreTypes.COAL.getMeta()) {
                         world.setBlockState(blockpos, NetherCoreBlocks.blockNetherOre.getDefaultState().withProperty(BlockNetherOre.TYPE, BlockNetherOre.OreTypes.NETHERCOAL));
-                        if (blockOnTop.getMaterial() == Material.air) {
-                            world.setBlockState(blockpos.up(), Blocks.fire.getDefaultState());
+                        if (blockOnTop.getMaterial() == Material.AIR) {
+                            world.setBlockState(blockpos.up(), Blocks.FIRE.getDefaultState());
                         }
                     }
                 }
@@ -76,12 +76,12 @@ public class BlockNetherGrass extends Block {
     @Override
     public IBlockState getActualState(IBlockState blockState, IBlockAccess blockAccess, BlockPos blockPos) {
         Block block = blockAccess.getBlockState(blockPos.up()).getBlock();
-        return blockState.withProperty(BURNING, block == Blocks.fire || block == Blocks.lava || block == Blocks.flowing_lava);
+        return blockState.withProperty(BURNING, block == Blocks.FIRE || block == Blocks.LAVA || block == Blocks.FLOWING_LAVA);
     }
 
     @Override
     public Item getItemDropped(IBlockState blockState, Random random, int meta) {
-        return Blocks.netherrack.getItemDropped(Blocks.netherrack.getDefaultState(), random, meta);
+        return Blocks.NETHERRACK.getItemDropped(Blocks.NETHERRACK.getDefaultState(), random, meta);
     }
 
     @Override
@@ -94,6 +94,7 @@ public class BlockNetherGrass extends Block {
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
+
     @Override
     public int getMetaFromState(IBlockState blockState) {
         return 0;
