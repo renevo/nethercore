@@ -58,6 +58,7 @@ public final class NetherCoreItems {
     public static ItemStack wallStone;
     public static ItemStack wallStoneCobble;
     public static ItemStack wallNetherBrick;
+    public static ItemStack wallRedNetherBrick;
 
     public static ItemStack netherFurnace;
 
@@ -111,6 +112,7 @@ public final class NetherCoreItems {
         wallStone = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.STONE.getMeta());
         wallStoneCobble = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.COBBLESTONE.getMeta());
         wallNetherBrick = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.BRICK.getMeta());
+        wallRedNetherBrick = new ItemStack(NetherCoreBlocks.blockNetherStoneWall, 1, BlockStoneWall.WallType.REDBRICK.getMeta());
 
         netherFurnace = new ItemStack(NetherCoreBlocks.blockNetherFurnace);
 
