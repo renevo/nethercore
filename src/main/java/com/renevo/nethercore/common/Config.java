@@ -31,7 +31,7 @@ public final class Config {
         enableCompressedNetherrackRecipes = forgeConfiguration.get("General", "Enable Compressed Netherrack", true, "When false, the Compressed Netherrack recipes will not be enabled").getBoolean();
         enableNetherSporeRecipe = forgeConfiguration.get("General", "Enable Nether Spore", true, "When false, the Nether Spore will not be craftable").getBoolean();
         enableNetherFurnaceRecipe = forgeConfiguration.get("General", "Enable Nether Furance", true, "When false, the Nether Furnace will not be craftable").getBoolean();
-        enableSoulGlassRecipe = forgeConfiguration.get("General", "Enable Soul Glass", true, "When false, Soul Glass can not be smelted from Soul Sand").getBoolean();
+        enableSoulGlassRecipe = forgeConfiguration.get("General", "Enable Soul Glass", true, "When false, Soul Glass can not be obtained from Soul Sand when smelted").getBoolean();
 
         enableWorldOreGeneration = forgeConfiguration.get("World", "Generate Ores", true, "When false, no ores will be generated in the Nether").getBoolean();
 
