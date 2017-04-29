@@ -2,7 +2,11 @@ package com.renevo.nethercore.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.relauncher.Side;
@@ -67,7 +71,7 @@ public class ContainerNetherFurnace extends Container {
     }
 
     public boolean canInteractWith(EntityPlayer player) {
-        return this.tileFurnace.isUseableByPlayer(player);
+        return this.tileFurnace.isUsableByPlayer(player);
     }
 
     public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
@@ -98,17 +102,17 @@ public class ContainerNetherFurnace extends Container {
                 return null;
             }
 
-            if (slotStack.stackSize == 0) {
-                slot.putStack(null);
+            if (slotStack.getCount() == 0) {
+                slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
             }
 
-            if (slotStack.stackSize == itemStack.stackSize) {
+            if (slotStack.getCount() == itemStack.getCount()) {
                 return null;
             }
 
-            slot.onPickupFromSlot(player, slotStack);
+            slot.onTake(player, slotStack);
         }
 
         return itemStack;

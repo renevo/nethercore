@@ -9,12 +9,12 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import slimeknights.mantle.block.EnumBlock;
 
 import java.util.Locale;
 import java.util.Random;
@@ -51,24 +51,24 @@ public class BlockNetherOre extends EnumBlock<BlockNetherOre.OreTypes> {
         // numbers taken from vanilla
         switch (meta) {
             case COAL:
-                return MathHelper.getRandomIntegerInRange(rand, 0, 2);
+                return MathHelper.getInt(rand, 0, 2);
             case REDSTONE:
-                return MathHelper.getRandomIntegerInRange(rand, 2, 5);
+                return MathHelper.getInt(rand, 2, 5);
             case LAPIS:
-                return MathHelper.getRandomIntegerInRange(rand, 2, 5);
+                return MathHelper.getInt(rand, 2, 5);
             case DIAMOND:
-                return MathHelper.getRandomIntegerInRange(rand, 3, 7);
+                return MathHelper.getInt(rand, 3, 7);
             case EMERALD:
-                return MathHelper.getRandomIntegerInRange(rand, 3, 7);
+                return MathHelper.getInt(rand, 3, 7);
             case NETHERCOAL: // bit of a bump from vanilla
-                return MathHelper.getRandomIntegerInRange(rand, 1, 3);
+                return MathHelper.getInt(rand, 1, 3);
         }
 
         return xp;
     }
 
     @Override
-    public Item getItemDropped(IBlockState blockState, Random random, int p_getItemDropped_3_) { // what is param 3?
+    public Item getItemDropped(IBlockState blockState, Random random, int fortune) {
         OreTypes meta = OreTypes.values()[this.getMetaFromState(blockState)];
         switch (meta) {
             case COAL:

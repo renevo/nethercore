@@ -9,12 +9,13 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
+import javax.annotation.Nonnull;
 
 public class EnumBlockWall<E extends Enum<E> & EnumBlockWall.IEnumMeta & IStringSerializable> extends BlockWall {
     private final E[] values;
@@ -39,7 +40,7 @@ public class EnumBlockWall<E extends Enum<E> & EnumBlockWall.IEnumMeta & IString
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
         for (E type : values) {
             list.add(new ItemStack(this, 1, type.getMeta()));
         }

@@ -4,12 +4,12 @@ import com.renevo.nethercore.Util;
 import com.renevo.nethercore.blocks.BlockStoneSlab;
 import com.renevo.nethercore.blocks.BlockStoneWall;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
+import com.renevo.nethercore.item.ItemBlockMeta;
 import com.renevo.nethercore.item.NetherCoreItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import slimeknights.mantle.item.ItemBlockMeta;
 
 import java.util.Locale;
 

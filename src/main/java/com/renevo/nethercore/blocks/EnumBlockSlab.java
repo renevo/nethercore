@@ -12,12 +12,14 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
+import javax.annotation.Nonnull;
 
 // TODO: switch to mantle version
 public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta & IStringSerializable> extends BlockSlab {
@@ -51,7 +53,7 @@ public abstract class EnumBlockSlab<E extends Enum<E> & EnumBlockSlab.IEnumMeta 
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+    public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, NonNullList<ItemStack> list) {
         if (!isDouble()) {
             for (E type : values) {
                 list.add(new ItemStack(this, 1, type.getMeta()));

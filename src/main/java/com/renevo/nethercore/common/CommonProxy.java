@@ -2,14 +2,13 @@ package com.renevo.nethercore.common;
 
 import com.renevo.nethercore.GuiHandler;
 import com.renevo.nethercore.NetherCore;
-import com.renevo.nethercore.item.NetherCoreItems;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
 import com.renevo.nethercore.NetherCoreAchievements;
 import com.renevo.nethercore.NetherCoreRegistry;
 import com.renevo.nethercore.blocks.NetherCoreBlocks;
+import com.renevo.nethercore.item.NetherCoreItems;
 import com.renevo.nethercore.world.NetherOreGenerator;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 

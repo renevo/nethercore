@@ -1,5 +1,7 @@
 package com.renevo.nethercore;
 
+import com.renevo.nethercore.common.CommonProxy;
+import com.renevo.nethercore.common.Config;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -8,17 +10,15 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-import com.renevo.nethercore.common.CommonProxy;
-import com.renevo.nethercore.common.Config;
-
 @Mod(
         modid = Util.MODID,
-        dependencies = "required-after:Forge@[12.18,);required-after:mantle@[1.10,)",
-        acceptedMinecraftVersions = "1.10.2",
-        updateJSON = "https://raw.githubusercontent.com/RenEvo/nethercore/master/update.json",
+        version = "${version}",
+        dependencies = "required-after:forge@[13.20,);",
+        acceptedMinecraftVersions = "[1.11,)",
         useMetadata = true,
         guiFactory="com.renevo.nethercore.client.gui.config.ModGuiFactory")
 public class NetherCore
+
 {
     public Logger log;
 

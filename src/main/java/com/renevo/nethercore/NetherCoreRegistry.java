@@ -1,5 +1,7 @@
 package com.renevo.nethercore;
 
+import com.renevo.nethercore.blocks.NetherCoreBlocks;
+import com.renevo.nethercore.client.CreativeTab;
 import com.renevo.nethercore.common.Config;
 import com.renevo.nethercore.item.NetherCoreItems;
 import com.renevo.nethercore.tconstruct.TinkersIntegration;
@@ -10,9 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-
-import slimeknights.mantle.client.CreativeTab;
-import com.renevo.nethercore.blocks.NetherCoreBlocks;
 
 public final class NetherCoreRegistry {
     private NetherCoreRegistry() {
@@ -64,28 +63,28 @@ public final class NetherCoreRegistry {
         ItemStack result;
 
         result = NetherCoreItems.stoneCobble.copy();
-        result.stackSize = 1;
+        result.setCount(1);
         GameRegistry.addRecipe(result,
                 "##",
                 "##",
                 '#', Blocks.NETHERRACK);
 
         result = NetherCoreItems.stoneBrick.copy();
-        result.stackSize = 4;
+        result.setCount(4);
         GameRegistry.addRecipe(result,
                 "##",
                 "##",
                 '#', NetherCoreItems.stone);
 
         result = NetherCoreItems.stoneRoad.copy();
-        result.stackSize = 4;
+        result.setCount(4);
         GameRegistry.addRecipe(result,
                 "##",
                 "##",
                 '#', NetherCoreItems.stoneBrick);
 
         result = NetherCoreItems.stoneCreeper.copy();
-        result.stackSize = 1;
+        result.setCount(1);
         GameRegistry.addRecipe(result,
                 "#",
                 "G",
@@ -93,7 +92,7 @@ public final class NetherCoreRegistry {
                 'G', Items.GUNPOWDER);
 
         result = NetherCoreItems.stoneBrickSquare.copy();
-        result.stackSize = 8;
+        result.setCount(8);
         GameRegistry.addRecipe(result,
                 "###",
                 "# #",
@@ -101,7 +100,7 @@ public final class NetherCoreRegistry {
                 '#', NetherCoreItems.stoneBrick);
 
         result = NetherCoreItems.stoneBrickFancy.copy();
-        result.stackSize = 5;
+        result.setCount(5);
         GameRegistry.addRecipe(result,
                 "## ",
                 " # ",
@@ -109,7 +108,7 @@ public final class NetherCoreRegistry {
                 '#', NetherCoreItems.stoneBrick);
 
         result = NetherCoreItems.stonePaver.copy();
-        result.stackSize = 7;
+        result.setCount(7);
         GameRegistry.addRecipe(result,
                 "###",
                 " # ",
@@ -138,7 +137,7 @@ public final class NetherCoreRegistry {
         }
 
         result = NetherCoreItems.netherRod.copy();
-        result.stackSize = 4;
+        result.setCount(4);
         GameRegistry.addRecipe(result,
                 "R",
                 "B",
@@ -170,26 +169,26 @@ public final class NetherCoreRegistry {
         addWallRecipe(NetherCoreItems.stone, NetherCoreItems.wallStone, false);
         addWallRecipe(NetherCoreItems.stoneCobble, NetherCoreItems.wallStoneCobble, false);
         addWallRecipe(new ItemStack(Blocks.NETHER_BRICK), NetherCoreItems.wallNetherBrick, true);
-        addWallRecipe(new ItemStack(Blocks.field_189879_dh /*Red Nether Brick */), NetherCoreItems.wallRedNetherBrick, false);
+        addWallRecipe(new ItemStack(Blocks.RED_NETHER_BRICK), NetherCoreItems.wallRedNetherBrick, false);
     }
 
     public static void registerIntegrations() {
-        TinkersIntegration.addTinkersSmelting(NetherCoreItems.netherOreIron, FluidRegistry.getFluid("iron"), TinkersIntegration.VALUE_NetherOre);
-        TinkersIntegration.addTinkersSmelting(NetherCoreItems.netherOreGold, FluidRegistry.getFluid("gold"), TinkersIntegration.VALUE_NetherOre);
+        //TinkersIntegration.addTinkersSmelting(NetherCoreItems.netherOreIron, FluidRegistry.getFluid("iron"), TinkersIntegration.VALUE_NetherOre);
+        //TinkersIntegration.addTinkersSmelting(NetherCoreItems.netherOreGold, FluidRegistry.getFluid("gold"), TinkersIntegration.VALUE_NetherOre);
     }
 
     private static void addCompressedRecipe(ItemStack input, ItemStack output) {
         ItemStack decompress = input.copy();
-        decompress.stackSize = 9;
+        decompress.setCount(9);
         GameRegistry.addRecipe(output.copy(), "###", "###", "###", '#', input.copy());
         GameRegistry.addRecipe(decompress, "#", '#', output.copy());
     }
 
     private static void addWallRecipe(ItemStack input, ItemStack output, boolean explicit) {
         ItemStack wall = output.copy();
-        wall.stackSize = 6;
+        wall.setCount(6);
         ItemStack block = input.copy();
-        block.stackSize = 1;
+        block.setCount(1);
         if (!explicit) {
             GameRegistry.addRecipe(wall.copy(), "###", "###", '#', block.copy());
         } else {
@@ -199,17 +198,17 @@ public final class NetherCoreRegistry {
 
     private static void addStairRecipe(ItemStack input, ItemStack output) {
         ItemStack stairs = output.copy();
-        stairs.stackSize = 4;
+        stairs.setCount(4);
         ItemStack block = input.copy();
-        block.stackSize = 1;
+        block.setCount(1);
         GameRegistry.addRecipe(stairs.copy(), "#  ", "## ", "###", '#', block.copy());
     }
 
     private static void addSlabRecipe(ItemStack input, ItemStack output) {
         ItemStack slabs = output.copy();
-        slabs.stackSize = 6;
+        slabs.setCount(6);
         ItemStack block = input.copy();
-        block.stackSize = 1;
+        block.setCount(1);
         GameRegistry.addRecipe(slabs.copy(), "###", '#', block.copy());
     }
 }

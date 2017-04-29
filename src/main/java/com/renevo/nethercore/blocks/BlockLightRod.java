@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -90,8 +91,8 @@ public class BlockLightRod extends BlockDirectional {
     }
 
     @Override
-    public IBlockState onBlockPlaced(World world, BlockPos blockPos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        IBlockState iblockstate = world.getBlockState(blockPos.offset(facing.getOpposite()));
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+        IBlockState iblockstate = world.getBlockState(pos.offset(facing.getOpposite()));
 
         if (iblockstate.getBlock() == this) {
             EnumFacing enumfacing = iblockstate.getValue(FACING);

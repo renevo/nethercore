@@ -26,6 +26,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
+import javax.annotation.Nonnull;
+
 public class TileEntityNetherFurnace extends TileEntityLockable implements ITickable, ISidedInventory {
     private static final int[] slotsTop = new int[]{0};
     private static final int[] slotsBottom = new int[]{1};
@@ -35,9 +37,9 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     private int cookTime;
     private int totalCookTime;
     private String furnaceCustomName;
-    IItemHandler handlerTop;
-    IItemHandler handlerBottom;
-    IItemHandler handlerSides;
+    private IItemHandler handlerTop;
+    private IItemHandler handlerBottom;
+    private IItemHandler handlerSides;
 
     public TileEntityNetherFurnace() {
         this.handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
@@ -54,6 +56,10 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         return this.furnaceItemStacks.length;
     }
 
+    @Override public boolean isEmpty() {
+        return furnaceItemStacks[0].isEmpty() && furnaceItemStacks[1].isEmpty() && furnaceItemStacks[2].isEmpty();
+    }
+
     @Override
     public ItemStack getStackInSlot(int slotIndex) {
         return this.furnaceItemStacks[slotIndex];
@@ -63,13 +69,13 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     public ItemStack decrStackSize(int slotIndex, int amount) {
         if (this.furnaceItemStacks[slotIndex] != null) {
             ItemStack itemstack;
-            if (this.furnaceItemStacks[slotIndex].stackSize <= amount) {
+            if (this.furnaceItemStacks[slotIndex].getCount() <= amount) {
                 itemstack = this.furnaceItemStacks[slotIndex];
                 this.furnaceItemStacks[slotIndex] = null;
                 return itemstack;
             } else {
                 itemstack = this.furnaceItemStacks[slotIndex].splitStack(amount);
-                if (this.furnaceItemStacks[slotIndex].stackSize == 0) {
+                if (this.furnaceItemStacks[slotIndex].getCount() == 0) {
                     this.furnaceItemStacks[slotIndex] = null;
                 }
 
@@ -92,11 +98,12 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
     }
 
     @Override
-    public void setInventorySlotContents(int slotIndex, ItemStack itemStack) {
-        boolean canInsert = itemStack != null && itemStack.isItemEqual(this.furnaceItemStacks[slotIndex]) && ItemStack.areItemStackTagsEqual(itemStack, this.furnaceItemStacks[slotIndex]);
+    public void setInventorySlotContents(int slotIndex, @Nonnull ItemStack itemStack) {
+        boolean canInsert =
+            itemStack.isItemEqual(this.furnaceItemStacks[slotIndex]) && ItemStack.areItemStackTagsEqual(itemStack, this.furnaceItemStacks[slotIndex]);
         this.furnaceItemStacks[slotIndex] = itemStack;
-        if (itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()) {
-            itemStack.stackSize = this.getInventoryStackLimit();
+        if (itemStack.getCount() > this.getInventoryStackLimit()) {
+            itemStack.setCount(this.getInventoryStackLimit());
         }
 
         if (slotIndex == 0 && !canInsert) {
@@ -131,7 +138,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
             NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
             byte j = nbttagcompound.getByte("Slot");
             if (j >= 0 && j < this.furnaceItemStacks.length) {
-                this.furnaceItemStacks[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+                this.furnaceItemStacks[j] = new ItemStack(nbttagcompound);
             }
         }
 
@@ -176,6 +183,13 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         return 64;
     }
 
+    @Override
+    public boolean isUsableByPlayer(EntityPlayer player) {
+        return this.world.getTileEntity(this.pos) == this
+            && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D,
+            (double) this.pos.getZ() + 0.5D) <= 64.0D;
+    }
+
     public boolean isBurning() {
         return this.furnaceBurnTime > 0;
     }
@@ -196,7 +210,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         double burnMultiplier = Math.floor(((double) burnSpeed / 5d) * 300d);
         this.furnaceBurnTime = this.currentItemBurnTime > 0 ? (int) burnMultiplier : 0;
 
-        if (!this.worldObj.isRemote) {
+        if (!this.world.isRemote) {
             if (this.furnaceBurnTime != burnTime) {
                 updated = true;
             }
@@ -215,12 +229,12 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
                     this.cookTime = 0;
                 }
             } else if (!this.isBurning() && this.cookTime > 0) {
-                this.cookTime = MathHelper.clamp_int(this.cookTime - 2, 0, this.totalCookTime);
+                this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.totalCookTime);
             }
 
             if (burning != this.isBurning()) {
                 updated = true;
-                BlockNetherFurnace.setState(this.isBurning(), this.worldObj, this.pos);
+                BlockNetherFurnace.setState(this.isBurning(), this.world, this.pos);
             }
         }
 
@@ -232,12 +246,12 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
 
     private int getBurnSpeed() {
         // sets the base speed, 1 if in nether, otherwise, none and requires lava on one side
-        int speed = this.worldObj.provider.doesWaterVaporize() ? 1 : 0;
+        int speed = this.world.provider.doesWaterVaporize() ? 1 : 0;
 
-        IBlockState eastBlockState = this.worldObj.getBlockState(this.pos.east());
-        IBlockState westBlockState = this.worldObj.getBlockState(this.pos.west());
-        IBlockState northBlockState = this.worldObj.getBlockState(this.pos.north());
-        IBlockState southBlockState = this.worldObj.getBlockState(this.pos.south());
+        IBlockState eastBlockState = this.world.getBlockState(this.pos.east());
+        IBlockState westBlockState = this.world.getBlockState(this.pos.west());
+        IBlockState northBlockState = this.world.getBlockState(this.pos.north());
+        IBlockState southBlockState = this.world.getBlockState(this.pos.south());
 
         // TODO: These should be based on fluids as well when possible
         if (eastBlockState.getBlock() == Blocks.LAVA || eastBlockState.getBlock() == Blocks.FLOWING_LAVA) {
@@ -275,7 +289,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
             } else if (!this.furnaceItemStacks[1].isItemEqual(itemstack)) {
                 return false;
             } else {
-                int result = this.furnaceItemStacks[1].stackSize + itemstack.stackSize;
+                int result = this.furnaceItemStacks[1].getCount() + itemstack.getCount();
                 return result <= this.getInventoryStackLimit() && result <= this.furnaceItemStacks[1].getMaxStackSize();
             }
         }
@@ -287,19 +301,14 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
             if (this.furnaceItemStacks[1] == null) {
                 this.furnaceItemStacks[1] = itemstack.copy();
             } else if (this.furnaceItemStacks[1].getItem() == itemstack.getItem()) {
-                this.furnaceItemStacks[1].stackSize += itemstack.stackSize;
+                this.furnaceItemStacks[1].grow(itemstack.getCount());
             }
 
-            --this.furnaceItemStacks[0].stackSize;
-            if (this.furnaceItemStacks[0].stackSize <= 0) {
+            this.furnaceItemStacks[0].shrink(-1);
+            if (this.furnaceItemStacks[0].getCount() <= 0) {
                 this.furnaceItemStacks[0] = null;
             }
         }
-    }
-
-    @Override
-    public boolean isUseableByPlayer(EntityPlayer player) {
-        return this.worldObj.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     @Override
