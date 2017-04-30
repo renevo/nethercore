@@ -30,7 +30,7 @@ public class ItemNetherSpore extends ItemMeta {
             world.setBlockState(pos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
             world.setBlockState(pos.up(), Blocks.FIRE.getDefaultState());
 
-            itemStack.shrink(-1);
+            itemStack.shrink(1);
             return EnumActionResult.SUCCESS;
         } else {
             return EnumActionResult.PASS;

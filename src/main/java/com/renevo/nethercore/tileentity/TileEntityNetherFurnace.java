@@ -304,7 +304,7 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
                 this.furnaceItemStacks[1].grow(itemstack.getCount());
             }
 
-            this.furnaceItemStacks[0].shrink(-1);
+            this.furnaceItemStacks[0].shrink(1);
             if (this.furnaceItemStacks[0].getCount() <= 0) {
                 this.furnaceItemStacks[0] = null;
             }
