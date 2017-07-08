@@ -1,0 +1,79 @@
+itemGroup.NetherCore=Nether Core
+
+tile.nethercore.ore.coal.name=Kohle
+tile.nethercore.ore.iron.name=Eisenerz
+tile.nethercore.ore.gold.name=Golderz
+tile.nethercore.ore.redstone.name=Redstone-Erz
+tile.nethercore.ore.lapis.name=Lapislazulierz
+tile.nethercore.ore.diamond.name=Diamanterz
+tile.nethercore.ore.emerald.name=Smaragderz
+tile.nethercore.ore.nethercoal.name=Netherkohle
+
+tile.nethercore.compressed_netherrack.single.name=Verdichteter Netherrack
+tile.nethercore.compressed_netherrack.single.tooltip=1x verdichtet (9)
+tile.nethercore.compressed_netherrack.double.name=Zweifach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.double.tooltip=2x verdichtet (81)
+tile.nethercore.compressed_netherrack.triple.name=Dreifach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.triple.tooltip=3x verdichtet (729)
+tile.nethercore.compressed_netherrack.quadruple.name=Vierfach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.quadruple.tooltip=4x verdichtet (6,561)
+tile.nethercore.compressed_netherrack.quintuple.name=Fünffach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.quintuple.tooltip=5x verdichtet (59,049)
+tile.nethercore.compressed_netherrack.sextuple.name=Sechsfach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.sextuple.tooltip=6x verdichtet (531,441)
+tile.nethercore.compressed_netherrack.septuple.name=Siebenfach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.septuple.tooltip=7x verdichtet (4,782,969)
+tile.nethercore.compressed_netherrack.octuple.name=Achtfach verdichteter Netherrack
+tile.nethercore.compressed_netherrack.octuple.tooltip=8x verdichtet (43,046,721)
+
+tile.nethercore.stone.stone.name=Netherstein
+tile.nethercore.stone.cobble.name=Netherbruchstein
+tile.nethercore.stone.paver.name=Netherquader
+tile.nethercore.stone.brick.name=Netherklinker
+tile.nethercore.stone.brick_cracked.name=Rissige Netherklinker
+tile.nethercore.stone.brick_fancy.name=Gemeißelte Netherklinker
+tile.nethercore.stone.brick_square.name=Gemeißelte Netherklinker
+tile.nethercore.stone.road.name=Netherpflaster
+tile.nethercore.stone.creeper.name=Gemeißelter Netherquader
+
+tile.nethercore.stairs_stone.name=Nethersteintreppe
+tile.nethercore.stairs_stone_brick.name=Netherklinkertreppe
+tile.nethercore.stairs_stone_cobble.name=Netherbruchsteintreppe
+
+tile.nethercore.slab_half_stone.stone.name=Nethersteinstufe
+tile.nethercore.slab_half_stone.cobblestone.name=Netherbruchsteinstufe
+tile.nethercore.slab_half_stone.stonebrick.name=Netherklinkerstufe
+tile.nethercore.slab_half_stone.road.name=Netherpflasterstufe
+
+tile.nethercore.wall_stone.stone.name=Nethersteinmauer
+tile.nethercore.wall_stone.cobblestone.name=Netherbruchsteinmauer
+tile.nethercore.wall_stone.brick.name=Netherziegelmauer
+tile.nethercore.wall_stone.redbrick.name=Rote Netherziegelmauer
+
+tile.nethercore.nether_grass.name=Netherbewuchs
+tile.nethercore.nether_grass.tooltip=Verhindert Mob Spawns im Nether
+tile.nethercore.nether_furnace.name=Netherofen
+tile.nethercore.nether_furnace_lit.name=Netherofen
+
+tile.nethercore.nether_rod.name=Netherstab
+tile.nethercore.soul_glass.name=Seelenglas
+tile.nethercore.nether_coal_block.name=Netherkohleblock
+
+item.nethercore.nether_spore.name=Nethersporen
+item.nethercore.nether_spore.tooltip=Erzeugen Netherbewuchs
+item.nethercore.nether_coal.name=Netherkohle
+
+container.nethercore.nether_furnace=Netherofen
+
+achievement.netherore=Brennende Erze
+achievement.netherore.desc=Schürfe im Nether nach Erzen
+achievement.compressednether=Verdichtung
+achievement.compressednether.desc=Verdichte neun Blöcke Netherrack
+achievement.netherspore=Terra Nether Craft
+achievement.netherspore.desc=Terraforme den Nether mit Nethersporen
+achievement.netherstone=Roter Bruchstein
+achievement.netherstone.desc=Stelle Netherbruchstein aus vier Netherrack her
+achievement.netherfurnace=Heißer Ofen
+achievement.netherfurnace.desc=Konstruiere einen Netherofen aus acht Netherbruchsteinen und Magmacreme
+achievement.xbcrafted=Griff nach den Sternen
+achievement.xbcrafted.desc=Erzeuge einen Netherstern aus achtfach verdichtetem Netherrack
