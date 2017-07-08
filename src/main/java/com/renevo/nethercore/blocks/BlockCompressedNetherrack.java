@@ -10,7 +10,6 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import slimeknights.mantle.block.EnumBlock;
 
 import java.util.Locale;
 

@@ -2,12 +2,15 @@ package com.renevo.nethercore.jei;
 
 import com.renevo.nethercore.client.gui.inventory.GuiNetherFurnace;
 import com.renevo.nethercore.inventory.ContainerNetherFurnace;
-import mezz.jei.api.*;
+import mezz.jei.api.BlankModPlugin;
+import mezz.jei.api.IJeiRuntime;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 
 @JEIPlugin
-public class NetherCorePlugin implements IModPlugin {
+public class NetherCorePlugin extends BlankModPlugin {
     @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntime) { }
 

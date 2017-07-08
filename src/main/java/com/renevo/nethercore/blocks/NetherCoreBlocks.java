@@ -1,6 +1,8 @@
 package com.renevo.nethercore.blocks;
 
 import com.renevo.nethercore.NetherCoreRegistry;
+import com.renevo.nethercore.Util;
+import com.renevo.nethercore.item.ItemBlockMeta;
 import com.renevo.nethercore.item.ItemStoneSlab;
 import com.renevo.nethercore.tileentity.TileEntityNetherFurnace;
 import net.minecraft.block.Block;
@@ -9,13 +11,9 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 import java.util.Locale;
-
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
-import slimeknights.mantle.block.EnumBlock;
-import com.renevo.nethercore.Util;
-import slimeknights.mantle.item.ItemBlockMeta;
 
 // TODO: Switch to new registry stuff for register items/blocks
 public final class NetherCoreBlocks {

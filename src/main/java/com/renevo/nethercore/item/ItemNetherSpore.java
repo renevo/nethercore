@@ -19,16 +19,18 @@ public class ItemNetherSpore extends ItemMeta {
     }
 
     @Override
-    public EnumActionResult onItemUse(ItemStack itemStack, EntityPlayer entityPlayer, World world, BlockPos blockPos, EnumHand hand, EnumFacing enumFacing, float p_onItemUse_6_, float p_onItemUse_7_, float p_onItemUse_8_) {
-        if(enumFacing != EnumFacing.UP) {
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY,
+        float hitZ) {
+        ItemStack itemStack = player.getActiveItemStack();
+        if(facing != EnumFacing.UP) {
             return EnumActionResult.PASS;
-        } else if(!entityPlayer.canPlayerEdit(blockPos.offset(enumFacing), enumFacing, itemStack)) {
+        } else if(!player.canPlayerEdit(pos.offset(facing), facing, itemStack)) {
             return EnumActionResult.PASS;
-        } else if(world.getBlockState(blockPos).getBlock() == Blocks.NETHERRACK && world.provider.doesWaterVaporize() && world.isAirBlock(blockPos.up())) {
-            world.setBlockState(blockPos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
-            world.setBlockState(blockPos.up(), Blocks.FIRE.getDefaultState());
+        } else if(world.getBlockState(pos).getBlock() == Blocks.NETHERRACK && world.provider.doesWaterVaporize() && world.isAirBlock(pos.up())) {
+            world.setBlockState(pos, NetherCoreBlocks.blockNetherGrass.getDefaultState());
+            world.setBlockState(pos.up(), Blocks.FIRE.getDefaultState());
 
-            --itemStack.stackSize;
+            itemStack.shrink(1);
             return EnumActionResult.SUCCESS;
         } else {
             return EnumActionResult.PASS;

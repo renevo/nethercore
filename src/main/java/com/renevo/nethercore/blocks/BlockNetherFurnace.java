@@ -113,13 +113,13 @@ public class BlockNetherFurnace extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos blockPos, IBlockState blockState, EntityPlayer player, EnumHand hand, ItemStack itemStack, EnumFacing facing, float x, float y, float z) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if(world.isRemote) {
             return true;
         } else {
-            TileEntity tileEntity = world.getTileEntity(blockPos);
+            TileEntity tileEntity = world.getTileEntity(pos);
             if(tileEntity instanceof TileEntityNetherFurnace) {
-                player.openGui(NetherCore.instance, GuiHandler.GUI_NETHER_FURNACE, world, blockPos.getX(), blockPos.getY(), blockPos.getZ());
+                player.openGui(NetherCore.instance, GuiHandler.GUI_NETHER_FURNACE, world, pos.getX(), pos.getY(), pos.getZ());
             }
 
             return true;
@@ -151,8 +151,8 @@ public class BlockNetherFurnace extends BlockContainer {
     }
 
     @Override
-    public IBlockState onBlockPlaced(World world, BlockPos blockPos, EnumFacing facing, float x, float y, float z, int unk, EntityLivingBase entity) {
-        return this.getDefaultState().withProperty(FACING, entity.getHorizontalFacing().getOpposite());
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
     @Override

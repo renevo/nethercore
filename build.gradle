@@ -21,8 +21,8 @@ buildscript {
 
 repositories {
     maven {
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
+        name "TehNut Repo"
+        url "http://tehnut.info/maven"
     }
     maven {
         name 'CB Maven FS'
@@ -68,10 +68,10 @@ compileJava {
 }
 
 dependencies {
-    deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_minor_version}-${config.mantle_version}"
-    deobfCompile "slimeknights:TConstruct:${config.minecraft_minor_version}-${config.tinkers_version}"
+    //deobfCompile "slimeknights.mantle:Mantle:${config.minecraft_minor_version}-${config.mantle_version}"
+    //deobfCompile "slimeknights:TConstruct:${config.minecraft_minor_version}-${config.tinkers_version}"
     deobfCompile "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
-    deobfCompile "mcp.mobius.waila:Waila:${config.waila_version}"
+    deobfCompile "mcp.mobius.waila:Hwyla:${config.waila_version}"
 }
 
 processResources

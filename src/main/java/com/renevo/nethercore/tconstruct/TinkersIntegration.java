@@ -24,7 +24,7 @@ public final class TinkersIntegration {
         }
 
         try {
-            slimeknights.tconstruct.library.TinkerRegistry.registerMelting(cook, output, amount);
+            //slimeknights.tconstruct.library.TinkerRegistry.registerMelting(cook, output, amount);
         } catch (Exception ex) {
             FMLLog.warning("Unable to integrate with Tinkers Registry - Did the API change?");
         }
