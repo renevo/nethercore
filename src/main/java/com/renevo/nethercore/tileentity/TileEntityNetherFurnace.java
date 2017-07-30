@@ -234,27 +234,13 @@ public class TileEntityNetherFurnace extends TileEntityLockable implements ITick
         // sets the base speed, 1 if in nether, otherwise, none and requires lava on one side
         int speed = this.worldObj.provider.doesWaterVaporize() ? 1 : 0;
 
-        IBlockState eastBlockState = this.worldObj.getBlockState(this.pos.east());
-        IBlockState westBlockState = this.worldObj.getBlockState(this.pos.west());
-        IBlockState northBlockState = this.worldObj.getBlockState(this.pos.north());
-        IBlockState southBlockState = this.worldObj.getBlockState(this.pos.south());
+        List<Block> blocklist = Arrays.asList(Blocks.LAVA, Blocks.FLOWING_LAVA, Blocks.MAGMA);
 
-        // TODO: These should be based on fluids as well when possible
-        if (eastBlockState.getBlock() == Blocks.LAVA || eastBlockState.getBlock() == Blocks.FLOWING_LAVA) {
-            speed++;
-        }
+        BlockPos positions[] = { pos.east(), pos.west(), pos.north(), pos.south() };
 
-        if (westBlockState.getBlock() == Blocks.LAVA || westBlockState.getBlock() == Blocks.FLOWING_LAVA) {
-            speed++;
-        }
-
-        if (northBlockState.getBlock() == Blocks.LAVA || northBlockState.getBlock() == Blocks.FLOWING_LAVA) {
-            speed++;
-        }
-
-        if (southBlockState.getBlock() == Blocks.LAVA || southBlockState.getBlock() == Blocks.FLOWING_LAVA) {
-            speed++;
-        }
+        for (BlockPos pos : positions)
+            if (blocklist.contains(world.getBlockState(pos).getBlock()))
+                speed++;
 
         return speed;
     }
